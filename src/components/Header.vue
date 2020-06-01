@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent">
+    <nav class="navbar navbar-expand-lg fixed-top bg-transparent navbar-dark">
       <div class="container">
         <a class="navbar-brand" href="#">{{brand}}</a>
         <button
@@ -15,8 +15,99 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navBarCollapse">
-          <ul class="navbar-nav ml-auto">
+        <div class="collapse navbar-collapse mobileNav p-3 p-lg-0 mt-5 mt-lg-0 " id="navBarCollapse">
+          <ul class="navbar-nav ml-auto align-self-stretch">
+            <li class="nav-item">
+              <a class="nav-link" href="#">О нас</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Оборудования</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Заказ стенда</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Услуги</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Система регистрации</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">О нас</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Оборудования</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Заказ стенда</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Услуги</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Система регистрации</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">О нас</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Оборудования</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Заказ стенда</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Услуги</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Система регистрации</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">О нас</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Оборудования</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Заказ стенда</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Услуги</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Система регистрации</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">О нас</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Оборудования</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Заказ стенда</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Услуги</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Система регистрации</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">О нас</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Оборудования</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Заказ стенда</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Услуги</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Система регистрации</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="#">О нас</a>
             </li>
@@ -36,7 +127,7 @@
         </div>
       </div>
     </nav>
-
+    <div class="overlay"></div>
     <div class="header__overlay"></div>
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
       <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4" />
@@ -59,31 +150,52 @@ import $ from "jquery";
 import "bootstrap";
 
 $(document).ready(function() {
+  const headerColor = "bg-white";
+  const lightText = "navbar-dark";
+  const darkText = "navbar-light";
+  function setLightText() {
+    $(".navbar").addClass(lightText);
+    $(".navbar").removeClass(darkText);
+  }
+  function setDarkText() {
+    $(".navbar").addClass(darkText);
+    $(".navbar").removeClass(lightText);
+  }
+  function setBgColor() {
+    $(".navbar").addClass(headerColor);
+    $(".navbar").removeClass("bg-transparent");
+  }
+  function setTransparentColor() {
+    $(".navbar").addClass("bg-transparent");
+    $(".navbar").removeClass(headerColor);
+  }
+
   $(window).on("scroll", function() {
     if ($(".navbar-toggler").attr("aria-expanded") == "true") {
-      $(".navbar").addClass("bg-dark");
-      $(".navbar").removeClass("bg-transparent");
-    }
-    else if ($(window).scrollTop() > 1) {
-      $(".navbar").addClass("bg-dark");
-      $(".navbar").removeClass("bg-transparent");
+      setBgColor();
+      setDarkText();
+    } else if ($(window).scrollTop() > 1) {
+      setBgColor();
+      setDarkText();
     } else {
-      $(".navbar").addClass("bg-transparent");
-      $(".navbar").removeClass("bg-dark");
-    }    
+      setTransparentColor();
+      setLightText();
+    }
   });
 
   $(".collapse").on("show.bs.collapse", function() {
     if ($(window).scrollTop() == 0) {
-      $(".navbar").addClass("bg-dark");
-      $(".navbar").removeClass("bg-transparent");
+      setBgColor();
+      setDarkText();
     }
+    $(".overlay").toggleClass("open");
   });
   $(".collapse").on("hidden.bs.collapse", function() {
     if ($(window).scrollTop() == 0) {
-      $(".navbar").addClass("bg-transparent");
-      $(".navbar").removeClass("bg-dark");
+      setTransparentColor();
+      setLightText();
     }
+    $(".overlay").toggleClass("open");
   });
 });
 
@@ -120,10 +232,34 @@ export default {
 
 .header {
   position: relative;
-  background-color: black;
   height: 100vh;
   width: 100%;
   overflow: hidden;
+  @include media-breakpoint-down(md) {
+    .mobileNav {
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      left: 0;
+      -webkit-transition: all ease 1.25s;
+      transition: all ease 1.25s;
+      width: 100%;
+      background: white;
+    }
+    
+    .mobileNav.show {
+      -webkit-transform: translateX(0%);
+      transform: translateX(0%);
+    }
+    .navbar-nav{
+      overflow-y: auto;
+      max-height: 100%;
+      width: 100vh;
+    }
+  }
   video {
     position: absolute;
     top: 50%;
