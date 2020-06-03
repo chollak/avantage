@@ -1,53 +1,14 @@
 <template>
   <div class="header">
-    <nav class="navbar navbar-expand-lg fixed-top bg-transparent navbar-dark">
+    <nav class="navbar navbar-expand-lg fixed-top bg-white navbar-light">
       <div class="container">
         <a class="navbar-brand" href="#">{{brand}}</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navBarCollapse"
-          aria-controls="navBarCollapse"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler" @click="toggleNav()">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse mobileNav p-3 p-lg-0 mt-5 mt-lg-0 " id="navBarCollapse">
-          <ul class="navbar-nav ml-auto align-self-stretch">
-            <li class="nav-item">
-              <a class="nav-link" href="#">О нас</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Оборудования</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Заказ стенда</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Услуги</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Система регистрации</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#">О нас</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Оборудования</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Заказ стенда</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Услуги</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Система регистрации</a>
-            </li>
+        <div class="mobileNav" :class="{show:isNavShow}">
+          <ul class="navbar-nav ml-auto-lg align-self-stretch">
             <li class="nav-item">
               <a class="nav-link" href="#">О нас</a>
             </li>
@@ -146,63 +107,22 @@
 </template>
 
 <script>
-import $ from "jquery";
 import "bootstrap";
-
-$(document).ready(function() {
-  const headerColor = "bg-white";
-  const lightText = "navbar-dark";
-  const darkText = "navbar-light";
-  function setLightText() {
-    $(".navbar").addClass(lightText);
-    $(".navbar").removeClass(darkText);
-  }
-  function setDarkText() {
-    $(".navbar").addClass(darkText);
-    $(".navbar").removeClass(lightText);
-  }
-  function setBgColor() {
-    $(".navbar").addClass(headerColor);
-    $(".navbar").removeClass("bg-transparent");
-  }
-  function setTransparentColor() {
-    $(".navbar").addClass("bg-transparent");
-    $(".navbar").removeClass(headerColor);
-  }
-
-  $(window).on("scroll", function() {
-    if ($(".navbar-toggler").attr("aria-expanded") == "true") {
-      setBgColor();
-      setDarkText();
-    } else if ($(window).scrollTop() > 1) {
-      setBgColor();
-      setDarkText();
-    } else {
-      setTransparentColor();
-      setLightText();
-    }
-  });
-
-  $(".collapse").on("show.bs.collapse", function() {
-    if ($(window).scrollTop() == 0) {
-      setBgColor();
-      setDarkText();
-    }
-    $(".overlay").toggleClass("open");
-  });
-  $(".collapse").on("hidden.bs.collapse", function() {
-    if ($(window).scrollTop() == 0) {
-      setTransparentColor();
-      setLightText();
-    }
-    $(".overlay").toggleClass("open");
-  });
-});
 
 export default {
   name: "Header",
   props: {
     brand: String
+  },
+  data() {
+    return {
+      isNavShow: false
+    };
+  },
+  methods: {
+    toggleNav() {
+      this.isNavShow = !this.isNavShow;
+    }
   }
 };
 </script>
@@ -237,27 +157,33 @@ export default {
   overflow: hidden;
   @include media-breakpoint-down(md) {
     .mobileNav {
-      -webkit-transform: translateX(-100%);
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      overflow: -moz-scrollbars-none;
+      -ms-overflow-style: none;
       transform: translateX(-100%);
       position: fixed;
       top: 0;
-      bottom: 0;
-      margin: auto;
       left: 0;
-      -webkit-transition: all ease 1.25s;
-      transition: all ease 1.25s;
-      width: 100%;
       background: white;
-    }
-    
-    .mobileNav.show {
-      -webkit-transform: translateX(0%);
-      transform: translateX(0%);
-    }
-    .navbar-nav{
+      transition: 0.5s all ease;
+      width: 100%;
+      height: 100%;
+      margin-top: 55px;
       overflow-y: auto;
-      max-height: 100%;
-      width: 100vh;
+      .navbar-nav {
+        padding: 50px 10px;
+        align-items: center;
+        font-size: 2rem;
+        .nav-item {
+          margin: 20px 0px;
+        }
+      }
+    }
+
+    .mobileNav.show {
+      transform: translateX(0%);
     }
   }
   video {
