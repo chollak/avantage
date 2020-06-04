@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <nav class="navbar navbar-expand-lg fixed-top bg-white navbar-light">
+    <nav class="navbar navbar-expand-lg fixed-top" :class="[bgNav]">
       <div class="container">
         <a class="navbar-brand" href="#">{{brand}}</a>
         <button class="navbar-toggler" @click="toggleNav()">
@@ -24,65 +24,7 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Система регистрации</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">О нас</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Оборудования</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Заказ стенда</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Услуги</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Система регистрации</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">О нас</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Оборудования</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Заказ стенда</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Услуги</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Система регистрации</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">О нас</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Оборудования</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Заказ стенда</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Услуги</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Система регистрации</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">О нас</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Оборудования</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Заказ стенда</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Услуги</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Система регистрации</a>
+            
             </li>
           </ul>
         </div>
@@ -116,12 +58,41 @@ export default {
   },
   data() {
     return {
-      isNavShow: false
+      isNavShow: false,
+      bgNav: "bg-transparent navbar-dark"
     };
+  },
+  mounted() {
+    window.addEventListener("scroll", this.updateScroll);
   },
   methods: {
     toggleNav() {
-      this.isNavShow = !this.isNavShow;
+      // if (window.scrollY == 0 && this.isNavShow == true) {
+      //   this.bgNav = "bg-transparent navbar-dark";
+      // } else this.bgNav = "bg-white navbar-light";
+      // this.isNavShow = !this.isNavShow;
+      if (window.scrollY == 0 && this.isNavShow == false) {
+        this.bgNav = "bg-white navbar-light";
+        this.isNavShow = !this.isNavShow;
+      } else if (window.scrollY == 0 && this.isNavShow == true) {
+        this.isNavShow = !this.isNavShow;
+        // setTimeout(() => {
+        //   this.bgNav = "bg-transparent navbar-dark";
+        // }, 500);
+        this.bgNav = "bg-transparent navbar-dark";
+      } else {
+        this.bgNav = "bg-white navbar-light";
+        this.isNavShow = !this.isNavShow;
+      }
+    },
+    updateScroll() {
+      if (window.scrollY == 0 && this.isNavShow == true) {
+        this.bgNav = "bg-white navbar-light";
+      } else
+        this.bgNav =
+          window.scrollY > 0
+            ? "bg-white navbar-light"
+            : "bg-transparent navbar-dark";
     }
   }
 };
@@ -156,6 +127,10 @@ export default {
   width: 100%;
   overflow: hidden;
   @include media-breakpoint-down(md) {
+    .navbar{
+      
+      transition: 0.5s all ease;
+    }
     .mobileNav {
       &::-webkit-scrollbar {
         display: none;
@@ -163,6 +138,8 @@ export default {
       overflow: -moz-scrollbars-none;
       -ms-overflow-style: none;
       transform: translateX(-100%);
+      opacity: 0;
+      visibility: hidden;
       position: fixed;
       top: 0;
       left: 0;
@@ -175,15 +152,18 @@ export default {
       .navbar-nav {
         padding: 50px 10px;
         align-items: center;
+        transition-delay: 0s;
         font-size: 2rem;
         .nav-item {
           margin: 20px 0px;
         }
       }
     }
-
     .mobileNav.show {
       transform: translateX(0%);
+      opacity: 1;
+      visibility: visible;
+      transition: 0.5s all ease;
     }
   }
   video {
