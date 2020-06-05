@@ -14,7 +14,7 @@ export default {
 </script>
 <style lang="scss">
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap');
 
 #app {
   font-family: 'Nunito', sans-serif;

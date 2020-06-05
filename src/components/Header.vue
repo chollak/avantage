@@ -10,21 +10,19 @@
         <div class="mobileNav" :class="{show:isNavShow}">
           <ul class="navbar-nav ml-auto-lg align-self-stretch">
             <li class="nav-item">
-              <a class="nav-link" href="#">О нас</a>
+              <a class="nav-link" href="#about">О нас</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Оборудования</a>
+              <a class="nav-link" href="#tools">Оборудования</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Заказ стенда</a>
+              <a class="nav-link" href="#order">Заказ стенда</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Услуги</a>
+              <a class="nav-link" href="#services">Услуги</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Система регистрации</a>
-            </li>
-            
+              <a class="nav-link" href="#registration">Система регистрации</a>
             </li>
           </ul>
         </div>
@@ -37,11 +35,14 @@
     </video>
     <div class="container h-100">
       <div class="d-flex h-100 text-center align-items-center">
-        <div class="w-100 text-white">
-          <h1 class="display-3">Welcome</h1>
+        <div class="w-100 text-dark">
+          <h1 class="display-3" @click="scrollToForm('#s3')">Welcome</h1>
           <div class="container">
             <img src="@/assets/logo.png" alt class="img-fluid rounded mx-auto d-block header__logo" />
           </div>
+        </div>
+        <div class="arrow">
+          <i class="fa fa-arrow-down"></i>
         </div>
       </div>
     </div>
@@ -67,18 +68,11 @@ export default {
   },
   methods: {
     toggleNav() {
-      // if (window.scrollY == 0 && this.isNavShow == true) {
-      //   this.bgNav = "bg-transparent navbar-dark";
-      // } else this.bgNav = "bg-white navbar-light";
-      // this.isNavShow = !this.isNavShow;
       if (window.scrollY == 0 && this.isNavShow == false) {
         this.bgNav = "bg-white navbar-light";
         this.isNavShow = !this.isNavShow;
       } else if (window.scrollY == 0 && this.isNavShow == true) {
         this.isNavShow = !this.isNavShow;
-        // setTimeout(() => {
-        //   this.bgNav = "bg-transparent navbar-dark";
-        // }, 500);
         this.bgNav = "bg-transparent navbar-dark";
       } else {
         this.bgNav = "bg-white navbar-light";
@@ -93,6 +87,9 @@ export default {
           window.scrollY > 0
             ? "bg-white navbar-light"
             : "bg-transparent navbar-dark";
+    },
+    scrollToForm(index) {
+      document.querySelector(index).scrollIntoView({ behavior: "smooth" });
     }
   }
 };
@@ -102,22 +99,25 @@ export default {
 .arrow {
   position: absolute;
   bottom: 0;
-  left: 50%;
-  color: $red;
+  left: 0;
+  width: 100%;
+  color: #333;
   z-index: 5;
-  font-size: 2rem;
-  animation: arrow-animate 1s infinite ease-in-out;
+  font-size: 3rem;
+  animation: arrow-animate 1.5s infinite ease-in-out;
 }
 
 @keyframes arrow-animate {
   0% {
     bottom: 0px;
+    opacity: 0;
   }
   50% {
     bottom: 10px;
+    opacity: 1;
   }
   100% {
-    bottom: 0px;
+    opacity: 0;
   }
 }
 
@@ -127,8 +127,7 @@ export default {
   width: 100%;
   overflow: hidden;
   @include media-breakpoint-down(md) {
-    .navbar{
-      
+    .navbar {
       transition: 0.5s all ease;
     }
     .mobileNav {
@@ -190,7 +189,7 @@ export default {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: $secondary;
+    background-color: #aaa;
     opacity: 0.5;
     z-index: 1;
   }

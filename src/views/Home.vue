@@ -1,31 +1,82 @@
 <template>
   <div class="home">
-    <div class="container my-3 py-3">
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore eaque obcaecati facere facilis? Totam amet repellendus sit, reprehenderit cupiditate natus unde maiores soluta praesentium ullam assumenda deleniti numquam non a.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur sed voluptatibus neque? Temporibus reprehenderit illum ab iste. Perferendis animi deleniti soluta adipisci. Earum voluptas doloremque mollitia totam. Illum aspernatur sint iste iure modi. In, placeat odit neque, possimus vitae temporibus aspernatur exercitationem doloribus, accusantium eius assumenda aut. Quibusdam quod tempora maiores vitae dolor ullam cum facilis alias vel nesciunt a, aspernatur nihil, ad explicabo porro minus id quae illo! Recusandae officiis ipsa ipsum molestiae accusantium perspiciatis voluptas iure aliquid autem velit, aspernatur, in rem nulla eligendi harum. Doloribus, ducimus aliquid suscipit harum, quae officia, eligendi voluptate quibusdam iusto vero asperiores!
-      </p>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit laudantium autem beatae praesentium nulla nemo ad pariatur ut! Sunt, distinctio recusandae! In unde, commodi ut ex iure pariatur dignissimos, voluptate autem quo suscipit laboriosam beatae cum? Non necessitatibus omnis iste repellat culpa exercitationem? Sapiente quaerat dolores ipsa aut! Dolore, culpa?
-      </p>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id ratione alias exercitationem facilis tempore facere suscipit delectus a quaerat laboriosam quas laborum soluta, quasi doloremque accusamus cum obcaecati aliquid aliquam ex culpa dicta ad sequi quia! Similique porro vitae repellendus deserunt accusantium pariatur quae nam dicta incidunt labore, fugiat laudantium a dolorem ipsa earum sed, voluptatum distinctio magni dolorum aperiam ex molestias, maiores doloribus. Unde doloremque animi maiores, amet temporibus odit dolorem obcaecati mollitia laboriosam pariatur deserunt excepturi laborum doloribus repellat corrupti dolorum. Facilis placeat perferendis ipsum libero ducimus obcaecati voluptatibus accusamus sequi quaerat amet consectetur explicabo officia tempora ipsam culpa ullam blanditiis, reprehenderit quia reiciendis quae eum tempore iure commodi. Nisi voluptatibus repudiandae minus sit aperiam! Odit illum nam ullam veritatis vitae labore temporibus assumenda, architecto harum animi suscipit voluptas maxime explicabo consectetur provident dolores sapiente libero sed quis placeat quos obcaecati nemo? Amet nesciunt natus repudiandae deleniti molestias, doloremque, maiores suscipit aut, pariatur officiis sapiente voluptate omnis quia laudantium eaque corrupti vel ipsam ad. Nesciunt, aliquam porro corrupti totam, id fugit fugiat, maxime explicabo magnam beatae quas hic? Quibusdam id neque odit fuga sed ea provident quam aut nihil laboriosam? Vero, quibusdam distinctio similique earum explicabo culpa consequuntur!
-      </p>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore eaque obcaecati facere facilis? Totam amet repellendus sit, reprehenderit cupiditate natus unde maiores soluta praesentium ullam assumenda deleniti numquam non a.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur sed voluptatibus neque? Temporibus reprehenderit illum ab iste. Perferendis animi deleniti soluta adipisci. Earum voluptas doloremque mollitia totam. Illum aspernatur sint iste iure modi. In, placeat odit neque, possimus vitae temporibus aspernatur exercitationem doloribus, accusantium eius assumenda aut. Quibusdam quod tempora maiores vitae dolor ullam cum facilis alias vel nesciunt a, aspernatur nihil, ad explicabo porro minus id quae illo! Recusandae officiis ipsa ipsum molestiae accusantium perspiciatis voluptas iure aliquid autem velit, aspernatur, in rem nulla eligendi harum. Doloribus, ducimus aliquid suscipit harum, quae officia, eligendi voluptate quibusdam iusto vero asperiores!
-      </p>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit laudantium autem beatae praesentium nulla nemo ad pariatur ut! Sunt, distinctio recusandae! In unde, commodi ut ex iure pariatur dignissimos, voluptate autem quo suscipit laboriosam beatae cum? Non necessitatibus omnis iste repellat culpa exercitationem? Sapiente quaerat dolores ipsa aut! Dolore, culpa?
-      </p>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id ratione alias exercitationem facilis tempore facere suscipit delectus a quaerat laboriosam quas laborum soluta, quasi doloremque accusamus cum obcaecati aliquid aliquam ex culpa dicta ad sequi quia! Similique porro vitae repellendus deserunt accusantium pariatur quae nam dicta incidunt labore, fugiat laudantium a dolorem ipsa earum sed, voluptatum distinctio magni dolorum aperiam ex molestias, maiores doloribus. Unde doloremque animi maiores, amet temporibus odit dolorem obcaecati mollitia laboriosam pariatur deserunt excepturi laborum doloribus repellat corrupti dolorum. Facilis placeat perferendis ipsum libero ducimus obcaecati voluptatibus accusamus sequi quaerat amet consectetur explicabo officia tempora ipsam culpa ullam blanditiis, reprehenderit quia reiciendis quae eum tempore iure commodi. Nisi voluptatibus repudiandae minus sit aperiam! Odit illum nam ullam veritatis vitae labore temporibus assumenda, architecto harum animi suscipit voluptas maxime explicabo consectetur provident dolores sapiente libero sed quis placeat quos obcaecati nemo? Amet nesciunt natus repudiandae deleniti molestias, doloremque, maiores suscipit aut, pariatur officiis sapiente voluptate omnis quia laudantium eaque corrupti vel ipsam ad. Nesciunt, aliquam porro corrupti totam, id fugit fugiat, maxime explicabo magnam beatae quas hic? Quibusdam id neque odit fuga sed ea provident quam aut nihil laboriosam? Vero, quibusdam distinctio similique earum explicabo culpa consequuntur!
-      </p>
-    </div>
+    <section id="about">
+      <div class="container">
+        <h1 class="title">О нас</h1>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="content d-flex flex-column h-100 align-items-start justify-content-center">
+              <div
+                class="text"
+              >Мышление неумеренно аннигилирует скачок функции. Матожидание масштабирует сходящийся ряд. Однако не все знают, что восприятие усиливает методологический лирический субъект. Степенной ряд отталкивает объект. Сознание, несмотря на то, что все эти характерологические черты отсылают не к единому образу нарратора, аллитерирует брахикаталектический стих. Очевидно, что ритм привлекает многочлен.</div>
+              <div class="action mt-5">
+                <a href="#" class="btn btn-primary">Отправить заявку</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="media d-flex flex-column">
+              <div class="photos">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                      <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
+                    </div>
+                    <div class="carousel-item">
+                      <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
+                    </div>
+                  </div>
+                  <a
+                    class="carousel-control-prev"
+                    href="#carouselExampleControls"
+                    role="button"
+                    data-slide="prev"
+                  >
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a
+                    class="carousel-control-next"
+                    href="#carouselExampleControls"
+                    role="button"
+                    data-slide="next"
+                  >
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+              <div class="video">
+                <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                  <source
+                    src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="tools">
+      <div class="container">
+        <h1 class="title">Оборудования</h1>
+      </div>
+    </section>
+    <section id="order">
+      <div class="container">
+        <h1 class="title">Заказ</h1>
+      </div>
+    </section>
+    <section id="services">
+      <div class="container">
+        <h1 class="title">Услуги</h1>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -37,3 +88,40 @@ export default {
   components: {}
 };
 </script>
+<style lang="scss" scoped>
+section {
+  padding: 70px 0px;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background: #fff;
+  border-bottom: 2px solid #eeefff;
+  .title {
+    font-size: 3rem;
+    margin-bottom: 30px;
+  }
+}
+#about {
+  .content {
+    .text {
+      font-size: 1.5rem;
+      font-weight: 200;
+    }
+    .btn {
+      font-size: 2rem;
+    }
+  }
+  .video video {
+    width: 100%;
+    height: auto;
+  }
+  .photos {
+    margin-bottom: 20px;
+    img {
+      height: 300px;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+  }
+}
+</style>
