@@ -1,8 +1,8 @@
 <template>
-  <div class="header">
-    <nav class="navbar navbar-expand-lg fixed-top" :class="[bgNav]">
+  <div class="header" id="home">
+    <nav class="navbar navbar-expand-lg fixed-top" :class="[bgNav]" id="navbar">
       <div class="container">
-        <a class="navbar-brand" href="#">{{brand}}</a>
+        <a class="navbar-brand" href="#home" v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }">{{brand}}</a>
         <button class="navbar-toggler" @click="toggleNav()">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,19 +10,19 @@
         <div class="mobileNav" :class="{show:isNavShow}">
           <ul class="navbar-nav ml-auto-lg align-self-stretch">
             <li class="nav-item">
-              <a class="nav-link" href="#about">О нас</a>
+              <a class="nav-link" href="#services" v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }" @click="hideNav()">Услуги</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#tools">Оборудования</a>
+              <a class="nav-link" href="#about" v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }" @click="hideNav()">О нас</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#order">Заказ стенда</a>
+              <a class="nav-link" href="#tools" v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }" @click="hideNav()">Оборудования</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#services">Услуги</a>
+              <a class="nav-link" href="#order" v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }" @click="hideNav()">Заказ стенда</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#registration">Система регистрации</a>
+              <a class="nav-link" href="#registration" v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }" @click="hideNav()">Система регистрации</a>
             </li>
           </ul>
         </div>
@@ -79,6 +79,12 @@ export default {
         this.isNavShow = !this.isNavShow;
       }
     },
+    showNav() {
+      this.isNavShow = true;
+    },
+    hideNav() {
+      this.isNavShow = false;
+    },
     updateScroll() {
       if (window.scrollY == 0 && this.isNavShow == true) {
         this.bgNav = "bg-white navbar-light";
@@ -88,9 +94,6 @@ export default {
             ? "bg-white navbar-light"
             : "bg-transparent navbar-dark";
     },
-    scrollToForm(index) {
-      document.querySelector(index).scrollIntoView({ behavior: "smooth" });
-    }
   }
 };
 </script>
@@ -124,6 +127,7 @@ export default {
 .header {
   position: relative;
   height: 100vh;
+  min-height: 500px;
   width: 100%;
   overflow: hidden;
   @include media-breakpoint-down(md) {
@@ -200,7 +204,7 @@ export default {
 }
 
 @media (pointer: coarse) and (hover: none) {
-  header {
+  .header {
     background: url("https://source.unsplash.com/XT5OInaElMw/1600x900") black
       no-repeat center center scroll;
     video {

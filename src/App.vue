@@ -18,5 +18,6 @@ export default {
 
 #app {
   font-family: 'Nunito', sans-serif;
+  line-height: 1.6;
 }
 </style>
