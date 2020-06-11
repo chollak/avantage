@@ -2,7 +2,11 @@
   <div class="header" id="home">
     <nav class="navbar navbar-expand-lg fixed-top" :class="[bgNav]" id="navbar">
       <div class="container">
-        <a class="navbar-brand" href="#home" v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }">{{brand}}</a>
+        <a
+          class="navbar-brand"
+          href="#home"
+          v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
+        >{{brand}}</a>
         <button class="navbar-toggler" @click="toggleNav()">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,19 +14,52 @@
         <div class="mobileNav" :class="{show:isNavShow}">
           <ul class="navbar-nav ml-auto-lg align-self-stretch">
             <li class="nav-item">
-              <a class="nav-link" href="#services" v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }" @click="hideNav()">Услуги</a>
+              <a
+                class="nav-link hover-link"
+                href="#about"
+                v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
+                @click="hideNav()"
+              >О нас</a>
+            </li>
+            <li class="nav-item active">
+              <a
+                class="nav-link hover-link"
+                href="#equipment"
+                v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
+                @click="hideNav()"
+              >Аренда оборудования</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#about" v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }" @click="hideNav()">О нас</a>
+              <a
+                class="nav-link hover-link"
+                href="#stand"
+                v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
+                @click="hideNav()"
+              >Заказ стенда</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#tools" v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }" @click="hideNav()">Оборудования</a>
+              <a
+                class="nav-link hover-link"
+                href="#service"
+                v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
+                @click="hideNav()"
+              >Услуги</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#order" v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }" @click="hideNav()">Заказ стенда</a>
+              <a
+                class="nav-link hover-link"
+                href="#registration"
+                v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
+                @click="hideNav()"
+              >Система регистрации</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#registration" v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }" @click="hideNav()">Система регистрации</a>
+              <a
+                class="nav-link hover-link"
+                href="#contact"
+                v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
+                @click="hideNav()"
+              >Контакты</a>
             </li>
           </ul>
         </div>
@@ -93,7 +130,7 @@ export default {
           window.scrollY > 0
             ? "bg-white navbar-light"
             : "bg-transparent navbar-dark";
-    },
+    }
   }
 };
 </script>
@@ -130,10 +167,24 @@ export default {
   min-height: 500px;
   width: 100%;
   overflow: hidden;
-  @include media-breakpoint-down(md) {
-    .navbar {
-      transition: 0.5s all ease;
+  .navbar-brand {
+    font-weight: 700;
+  }
+  .bg-white {
+    box-shadow: 0px 3px 15px rgba($color: #000000, $alpha: 0.05);
+  }
+  .navbar {
+    transition: 0.2s all ease;
+
+    .nav-link.active {
+      background: var(--red);
+      color: #fff;
     }
+  }
+  @include media-breakpoint-down(md) {
+    // .navbar {
+    //   transition: .5s all ease;
+    // }
     .mobileNav {
       &::-webkit-scrollbar {
         display: none;
