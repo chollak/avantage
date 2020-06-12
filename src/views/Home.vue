@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <!-- <About /> -->
+  <div class="home" data-spy="scroll" data-target="#navbar" data-offset="100">
+    <About />
     <Equipment />
     <Stand />
     <Service />

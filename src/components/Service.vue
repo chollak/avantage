@@ -24,11 +24,13 @@
           </div>
           <div class="col-xl-5 col-lg-12 col-md-12 col-12 mt-3 mt-xl-0">
             <p class="mb-6">
-              From having a learning disability, which led to being alone and
-              bullied in school, to being sexually abused as a child, to being
-              injured and broke on his sister’s couch, The Coach story is the
-              perfect example of how anybody can overcome the obstacles in their
-              life and achieve greatness.
+              Выездной ресторан MEX CATERING, входящий в группу компаний AVANTAGE, работает на рынке общественного питания в Ташкенте с 2016 года и имеет большой опыт в организации приемов, банкетов, гала-ужинов, кофе-брейков и других мероприятий различных, в том числе международных.
+            </p>
+            <p>
+              Мы предоставляем выездной ресторан на удобной вам территории, а также на площадках наших партнерах. 
+            </p>
+            <p>
+              MEX CATERING - мы знаем секретный ингредиент секретного ингредиента супа ;-)
             </p>
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12 mb-2 mb-lg-2">

@@ -21,7 +21,7 @@
                 @click="hideNav()"
               >О нас</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <a
                 class="nav-link hover-link"
                 href="#equipment"
@@ -174,8 +174,8 @@ export default {
     box-shadow: 0px 3px 15px rgba($color: #000000, $alpha: 0.05);
   }
   .navbar {
-    transition: 0.2s all ease;
-
+    transition: 0.2s background-color ease;
+    // padding: 0.5rem 1rem !important;
     .nav-link.active {
       background: var(--red);
       color: #fff;
