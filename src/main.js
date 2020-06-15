@@ -8,6 +8,9 @@ import 'bootstrap'
 import vueSmoothScroll from 'vue2-smooth-scroll'
 import AOS from "aos"
 import 'aos/dist/aos.css'
+import Axios from 'axios'
+
+Vue.prototype.$http = Axios;
 
 Vue.use(vueSmoothScroll)
 Vue.config.productionTip = false

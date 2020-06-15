@@ -6,6 +6,7 @@
     <Service />
     <Registration />
     <Contact />
+    
   </div>
 </template>
 
