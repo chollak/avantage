@@ -11,7 +11,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="mobileNav" :class="{show:isNavShow}">
+        <div class="mobileNav text-center" :class="{show:isNavShow}">
           <ul class="navbar-nav ml-auto-lg align-self-stretch">
             <li class="nav-item">
               <a

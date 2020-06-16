@@ -4,11 +4,11 @@
       <h3 class="section__title">Аренда оборудования</h3>
       <div class="section__body">
         <div class="tags d-flex justify-content-between flex-wrap py-2">
-          <div class="tags__left d-flex flex-wrap">
+          <div class="tags__left d-flex">
             <div class="input-wrapper d-flex align-items-center">
               <div class="input-group input-group-sm">
                 <div class="input-group-prepend">
-                  <button class="btn btn-outline-danger" type="button" id="searchBtn">
+                  <button class="btn btn-outline-secondary" type="button" id="searchBtn">
                     <i class="fa fa-search"></i>
                   </button>
                 </div>
@@ -22,9 +22,9 @@
                 />
               </div>
             </div>
-
+            <template v-if="equipments!==null && searchInput!==''"></template>
             <ul class="nav justify-content-start">
-              <li class="nav-item dropdown d-none">
+              <li class="nav-item dropdown d-lg-none">
                 <a
                   class="nav-link dropdown-toggle"
                   data-toggle="dropdown"
@@ -32,18 +32,25 @@
                   role="button"
                   aria-haspopup="true"
                   aria-expanded="false"
-                >Dropdown</a>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#table" data-toggle="tab">action</a>
-                  <a class="dropdown-item" href="#chair" data-toggle="tab">Another action</a>
+                >{{activeTag}}</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a
+                    class="dropdown-item"
+                    :href="'#'+tag.ru_title"
+                    @click="searchInput=''; activeTag = tag.ru_title"
+                    data-toggle="pill"
+                    v-for="(tag) in tags"
+                    :key="tag.id"
+                  >{{tag.ru_title}}</a>
                 </div>
               </li>
-              <li class="nav-item" v-for="(tag,index) in tags" :key="tag.id">
+              <li class="nav-item d-none d-lg-block" v-for="(tag,index) in tags" :key="tag.id">
                 <a
                   class="nav-link hover-link"
                   :class="{'active':index==0}"
                   data-toggle="pill"
                   :href="'#'+tag.ru_title"
+                  @click="searchInput=''"
                 >{{tag.ru_title}}</a>
               </li>
             </ul>
@@ -51,7 +58,7 @@
           <div class="tags__right">
             <button
               :class="{'pulse':isPulse}"
-              class="btn btn-action btn-md-sm"
+              class="btn btn-action btn-md-sm d-md-block"
               data-toggle="modal"
               data-target="#checkoutModal"
             >
@@ -62,48 +69,84 @@
             </button>
           </div>
         </div>
-        <div class="tab-content">
-          <div
-            class="tab-pane container"
-            v-for="(tag,index) in tags"
-            :key="tag.id"
-            :id="tag.ru_title"
-            :class="{'active':index==0}"
-          >
-            <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
-              <template v-if="equipments!==null">
-                <div class="col mb-4" v-for="e in getEquipment(tag.id)" :key="e.id">
-                  <div class="card">
-                    <img
-                      :src="e.img"
-                      class="card-img-top"
-                      alt="..."
-                      data-toggle="modal"
-                      data-target="#modalImage"
-                      @click="setImage(e.img)"
-                    />
-                    <div class="card-body">
-                      <h6>{{e.ru_title}}</h6>
-                    </div>
-                    <div class="card-footer">
-                      <template v-if="isRender">
-                        <button
-                          class="btn btn-action btn-sm btn-block disabled"
-                          v-if="checkIfInCart(e.id)"
-                        >Добавлено</button>
-                        <button
-                          class="btn btn-alternative btn-sm btn-block"
-                          v-else
-                          @click="addItemCart(e)"
-                        >Добавить</button>
-                      </template>
-                    </div>
+        <template v-if="equipments!==null && searchInput!==''">
+          <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
+            <template v-if="equipments!==null">
+              <div class="col mb-4" v-for="e in filteredList" :key="e.id">
+                <div class="card">
+                  <img
+                    :src="e.img"
+                    class="card-img-top"
+                    alt="..."
+                    data-toggle="modal"
+                    data-target="#modalImage"
+                    @click="setImage(e.img)"
+                  />
+                  <div class="card-body">
+                    <h6>{{e.ru_title}}</h6>
+                  </div>
+                  <div class="card-footer">
+                    <template v-if="isRender">
+                      <button
+                        class="btn btn-action btn-sm btn-block disabled"
+                        v-if="checkIfInCart(e.id)"
+                      >Добавлено</button>
+                      <button
+                        class="btn btn-alternative btn-sm btn-block"
+                        v-else
+                        @click="addItemCart(e)"
+                      >Добавить</button>
+                    </template>
                   </div>
                 </div>
-              </template>
+              </div>
+            </template>
+          </div>
+        </template>
+        <template v-else>
+          <div class="tab-content">
+            <div
+              class="tab-pane container"
+              v-for="(tag,index) in tags"
+              :key="tag.id"
+              :id="tag.ru_title"
+              :class="{'active':index==0}"
+            >
+              <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
+                <template v-if="equipments!==null">
+                  <div class="col mb-4" v-for="e in getEquipment(tag.id)" :key="e.id">
+                    <div class="card">
+                      <img
+                        :src="e.img"
+                        class="card-img-top"
+                        alt="..."
+                        data-toggle="modal"
+                        data-target="#modalImage"
+                        @click="setImage(e.img)"
+                      />
+                      <div class="card-body">
+                        <h6>{{e.ru_title}}</h6>
+                      </div>
+                      <div class="card-footer">
+                        <template v-if="isRender">
+                          <button
+                            class="btn btn-action btn-sm btn-block disabled"
+                            v-if="checkIfInCart(e.id)"
+                          >Добавлено</button>
+                          <button
+                            class="btn btn-alternative btn-sm btn-block"
+                            v-else
+                            @click="addItemCart(e)"
+                          >Добавить</button>
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
             </div>
           </div>
-        </div>
+        </template>
       </div>
     </div>
 
@@ -131,25 +174,64 @@
                 <div class="col-lg-8">
                   <div class="cart__items">
                     <template v-if="cart">
-                      <div class="cart-item" v-for="(c,index) in cart" :key="c.id">
-                        <div class="cart-item__index">{{index+1}}</div>
+                      <div class="table-responsive">
+                        <table class="table table-borderless">
+                          <tbody>
+                            <tr v-for="(c,index) in cart" :key="c.id">
+                              <th scope="row">{{index+1}}</th>
+                              <td>
+                                <img :src="c.img" alt class="cart-img" />
+                              </td>
+                              <td>{{c.ru_title}}</td>
+                              <td>{{c.price | toCurrency}}</td>
+                              <td>
+                                <div class="d-flex p-2">
+                                  <button class="btn cart-controls__btn" @click="decItemCart(c)">
+                                    <i class="fa fa-minus"></i>
+                                  </button>
+                                  <input
+                                    class="text-center form-control cart-controls__status"
+                                    :id="'cart-'+c.id"
+                                    type="number"
+                                    v-model="c.quantity"
+                                    min="1"
+                                    @change="quantityChange(c)"
+                                  />
+                                  <button class="btn cart-controls__btn" @click="incItemCart(c)">
+                                    <i class="fa fa-plus"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-red cart-controls__btn ml-2"
+                                    @click="deleteItemCart(c.id)"
+                                  >
+                                    <div class="fa fa-trash"></div>
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- <div class="cart-item" v-for="(c,index) in cart" :key="c.id"> -->
+
+                      <!-- <div class="cart-item__index">{{index+1}}</div>
                         <div class="cart-item__profile">
                           <img :src="c.img" alt />
                         </div>
                         <div class="cart-item__title">{{c.ru_title}}</div>
-                        <div class="cart-item__price">{{c.price}}</div>
+                        <div class="cart-item__price">{{c.price | toCurrency}}</div>
                         <div class="cart-item__controls cart-controls">
                           <button class="cart-controls__btn btn" @click="decItemCart(c)">
                             <i class="fa fa-minus"></i>
                           </button>
-                          <span class="cart-controls__status">{{c.quantity}}</span>
-                          <!-- <input
+                          <input
+                            class="text-center form-control cart-controls__status"
                             :id="'cart-'+c.id"
                             type="number"
                             v-model="c.quantity"
                             min="1"
                             @change="quantityChange(c)"
-                          /> -->
+                          />
                           <button class="cart-controls__btn btn" @click="incItemCart(c)">
                             <i class="fa fa-plus"></i>
                           </button>
@@ -159,8 +241,8 @@
                           >
                             <div class="fa fa-trash"></div>
                           </button>
-                        </div>
-                      </div>
+                      </div>-->
+                      <!-- </div> -->
                     </template>
                     <template v-else>
                       <h1>No items</h1>
@@ -168,10 +250,11 @@
                   </div>
                 </div>
                 <div class="col-lg-4">
-                  <div class="sticky-top mt-5">
-                    <h6>Total</h6>
-
-                    <h3>{{total}}</h3>
+                  <div class="sticky-top t-5">
+                    <div class="total">
+                      <h6>Total</h6>
+                      <h5>{{total | toCurrency}}</h5>
+                    </div>
                     <div class="actions">
                       <button
                         class="btn btn-alternative mr-2"
@@ -199,6 +282,7 @@ export default {
   },
   async created() {
     await this.getTags();
+    this.activeTag = this.tags[0].ru_title;
     const ids = this.tags.map(tag => tag.id);
     const preparedData = [];
     for (const id of ids) {
@@ -224,7 +308,8 @@ export default {
       cart: null,
       isRender: true,
       isPulse: false,
-      total: 0
+      total: 0,
+      activeTag: ""
     };
   },
   computed: {
@@ -232,21 +317,46 @@ export default {
       return "https://source.unsplash.com/random";
     },
     filteredList() {
-      return this.equipments.filter(equipment => {
-        return equipment.tag
+      let arr = [];
+      const data = this.equipments.forEach(el => {
+        arr = [...arr, ...el.equipments];
+      });
+      return arr.filter(el => {
+        return el.ru_title
           .toLowerCase()
           .includes(this.searchInput.toLowerCase());
       });
+
+      // return element.equipments.filter(equipment => {
+      //     equipment.ru_title
+      //       .toLowerCase()
+      //       .includes(this.searchInput.toLowerCase());
+      //   });
     },
     getCartLength() {
       if (this.cart != null) return this.cart.length;
       else return 0;
-      // return this.cart.length;
     },
     getTotal() {
       return this.cart.reduce((total, current) => {
         return total + current.price * current.quantity;
       }, 0);
+    }
+  },
+  filters: {
+    toCurrency(value) {
+      if (typeof value !== "number") {
+        return value;
+      }
+      let formatter = new Intl.NumberFormat("ru-UZ", {
+        style: "currency",
+        currency: "UZS",
+        minimumFractionDigits: 0
+      });
+      return formatter.format(value);
+    },
+    comma(value) {
+      return value.replace(" ", ",");
     }
   },
   methods: {
@@ -274,9 +384,7 @@ export default {
       return res.data;
     },
     quantityChange(cart) {
-      if (cart.quantity == '') cart.quantity = 1;
-      console.log(cart.quantity);
-
+      if (cart.quantity == "") cart.quantity = 1;
       this.total = this.getTotal;
       this.storageSet(this.cart);
     },
@@ -381,6 +489,26 @@ export default {
 
 <style lang="scss" scoped>
 #equipment {
+  .t-5 {
+    top: 50px;
+  }
+  .currency {
+    font-weight: 700;
+  }
+  .cart-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    object-position: center;
+  }
+  .table {
+    input {
+      width: 6em;
+    }
+    .cart-controls__btn {
+      padding: 0.375rem 0.75rem;
+    }
+  }
   .cart-item {
     display: flex;
     align-items: center;
@@ -390,6 +518,10 @@ export default {
     background: rgba($color: #000000, $alpha: 0.02);
     margin-bottom: 0.5rem;
     .cart-controls {
+      display: flex;
+      input {
+        width: 6em;
+      }
       &__status {
         display: inline-block;
         width: 2rem;
@@ -399,8 +531,8 @@ export default {
       }
 
       &__btn {
-        padding: 0.375rem 0.75rem;
-        min-width: 2rem;
+        // padding: 0.375rem 0.75rem;
+        // min-width: 2rem;
         text-align: center;
 
         &:hover {
