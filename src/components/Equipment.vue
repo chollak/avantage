@@ -58,7 +58,7 @@
           <div class="tags__right">
             <button
               :class="{'pulse':isPulse}"
-              class="btn btn-action btn-md-sm d-md-block"
+              class="btn btn-action"
               data-toggle="modal"
               data-target="#checkoutModal"
             >
@@ -106,7 +106,7 @@
         <template v-else>
           <div class="tab-content">
             <div
-              class="tab-pane container"
+              class="tab-pane"
               v-for="(tag,index) in tags"
               :key="tag.id"
               :id="tag.ru_title"
@@ -212,37 +212,6 @@
                           </tbody>
                         </table>
                       </div>
-                      <!-- <div class="cart-item" v-for="(c,index) in cart" :key="c.id"> -->
-
-                      <!-- <div class="cart-item__index">{{index+1}}</div>
-                        <div class="cart-item__profile">
-                          <img :src="c.img" alt />
-                        </div>
-                        <div class="cart-item__title">{{c.ru_title}}</div>
-                        <div class="cart-item__price">{{c.price | toCurrency}}</div>
-                        <div class="cart-item__controls cart-controls">
-                          <button class="cart-controls__btn btn" @click="decItemCart(c)">
-                            <i class="fa fa-minus"></i>
-                          </button>
-                          <input
-                            class="text-center form-control cart-controls__status"
-                            :id="'cart-'+c.id"
-                            type="number"
-                            v-model="c.quantity"
-                            min="1"
-                            @change="quantityChange(c)"
-                          />
-                          <button class="cart-controls__btn btn" @click="incItemCart(c)">
-                            <i class="fa fa-plus"></i>
-                          </button>
-                          <button
-                            class="cart-controls__btn btn btn-red ml-2"
-                            @click="deleteItemCart(c.id)"
-                          >
-                            <div class="fa fa-trash"></div>
-                          </button>
-                      </div>-->
-                      <!-- </div> -->
                     </template>
                     <template v-else>
                       <h1>No items</h1>
@@ -251,7 +220,7 @@
                 </div>
                 <div class="col-lg-4">
                   <div class="sticky-top t-5">
-                    <div class="total">
+                    <div class="total mb-3">
                       <h6>Total</h6>
                       <h5>{{total | toCurrency}}</h5>
                     </div>
@@ -489,6 +458,16 @@ export default {
 
 <style lang="scss" scoped>
 #equipment {
+  .dropdown-menu{
+    .dropdown-item{
+      &:hover{
+        background: var(--red);
+      }
+    }
+    .active{
+      background: var(--red);
+    }
+  }
   .t-5 {
     top: 50px;
   }

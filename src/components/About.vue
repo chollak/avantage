@@ -13,6 +13,14 @@
                 <p>Выставки, форумы, конференции, презентации, кейтеринг, организованные AVANTAGE, позволяют нашим Клиентам достигать своих целей и отмечены положительными отзывами участников и посетителей.</p>
                 <p>Мы готовы эффективно применить наш опыт в организации любого формата деловых мероприятий в интересах вашей компании.</p>
               </div>
+              <div class="action">
+                <button
+                  class="btn btn-action"
+                  data-toggle="modal"
+                  data-target="#portfolioModal"
+                  @click="currentView = 'List'"
+                >Портфолио</button>
+              </div>
             </div>
           </div>
           <div class="col-lg-6">
@@ -56,12 +64,33 @@
                     src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
                     type="video/mp4"
                   />
-                  <!-- <source
-                    src="https://v.mover.uz/15C0JPum_h.mp4"
-                    type="video/mp4"
-                  />-->
                 </video>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio Modal -->
+    <div class="m-warpper">
+      <div
+        class="modal fade"
+        id="portfolioModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="checkoutModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header" style="border:none">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <component :is="currentView" @setView="setView($event)" transition="switch"></component>
             </div>
           </div>
         </div>
@@ -71,11 +100,29 @@
 </template>
 
 <script>
-export default {};
+import List from '@/components/Portfolio/List'
+import Single from '@/components/Portfolio/Single'
+export default {
+  data() {
+    return {
+      currentView: "list"
+    };
+  },
+  components: {
+    List,
+    Single
+  },
+  methods: {
+    setView(view) {
+      this.currentView = view;
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
 $fs_section: 1rem;
+
 #about {
   .content {
     .text {
@@ -95,6 +142,16 @@ $fs_section: 1rem;
       height: 300px;
       object-fit: cover;
       object-position: 50% 50%;
+    }
+  }
+  .card {
+    .card-img-top {
+      height: 200px;
+      object-position: center;
+      object-fit: cover;
+    }
+    h6 {
+      font-size: 1em;
     }
   }
 }
