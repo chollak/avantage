@@ -1,12 +1,11 @@
 <template>
   <div class="home" data-spy="scroll" data-target="#navbar" data-offset="100">
-    <About />
-    <Equipment />
-    <Stand />
-    <Service />
-    <Registration />
-    <Contact />
-    
+    <About title="О нас" />
+    <Equipment title="Аренда оборудований" />
+    <Service title="Кейтеринг" />
+    <Stand title="Застройка стенда" />
+    <Registration title="Регистрация посетителей" />
+    <Contact title="Контакты" />
   </div>
 </template>
 
@@ -29,11 +28,6 @@ export default {
     Service,
     Stand
   }
-  // PROBLEM WITH SAVING HASH
-  // mounted(){
-  //   console.log(location.hash);
-  //   this.$router.push({ name: 'Home', hash: location.hash })
-  // }
 };
 </script>
 <style lang="scss">

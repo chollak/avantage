@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="content d-flex flex-column h-100 align-items-start mb-5 mb-lg-0">
-              <h3 class="section__title">Заказ стенда</h3>
+              <h3 class="section__title">{{title}}</h3>
               <div class="text mb-5">
                 <p>Стенды для выставок - оригинальная форма, красивые и яркие, хорошо продуманные дизайны, которые предназначены для демонстрации товаров или экспонатов с лучших сторон. Для этого самое главное, насколько качественный, удобный и безопасный продукт.</p>
                 <p>Компания AVANTAGE с 2016 года и по сегодняшний день ведет профессиональную выставочную деятельность. Строительство выставочных стендов - одна из услуг, которую с удовольствием предоставят надежные подрядчики нашей компании.</p>
@@ -101,6 +101,7 @@
 
 <script>
 export default {
+  props: ["title"],
   data() {
     return {
       isRequest: false,
@@ -118,15 +119,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.request-enter-active {
-  transition: all 0.3s ease-in;
-}
-// .request-leave-active {
-//   transition: all 0.3s ease-out;
-// }
-.request-enter,
-.request-leave-to {
-  transform: translateY(-10px);
-  opacity: 0;
+#stand {
+  background: $gray-100;
+  .request-enter-active {
+    transition: all 0.3s ease-in;
+  }
+  // .request-leave-active {
+  //   transition: all 0.3s ease-out;
+  // }
+  .request-enter,
+  .request-leave-to {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
 }
 </style>

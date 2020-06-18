@@ -9,14 +9,19 @@ import vueSmoothScroll from 'vue2-smooth-scroll'
 import AOS from "aos"
 import 'aos/dist/aos.css'
 import Axios from 'axios'
+import VueToast from 'vue-toast-notification';
+// Import one of available themes
+// import 'vue-toast-notification/dist/theme-default.css';
+import 'vue-toast-notification/dist/theme-sugar.css';
 
 Vue.prototype.$http = Axios;
 
 Vue.use(vueSmoothScroll)
+Vue.use(VueToast)
 Vue.config.productionTip = false
 
 new Vue({
-  created(){
+  created() {
     AOS.init();
   },
   router,

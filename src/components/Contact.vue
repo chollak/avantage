@@ -1,7 +1,7 @@
 <template>
   <div class="section" id="contact">
     <div class="container">
-      <h3 class="section__title">Контакты</h3>
+      <h3 class="section__title">{{title}}</h3>
       <p
         data-aos="fade-up"
         data-aos-offset="-50"
@@ -22,7 +22,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props:['title'],
+};
 </script>
 
 <style lang="scss" scoped>

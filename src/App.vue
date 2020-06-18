@@ -9,7 +9,7 @@ import Headerx from '@/components/Header'
 export default {
   components:{
     Headerx
-  }
+  },
 }
 </script>
 <style lang="scss">

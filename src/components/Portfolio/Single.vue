@@ -1,10 +1,5 @@
 <template>
-  <div class="single">
-    <div class="back">
-      <button class="btn btn-link text-dark" @click="$emit('setView','List')">
-        <i class="fa fa-arrow-left"></i>
-      </button>
-    </div>
+  <div class="single" data-aos="fade-up" data-aos-easing="ease-in-out-back">
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
@@ -57,11 +52,6 @@ export default {};
 
 <style lang="scss" scoped>
 .single {
-  .back {
-    position: absolute;
-    top: -40px;
-    left: 0;
-  }
   .carousel-item {
     img {
       max-height: 350px;

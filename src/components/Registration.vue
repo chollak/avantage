@@ -1,7 +1,7 @@
 <template>
   <div class="section" id="registration">
     <div class="container">
-      <h3 class="section__titile">Система регистрации</h3>
+      <h3 class="section__titile">{{title}}</h3>
       <div class="section__body">
         <div class="text">
           <p>Основной ценностью для сотрудников AVANTAGE является предоставление наилучшего сервиса своим клиентам и посетителям, что выражается в решении насущных задач по регистрации и идентификации потока посетителей.</p>
@@ -13,7 +13,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props:['title'],
+};
 </script>
 <style lang="scss" scoped>
 </style>

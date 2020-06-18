@@ -27,15 +27,7 @@
                 href="#equipment"
                 v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
                 @click="hideNav()"
-              >Аренда оборудования</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link hover-link"
-                href="#stand"
-                v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
-                @click="hideNav()"
-              >Заказ стенда</a>
+              >Аренда оборудований</a>
             </li>
             <li class="nav-item">
               <a
@@ -43,7 +35,15 @@
                 href="#service"
                 v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
                 @click="hideNav()"
-              >Услуги</a>
+              >Кейтеринг</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link hover-link"
+                href="#stand"
+                v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
+                @click="hideNav()"
+              >Застройка стенда</a>
             </li>
             <li class="nav-item">
               <a
@@ -51,7 +51,7 @@
                 href="#registration"
                 v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
                 @click="hideNav()"
-              >Система регистрации</a>
+              >Регистрация посетителей</a>
             </li>
             <li class="nav-item">
               <a

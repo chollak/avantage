@@ -1,5 +1,5 @@
 <template>
-  <div class="list">
+  <div class="list" data-aos="fade-down" data-aos-easing="ease-in-out-back">
     <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
       <div class="col mb-4">
         <div class="card" @click="$emit('setView','Single')">
@@ -61,7 +61,7 @@ export default {};
       border-top-left-radius: 1.2rem;
     }
     h6 {
-      font-size: .875rem;
+      font-size: 0.875rem;
     }
   }
 }

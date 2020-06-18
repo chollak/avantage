@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="content d-flex flex-column h-100 align-items-start mb-5 mb-lg-0">
-              <h3 class="section__title">О нас</h3>
+              <h3 class="section__title">{{title}}</h3>
               <div class="text">
                 <p>Теперь, чтобы организовать деловое мероприятие, нужно по-настоящему много работать. При отсутствии специальных знаний в этой области лучше всего обратиться в специальную компанию, которая может предоставить целую команду профессионалов, которые готовы взяться за организацию проекта и могут выполнить его на 100%.</p>
                 <p>AVANTAGE относится к таким компаниям, которые могут взять на себя задачу организации и проведения любого типа мероприятия, а также предоставить в аренду лучшее оборудование, позволяющее проводить качественные и интересные мероприятия.</p>
@@ -85,12 +85,19 @@
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header" style="border:none">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button
+                class="btn btn-link text-dark back"
+                v-show="currentView=='Single'"
+                @click="setView('List')"
+              >
+                <i class="fa fa-arrow-left"></i>
+              </button>
+              <button type="button" class="close ml-auto" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <component :is="currentView" @setView="setView($event)" transition="switch"></component>
+              <component :is="currentView" @setView="setView($event)"></component>
             </div>
           </div>
         </div>
@@ -100,9 +107,10 @@
 </template>
 
 <script>
-import List from '@/components/Portfolio/List'
-import Single from '@/components/Portfolio/Single'
+import List from "@/components/Portfolio/List";
+import Single from "@/components/Portfolio/Single";
 export default {
+  props: ["title"],
   data() {
     return {
       currentView: "list"
@@ -115,6 +123,14 @@ export default {
   methods: {
     setView(view) {
       this.currentView = view;
+    },
+    toast() {
+      const opt = {
+        message: "Your action was done.",
+        type: "default",
+        duration: 1500
+      };
+      let instance = this.$toast.open(opt);
     }
   }
 };
@@ -152,6 +168,13 @@ $fs_section: 1rem;
     }
     h6 {
       font-size: 1em;
+    }
+  }
+  .modal-header {
+    .close,
+    .back {
+      padding: 5px 15px;
+      margin: 0;
     }
   }
 }

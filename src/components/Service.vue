@@ -1,7 +1,7 @@
 <template>
   <div class="section" id="service">
     <div class="container">
-      <h3 class="section__title">Услуги</h3>
+      <h3 class="section__title">{{title}}</h3>
       <div class="section__body">
         <div class="row d-flex align-items-end">
           <div class="col-xl-7 col-lg-12 col-md-12 col-12">
@@ -56,11 +56,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props:['title'],
+};
 </script>
 
 <style lang="scss" scoped>
-#service{
-  background: $gray-100;
-}
+
 </style>

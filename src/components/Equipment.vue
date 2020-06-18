@@ -1,7 +1,7 @@
 <template>
   <div class="section" id="equipment">
     <div class="container">
-      <h3 class="section__title">Аренда оборудования</h3>
+      <h3 class="section__title">{{title}}</h3>
       <div class="section__body">
         <div class="tags d-flex justify-content-between flex-wrap py-2">
           <div class="tags__left d-flex">
@@ -84,6 +84,7 @@
                   />
                   <div class="card-body">
                     <h6>{{e.ru_title}}</h6>
+                    <h6>{{e.price | toCurrency}}</h6>
                   </div>
                   <div class="card-footer">
                     <template v-if="isRender">
@@ -126,6 +127,7 @@
                       />
                       <div class="card-body">
                         <h6>{{e.ru_title}}</h6>
+                        <h6>{{e.price | toCurrency}}</h6>
                       </div>
                       <div class="card-footer">
                         <template v-if="isRender">
@@ -246,6 +248,7 @@
 <script>
 import IModal from "@/components/ImageModal";
 export default {
+  props: ["title"],
   components: {
     IModal
   },
@@ -458,13 +461,13 @@ export default {
 
 <style lang="scss" scoped>
 #equipment {
-  .dropdown-menu{
-    .dropdown-item{
-      &:hover{
+  .dropdown-menu {
+    .dropdown-item {
+      &:hover {
         background: var(--red);
       }
     }
-    .active{
+    .active {
       background: var(--red);
     }
   }
