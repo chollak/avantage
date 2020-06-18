@@ -2,7 +2,7 @@
   <div class="section" id="about">
     <div class="container">
       <div class="section__body">
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-lg-6">
             <div class="content d-flex flex-column h-100 align-items-start mb-5 mb-lg-0">
               <h3 class="section__title">{{title}}</h3>
@@ -66,6 +66,97 @@
                   />
                 </video>
               </div>
+            </div>
+          </div>
+        </div>-->
+
+        <div class="row mb-5">
+          <div class="col-lg-7">
+            <h3>{{title}}</h3>
+            <p>Теперь, чтобы организовать деловое мероприятие, нужно по-настоящему много работать. При отсутствии специальных знаний в этой области лучше всего обратиться в специальную компанию, которая может предоставить целую команду профессионалов, которые готовы взяться за организацию проекта и могут выполнить его на 100%.</p>
+          </div>
+          <div class="col-lg-5">
+            <img
+              :src="this.$unsplash"
+              alt
+              class="img-fluid rounded img-cover-center"
+              style="height:250px"
+            />
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div class="col-lg-7">
+            <div class="row">
+              <div class="col-lg-6">
+                <img
+                  :src="this.$unsplash"
+                  alt
+                  class="img-fluid rounded img-cover-center"
+                  style="height:250px"
+                />
+              </div>
+              <div class="col-lg-6">
+                <img
+                  :src="this.$unsplash"
+                  alt
+                  class="img-fluid rounded img-cover-center"
+                  style="height:250px"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <p>AVANTAGE относится к таким компаниям, которые могут взять на себя задачу организации и проведения любого типа мероприятия, а также предоставить в аренду лучшее оборудование, позволяющее проводить качественные и интересные мероприятия.</p>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div class="col-lg-6">
+            <p>Мы готовы предоставить нашим клиентам полный спектр услуг, от разработки концепции до реализации и реализации мероприятий.</p>
+            <p>Выставки, форумы, конференции, презентации, кейтеринг, организованные AVANTAGE, позволяют нашим Клиентам достигать своих целей и отмечены положительными отзывами участников и посетителей.</p>
+            <p>Мы готовы эффективно применить наш опыт в организации любого формата деловых мероприятий в интересах вашей компании.</p>
+            <button
+              class="btn btn-action"
+              data-toggle="modal"
+              data-target="#portfolioModal"
+              @click="currentView = 'List'"
+            >Портфолио</button>
+          </div>
+          <div class="col-lg-6">
+            <div class="video">
+              <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                <source
+                  src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="stats mt-5">
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="stats__data p-3">
+              <h3 class="stats__number m-0">11</h3>
+              <div class="stats__text">лет</div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stats__data p-3">
+              <h3 class="stats__number m-0">7</h3>
+              <div class="stats__text">почетных грамот</div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stats__data p-3">
+              <h3 class="stats__number m-0">200+</h3>
+              <div class="stats__text">проектов</div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="stats__data p-3">
+              <h3 class="stats__number m-0">0%</h3>
+              <div class="stats__text">недовольных клиентов</div>
             </div>
           </div>
         </div>

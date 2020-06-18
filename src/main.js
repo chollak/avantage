@@ -15,6 +15,7 @@ import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
 
 Vue.prototype.$http = Axios;
+Vue.prototype.$unsplash = 'https://source.unsplash.com/random';
 
 Vue.use(vueSmoothScroll)
 Vue.use(VueToast)
