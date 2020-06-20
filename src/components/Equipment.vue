@@ -223,7 +223,7 @@
                 <div class="col-lg-4">
                   <div class="sticky-top t-5">
                     <div class="total mb-3">
-                      <h6>Total</h6>
+                      <h6>Итого</h6>
                       <h5>{{total | toCurrency}}</h5>
                     </div>
                     <div class="actions">
@@ -231,8 +231,8 @@
                         class="btn btn-alternative mr-2"
                         @click="storageClear()"
                         data-dismiss="modal"
-                      >Clear</button>
-                      <button class="btn btn-action">Checkout</button>
+                      >Очистить</button>
+                      <button class="btn btn-action">Заказать</button>
                     </div>
                   </div>
                 </div>

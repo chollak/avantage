@@ -2,74 +2,6 @@
   <div class="section" id="about">
     <div class="container">
       <div class="section__body">
-        <!-- <div class="row">
-          <div class="col-lg-6">
-            <div class="content d-flex flex-column h-100 align-items-start mb-5 mb-lg-0">
-              <h3 class="section__title">{{title}}</h3>
-              <div class="text">
-                <p>Теперь, чтобы организовать деловое мероприятие, нужно по-настоящему много работать. При отсутствии специальных знаний в этой области лучше всего обратиться в специальную компанию, которая может предоставить целую команду профессионалов, которые готовы взяться за организацию проекта и могут выполнить его на 100%.</p>
-                <p>AVANTAGE относится к таким компаниям, которые могут взять на себя задачу организации и проведения любого типа мероприятия, а также предоставить в аренду лучшее оборудование, позволяющее проводить качественные и интересные мероприятия.</p>
-                <p>Мы готовы предоставить нашим клиентам полный спектр услуг, от разработки концепции до реализации и реализации мероприятий.</p>
-                <p>Выставки, форумы, конференции, презентации, кейтеринг, организованные AVANTAGE, позволяют нашим Клиентам достигать своих целей и отмечены положительными отзывами участников и посетителей.</p>
-                <p>Мы готовы эффективно применить наш опыт в организации любого формата деловых мероприятий в интересах вашей компании.</p>
-              </div>
-              <div class="action">
-                <button
-                  class="btn btn-action"
-                  data-toggle="modal"
-                  data-target="#portfolioModal"
-                  @click="currentView = 'List'"
-                >Портфолио</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="media d-flex flex-column">
-              <div class="photos">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
-                    </div>
-                    <div class="carousel-item">
-                      <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
-                    </div>
-                    <div class="carousel-item">
-                      <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
-                    </div>
-                  </div>
-                  <a
-                    class="carousel-control-prev"
-                    href="#carouselExampleControls"
-                    role="button"
-                    data-slide="prev"
-                  >
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a
-                    class="carousel-control-next"
-                    href="#carouselExampleControls"
-                    role="button"
-                    data-slide="next"
-                  >
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>
-              </div>
-              <div class="video">
-                <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-                  <source
-                    src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
-                    type="video/mp4"
-                  />
-                </video>
-              </div>
-            </div>
-          </div>
-        </div>-->
-
         <div class="row mb-5">
           <div class="col-lg-7">
             <h3>{{title}}</h3>
@@ -87,30 +19,30 @@
         <div class="row mb-5">
           <div class="col-lg-7">
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col-lg-6 my-2">
                 <img
                   :src="this.$unsplash"
                   alt
                   class="img-fluid rounded img-cover-center"
-                  style="height:250px"
+                  style="height:200px"
                 />
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-6 my-2">
                 <img
                   :src="this.$unsplash"
                   alt
                   class="img-fluid rounded img-cover-center"
-                  style="height:250px"
+                  style="height:200px"
                 />
               </div>
             </div>
           </div>
-          <div class="col-lg-5">
+          <div class="col-lg-5 my-2">
             <p>AVANTAGE относится к таким компаниям, которые могут взять на себя задачу организации и проведения любого типа мероприятия, а также предоставить в аренду лучшее оборудование, позволяющее проводить качественные и интересные мероприятия.</p>
           </div>
         </div>
         <div class="row mb-5">
-          <div class="col-lg-6">
+          <div class="col-lg-7 my-2">
             <p>Мы готовы предоставить нашим клиентам полный спектр услуг, от разработки концепции до реализации и реализации мероприятий.</p>
             <p>Выставки, форумы, конференции, презентации, кейтеринг, организованные AVANTAGE, позволяют нашим Клиентам достигать своих целей и отмечены положительными отзывами участников и посетителей.</p>
             <p>Мы готовы эффективно применить наш опыт в организации любого формата деловых мероприятий в интересах вашей компании.</p>
@@ -121,7 +53,7 @@
               @click="currentView = 'List'"
             >Портфолио</button>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-5 my-2">
             <div class="video">
               <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
                 <source
@@ -133,29 +65,53 @@
           </div>
         </div>
       </div>
-      <div class="stats mt-5">
+      <div class="stats mt-5 text-center" v-view="viewHandler">
         <div class="row">
           <div class="col-lg-3 col-md-6">
             <div class="stats__data p-3">
-              <h3 class="stats__number m-0">11</h3>
+              <h3 class="stats__number m-0">
+                <animated-number
+                  :value="stats.first"
+                  :formatValue="formatToPrice"
+                  :duration="1000"
+                />
+              </h3>
               <div class="stats__text">лет</div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="stats__data p-3">
-              <h3 class="stats__number m-0">7</h3>
+              <h3 class="stats__number m-0">
+                <animated-number
+                  :value="stats.second"
+                  :formatValue="formatToPrice"
+                  :duration="1000"
+                />
+              </h3>
               <div class="stats__text">почетных грамот</div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="stats__data p-3">
-              <h3 class="stats__number m-0">200+</h3>
+              <h3 class="stats__number m-0">
+                <animated-number
+                  :value="stats.third"
+                  :formatValue="formatToPrice"
+                  :duration="1000"
+                />+
+              </h3>
               <div class="stats__text">проектов</div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="stats__data p-3">
-              <h3 class="stats__number m-0">0%</h3>
+              <h3 class="stats__number m-0">
+                <animated-number
+                  :value="stats.fourth"
+                  :formatValue="formatToPrice"
+                  :duration="1000"
+                />%
+              </h3>
               <div class="stats__text">недовольных клиентов</div>
             </div>
           </div>
@@ -200,18 +156,43 @@
 <script>
 import List from "@/components/Portfolio/List";
 import Single from "@/components/Portfolio/Single";
+import AnimatedNumber from "animated-number-vue";
 export default {
   props: ["title"],
   data() {
     return {
-      currentView: "list"
+      currentView: "list",
+      stats: {
+        first: 0,
+        second: 0,
+        third: 0,
+        fourth: 0
+      }
     };
   },
   components: {
     List,
-    Single
+    Single,
+    AnimatedNumber
   },
   methods: {
+    viewHandler(e) {
+      if (e.type == "enter") {
+        this.stats.first = 11;
+        this.stats.second = 7;
+        this.stats.third = 200;
+        this.stats.fourth = 0;
+      }
+      if (e.type == "exit") {
+        this.stats.first = 0;
+        this.stats.second = 0;
+        this.stats.third = 0;
+        this.stats.fourth = 0;
+      }
+    },
+    formatToPrice(value) {
+      return `${value.toFixed(0)}`;
+    },
     setView(view) {
       this.currentView = view;
     },

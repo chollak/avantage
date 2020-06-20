@@ -14,15 +14,29 @@
 
               <transition name="request">
                 <div class="section__form w-100" v-if="isRequest">
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control d-block" placeholder="Username" />
-                  </div>
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control d-block" placeholder="Username" />
-                  </div>
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control d-block" placeholder="Username" />
-                  </div>
+                  <form>
+                    <div class="form-group">
+                      <label for="standName">Имя</label>
+                      <input type="text" class="form-control" id="standName" />
+                    </div>
+                    <div class="form-group">
+                      <label for="standTel">Телефон</label>
+                      <masked-input
+                        mask="\+\998 (91) 111-11-11"
+                        placeholder="Phone"
+                        class="form-control"
+                        id="standTel"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="standMessage">Сообщение</label>
+                      <textarea
+                        class="form-control"
+                        id="standMessage"
+                        style="min-height:5rem;"
+                      ></textarea>
+                    </div>
+                  </form>
                 </div>
               </transition>
               <div class="action mt-5">
@@ -100,8 +114,12 @@
 </template>
 
 <script>
+import MaskedInput from "vue-masked-input";
 export default {
   props: ["title"],
+  components: {
+    MaskedInput
+  },
   data() {
     return {
       isRequest: false,
