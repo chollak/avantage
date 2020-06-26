@@ -4,95 +4,98 @@
       <div class="section__body">
         <div class="row">
           <div class="col-lg-6">
-            <div class="content d-flex flex-column h-100 align-items-start mb-5 mb-lg-0">
+            <div class="text">
               <h3 class="section__title">{{title}}</h3>
-              <div class="text mb-5">
-                <p>Стенды для выставок - оригинальная форма, красивые и яркие, хорошо продуманные дизайны, которые предназначены для демонстрации товаров или экспонатов с лучших сторон. Для этого самое главное, насколько качественный, удобный и безопасный продукт.</p>
-                <p>Компания AVANTAGE с 2016 года и по сегодняшний день ведет профессиональную выставочную деятельность. Строительство выставочных стендов - одна из услуг, которую с удовольствием предоставят надежные подрядчики нашей компании.</p>
-                <p>Благодаря успешной организации своих крупнейших отраслевых проектов, таких как ICT WEEK Uzbekistan, AVANTAGE стала широко известной в своей стране и в нескольких странах Европы и Азии. В целом за эти годы компания постоянно совершенствуется, приобретая бесценный опыт, и это позволяет нам организовать работу с экспонентами и гостями выставки на высшем уровне.</p>
+              <p>Стенды для выставок - оригинальная форма, красивые и яркие, хорошо продуманные дизайны, которые предназначены для демонстрации товаров или экспонатов с лучших сторон. Для этого самое главное, насколько качественный, удобный и безопасный продукт.</p>
+              <p>Компания AVANTAGE с 2016 года и по сегодняшний день ведет профессиональную выставочную деятельность. Строительство выставочных стендов - одна из услуг, которую с удовольствием предоставят надежные подрядчики нашей компании.</p>
+              <p>Благодаря успешной организации своих крупнейших отраслевых проектов, таких как ICT WEEK Uzbekistan, AVANTAGE стала широко известной в своей стране и в нескольких странах Европы и Азии. В целом за эти годы компания постоянно совершенствуется, приобретая бесценный опыт, и это позволяет нам организовать работу с экспонентами и гостями выставки на высшем уровне.</p>
+            </div>
+            <transition name="request">
+              <div class="section__form w-100 mt-3" v-if="isRequest">
+                <form>
+                  <div class="form-group">
+                    <label for="standName">Имя</label>
+                    <input type="text" class="form-control" id="standName" />
+                  </div>
+                  <div class="form-group">
+                    <label for="standTel">Телефон</label>
+                    <masked-input
+                      mask="\+\998 (91) 111-11-11"
+                      type="tel"
+                      placeholder="Phone"
+                      class="form-control"
+                      id="standTel"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="standMessage">Сообщение</label>
+                    <textarea class="form-control" id="standMessage" style="min-height:5rem;"></textarea>
+                  </div>
+                </form>
               </div>
-
-              <transition name="request">
-                <div class="section__form w-100" v-if="isRequest">
-                  <form>
-                    <div class="form-group">
-                      <label for="standName">Имя</label>
-                      <input type="text" class="form-control" id="standName" />
-                    </div>
-                    <div class="form-group">
-                      <label for="standTel">Телефон</label>
-                      <masked-input
-                        mask="\+\998 (91) 111-11-11"
-                        placeholder="Phone"
-                        class="form-control"
-                        id="standTel"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="standMessage">Сообщение</label>
-                      <textarea
-                        class="form-control"
-                        id="standMessage"
-                        style="min-height:5rem;"
-                      ></textarea>
-                    </div>
-                  </form>
-                </div>
-              </transition>
-              <div class="action mt-5">
-                <template v-if="isRequest">
-                  <a
-                    href="#"
-                    class="btn btn-action mr-2"
-                    @click="sendRequest($event)"
-                  >Отправить заявку</a>
-                  <a href="#" class="btn btn-alternative" @click="toggleForm($event)">Отменить</a>
-                </template>
-                <template v-else>
-                  <a href="#" class="btn btn-action" @click="toggleForm($event)">Заполнить заявку</a>
-                </template>
-              </div>
+            </transition>
+            <div class="action mt-3">
+              <template v-if="isRequest">
+                <a
+                  href="#"
+                  class="btn btn-action mr-2"
+                  @click="sendRequest($event)"
+                >Отправить заявку</a>
+                <a href="#" class="btn btn-alternative" @click="toggleForm($event)">Отменить</a>
+              </template>
+              <template v-else>
+                <a href="#" class="btn btn-action" @click="toggleForm($event)">Заполнить заявку</a>
+              </template>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="media d-flex flex-column">
-              <div class="photos">
-                <div
-                  id="carouselExampleControls"
-                  class="carousel slide carousel-fade"
-                  data-ride="carousel"
-                >
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
-                    </div>
-                    <div class="carousel-item">
-                      <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
-                    </div>
-                    <div class="carousel-item">
-                      <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
-                    </div>
-                  </div>
-                  <a
-                    class="carousel-control-prev"
-                    href="#carouselExampleControls"
-                    role="button"
-                    data-slide="prev"
-                  >
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a
-                    class="carousel-control-next"
-                    href="#carouselExampleControls"
-                    role="button"
-                    data-slide="next"
-                  >
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>
-              </div>
+              <!-- <div class="photos"> -->
+              <swiper class="swiper" style="height:400px; width:100%;" :options="swiperOption">
+                <swiper-slide>
+                  <img
+                    src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                    alt
+                  />
+                </swiper-slide>
+                <swiper-slide>
+                  <img
+                    src="https://images.unsplash.com/photo-1554941829-1a16e65a02b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                    alt
+                  />
+                </swiper-slide>
+                <swiper-slide>
+                  <img
+                    src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                    alt
+                  />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <!-- <div class="swiper-button-prev" slot="button-prev"></div>
+                <div class="swiper-pagination" slot="pagination"></div>
+                <div class="swiper-button-next" slot="button-next"></div>-->
+              </swiper>
+              <!-- </div> -->
               <div class="video">
                 <video playsinline="playsinline" controls muted="muted" loop="loop">
                   <source
@@ -107,6 +110,7 @@
               </div>
             </div>
           </div>
+          <div class="col-lg-6"></div>
         </div>
       </div>
     </div>
@@ -114,16 +118,33 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
+import "swiper/css/swiper.css";
 import MaskedInput from "vue-masked-input";
 export default {
   props: ["title"],
   components: {
-    MaskedInput
+    MaskedInput,
+    Swiper,
+    SwiperSlide
+  },
+  directives: {
+    swiper: directive
   },
   data() {
     return {
       isRequest: false,
-      btnMsg: "Заполнить форму"
+      btnMsg: "Заполнить форму",
+      swiperOption: {
+        speed: 900,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: true
+        },
+        loop: true,
+        slidesPerView: "auto",
+        spaceBetween: 30
+      }
     };
   },
   methods: {
@@ -137,8 +158,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.swiper-pagination {
+  color: black;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+}
+.swiper {
+  // margin: 45px 0px;
+  margin-bottom: 25px;
+  .swiper-slide {
+    // padding: 45px 0px;
+    img {
+      height: inherit;
+      border-radius: 0.7rem;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
 #stand {
   background: $gray-100;
+  .text, .section__form {
+    background: white;
+    padding: 15px 25px;
+    border-radius: 0.8rem;
+    box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, 0.05);
+  }
   .request-enter-active {
     transition: all 0.3s ease-in;
   }

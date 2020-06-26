@@ -6,7 +6,10 @@
           class="navbar-brand"
           href="#home"
           v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
-        >{{brand}}</a>
+        >
+        <!-- <img src="@/assets/logo.jpg" class="img-fluid mx-auto" style="width:100px; position:absolute; top:0; left:0;"/> -->
+        {{brand}}
+        </a>
         <button class="navbar-toggler" @click="toggleNav()">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,7 +30,7 @@
                 href="#equipment"
                 v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
                 @click="hideNav()"
-              >Аренда оборудований</a>
+              >Оборудования</a>
             </li>
             <li class="nav-item">
               <a
@@ -43,7 +46,7 @@
                 href="#stand"
                 v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
                 @click="hideNav()"
-              >Застройка стенда</a>
+              >Cтенды</a>
             </li>
             <li class="nav-item">
               <a
@@ -51,7 +54,7 @@
                 href="#registration"
                 v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
                 @click="hideNav()"
-              >Регистрация посетителей</a>
+              >Регистрация</a>
             </li>
             <li class="nav-item">
               <a
@@ -73,13 +76,9 @@
     <div class="container h-100">
       <div class="d-flex h-100 text-center align-items-center">
         <div class="w-100 text-dark">
-          <h1 class="display-3" @click="scrollToForm('#s3')">Welcome</h1>
           <div class="container">
-            <img src="@/assets/logo.png" alt class="img-fluid rounded mx-auto d-block header__logo" />
+            <img src="@/assets/logo.png" class="img-fluid rounded mx-auto d-block header__logo" />
           </div>
-        </div>
-        <div class="arrow">
-          <i class="fa fa-arrow-down"></i>
         </div>
       </div>
     </div>
@@ -171,14 +170,19 @@ export default {
     font-weight: 700;
   }
   .bg-white {
-    box-shadow: 0px 3px 15px rgba($color: #000000, $alpha: 0.05);
+    // box-shadow: 0px 3px 15px rgba($color: #000000, $alpha: 0.05);
+    box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.117647);
   }
   .navbar {
     transition: 0.2s background-color ease;
     // padding: 0.5rem 1rem !important;
+    .nav-link{
+      padding: 10px 15px;
+    }
     .nav-link.active {
       background: var(--red);
       color: #fff;
+      border-radius: 5px;
     }
   }
   @include media-breakpoint-down(md) {

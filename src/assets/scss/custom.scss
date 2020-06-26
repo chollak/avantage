@@ -96,9 +96,14 @@ img {
     width: 100%;
     height: auto;
 }
-.img-cover-center{
+
+.img-cover-center {
     object-fit: cover;
     object-position: center;
+}
+
+.rounded, video {
+    border-radius: .65rem !important;
 }
 
 

@@ -1,33 +1,27 @@
 <template>
   <div class="section" id="service">
     <div class="container">
-      <h3 class="section__title">{{title}}</h3>
       <div class="section__body">
         <div class="row d-flex align-items-start">
-          <div class="col-lg-7 col-md-12 col-12 mt-3 mt-xl-0">
+          <div class="col-lg-7 col-md-12 col-12 mt-3 mt-xl-0 order-1">
             <p
               class="mb-6"
             >Выездной ресторан MEX CATERING, входящий в группу компаний AVANTAGE, работает на рынке общественного питания в Ташкенте с 2016 года и имеет большой опыт в организации приемов, банкетов, гала-ужинов, кофе-брейков и других мероприятий различных, в том числе международных.</p>
             <p>Мы предоставляем выездной ресторан на удобной вам территории, а также на площадках наших партнерах.</p>
             <p>MEX CATERING - мы знаем секретный ингредиент секретного ингредиента супа ;-)</p>
             <div class="row">
-              <div class="col-lg-6 col-md-6 col-12 mb-2 mb-lg-2">
+              <div class="col-12 mb-2 mb-lg-2">
                 <img
                   src="https://source.unsplash.com/random"
                   alt
-                  class="img-fluid h-100 rounded w-100"
-                />
-              </div>
-              <div class="col-lg-6 col-md-6 col-12 mb-2 mb-lg-2">
-                <img
-                  src="https://source.unsplash.com/random"
-                  alt
-                  class="img-fluid h-100 rounded w-100"
+                  class="img-fluid rounded w-100 img-cover-center"
+                  style="height:350px;"
                 />
               </div>
             </div>
           </div>
           <div class="col-lg-5 col-md-12 col-12">
+            <h3 class="section__title">{{title}}</h3>
             <form>
               <div class="form-group">
                 <label for="serviceEvent">Выберите event</label>
@@ -63,6 +57,7 @@
                 <label for="serviceTel">Телефон</label>
                 <masked-input
                   mask="\+\998 (91) 111-11-11"
+                  type="tel"
                   placeholder="Phone"
                   class="form-control"
                   id="serviceTel"
@@ -77,7 +72,7 @@
                 <textarea
                   class="form-control"
                   id="serviceMessage"
-                  style="min-height:5rem;"
+                  style="min-height:5.5rem;"
                 ></textarea>
               </div>
               <button class="btn btn-action">Отправить заявку</button>

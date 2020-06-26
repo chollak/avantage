@@ -3,11 +3,118 @@
     <div class="container">
       <div class="section__body">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-7">
+            <h3 class="section__title">{{title}}</h3>
+            <div class="text mb-5">
+              <p>Основной ценностью для сотрудников AVANTAGE является предоставление наилучшего сервиса своим клиентам и посетителям, что выражается в решении насущных задач по регистрации и идентификации потока посетителей.</p>
+              <p>Наша система регистрации направлена на автоматизацию процессов регистрации посетителей для массовых мероприятий. Полный спектр услуг для встречи и регистрации гостей на мероприятиях, организации систем контроля доступа и сбора информации о перемещениях участников.</p>
+            </div>
+            <div class="media d-flex flex-column">
+                <swiper class="swiper" style="height:350px; width:100%;" :options="swiperOption">
+                  <swiper-slide>
+                    <img
+                      src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                      alt
+                    />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img
+                      src="https://images.unsplash.com/photo-1554941829-1a16e65a02b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                      alt
+                    />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img
+                      src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                      alt
+                    />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                </swiper>
+            </div>
+          </div>
+          <div class="col-lg-5">
             <div class="content d-flex flex-column h-100 align-items-start mb-5 mb-lg-0">
-              <h3 class="section__title">{{title}}</h3>
               <div class="section__form w-100">
                 <form>
+                  <div class="form-group">
+                    <label for="registrationEvent">Выберите event</label>
+                    <select class="form-control" id="registrationEvent">
+                      <option>Выставка</option>
+                      <option>Форум</option>
+                      <option>Семинар</option>
+                      <option>Саммит</option>
+                      <option>Презентация</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Дополнительные возможности</label>
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="1" id="extraOprt1" />
+                      <label class="custom-control-label" for="extraOprt1">Рассылка приглашений</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="2" id="extraOprt2" />
+                      <label class="custom-control-label" for="extraOprt2">Регистрационные стойки</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="3" id="extraOprt3" />
+                      <label class="custom-control-label" for="extraOprt3">Оградительные ленты</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="4" id="extraOprt4" />
+                      <label
+                        class="custom-control-label"
+                        for="extraOprt4"
+                      >Брендированная одежда персонала</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="5" id="extraOprt5" />
+                      <label class="custom-control-label" for="extraOprt5">Бейджик</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="6" id="extraOprt6" />
+                      <label class="custom-control-label" for="extraOprt6">Ланярд</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="7" id="extraOprt7" />
+                      <label class="custom-control-label" for="extraOprt7">Тент</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="registrationGuests">Количество гостей</label>
+                    <input
+                      type="range"
+                      class="form-control-range"
+                      id="registrationGuests"
+                      min="20"
+                      max="500"
+                      value="20"
+                      step="10"
+                      v-model="guestsNumber"
+                    />
+                    <output for="registrationGuests" name="level">{{guestsNumber}}</output>
+                  </div>
                   <div class="form-group">
                     <label for="registrationName">Имя</label>
                     <input type="text" class="form-control" id="registrationName" />
@@ -16,6 +123,7 @@
                     <label for="registrationTel">Телефон</label>
                     <masked-input
                       mask="\+\998 (91) 111-11-11"
+                      type="tel"
                       placeholder="Phone"
                       class="form-control"
                       id="registrationTel"
@@ -31,53 +139,8 @@
                   </div>
                 </form>
               </div>
-              <div class="action mt-5">
+              <div class="action mt-3">
                 <a href="#" class="btn btn-action">Отправить заявку</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="text mb-5">
-              <p>Основной ценностью для сотрудников AVANTAGE является предоставление наилучшего сервиса своим клиентам и посетителям, что выражается в решении насущных задач по регистрации и идентификации потока посетителей.</p>
-              <p>Наша система регистрации направлена на автоматизацию процессов регистрации посетителей для массовых мероприятий. Полный спектр услуг для встречи и регистрации гостей на мероприятиях, организации систем контроля доступа и сбора информации о перемещениях участников.</p>
-            </div>
-            <div class="media d-flex flex-column">
-              <div class="photos">
-                <div
-                  id="carouselExampleControls"
-                  class="carousel slide carousel-fade"
-                  data-ride="carousel"
-                >
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
-                    </div>
-                    <div class="carousel-item">
-                      <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
-                    </div>
-                    <div class="carousel-item">
-                      <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
-                    </div>
-                  </div>
-                  <a
-                    class="carousel-control-prev"
-                    href="#carouselExampleControls"
-                    role="button"
-                    data-slide="prev"
-                  >
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a
-                    class="carousel-control-next"
-                    href="#carouselExampleControls"
-                    role="button"
-                    data-slide="next"
-                  >
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
@@ -130,19 +193,37 @@
 <script>
 import MaskedInput from "vue-masked-input";
 import AnimatedNumber from "animated-number-vue";
+import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
+import "swiper/css/swiper.css";
 export default {
   props: ["title"],
   components: {
     MaskedInput,
-    AnimatedNumber
+    AnimatedNumber,
+    Swiper,
+    SwiperSlide
+  },
+  directives: {
+    swiper: directive
   },
   data() {
     return {
+      guestsNumber: 0,
       stats: {
         first: 0,
         second: 0,
         third: 0,
         fourth: 0
+      },
+      swiperOption: {
+        speed: 900,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: true
+        },
+        loop: true,
+        slidesPerView: "auto",
+        spaceBetween: 30
       }
     };
   },
@@ -166,4 +247,30 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.photos{
+  width: 100%;
+}
+.swiper {
+  // margin: 45px 0px;
+  margin-bottom: 25px;
+  .swiper-slide {
+    // padding: 45px 0px;
+    img {
+      height: inherit;
+      border-radius: 0.7rem;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+.custom-control-input:checked ~ .custom-control-indicator {
+  color: white;
+  background-color: red;
+}
+.stats {
+  &__data {
+    box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.06);
+  }
+}
 </style>

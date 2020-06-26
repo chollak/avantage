@@ -2,12 +2,12 @@
   <div class="section" id="about">
     <div class="container">
       <div class="section__body">
-        <div class="row mb-5">
-          <div class="col-lg-7">
+        <div class="row mb-3">
+          <div class="col-lg-7 align-self-center">
             <h3>{{title}}</h3>
             <p>Теперь, чтобы организовать деловое мероприятие, нужно по-настоящему много работать. При отсутствии специальных знаний в этой области лучше всего обратиться в специальную компанию, которая может предоставить целую команду профессионалов, которые готовы взяться за организацию проекта и могут выполнить его на 100%.</p>
           </div>
-          <div class="col-lg-5">
+          <div class="col-lg-5 align-self-center">
             <img
               :src="this.$unsplash"
               alt
@@ -16,10 +16,10 @@
             />
           </div>
         </div>
-        <div class="row mb-5">
-          <div class="col-lg-7">
+        <div class="row mb-3">
+          <div class="col-lg-7 align-self-center">
             <div class="row">
-              <div class="col-lg-6 my-2">
+              <div class="col-lg-6 align-self-center my-2">
                 <img
                   :src="this.$unsplash"
                   alt
@@ -27,7 +27,7 @@
                   style="height:200px"
                 />
               </div>
-              <div class="col-lg-6 my-2">
+              <div class="col-lg-6 align-self-center my-2">
                 <img
                   :src="this.$unsplash"
                   alt
@@ -37,12 +37,12 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-5 my-2">
+          <div class="col-lg-5 align-self-center my-2">
             <p>AVANTAGE относится к таким компаниям, которые могут взять на себя задачу организации и проведения любого типа мероприятия, а также предоставить в аренду лучшее оборудование, позволяющее проводить качественные и интересные мероприятия.</p>
           </div>
         </div>
-        <div class="row mb-5">
-          <div class="col-lg-7 my-2">
+        <div class="row mb-3">
+          <div class="col-lg-7 align-self-center my-2">
             <p>Мы готовы предоставить нашим клиентам полный спектр услуг, от разработки концепции до реализации и реализации мероприятий.</p>
             <p>Выставки, форумы, конференции, презентации, кейтеринг, организованные AVANTAGE, позволяют нашим Клиентам достигать своих целей и отмечены положительными отзывами участников и посетителей.</p>
             <p>Мы готовы эффективно применить наш опыт в организации любого формата деловых мероприятий в интересах вашей компании.</p>
@@ -53,7 +53,7 @@
               @click="currentView = 'List'"
             >Портфолио</button>
           </div>
-          <div class="col-lg-5 my-2">
+          <div class="col-lg-5 align-self-center my-2">
             <div class="video">
               <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
                 <source
@@ -67,7 +67,7 @@
       </div>
       <div class="stats mt-5 text-center" v-view="viewHandler">
         <div class="row">
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-3 align-self-center col-md-6">
             <div class="stats__data p-3">
               <h3 class="stats__number m-0">
                 <animated-number
@@ -79,7 +79,7 @@
               <div class="stats__text">лет</div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-3 align-self-center col-md-6">
             <div class="stats__data p-3">
               <h3 class="stats__number m-0">
                 <animated-number
@@ -91,7 +91,7 @@
               <div class="stats__text">почетных грамот</div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-3 align-self-center col-md-6">
             <div class="stats__data p-3">
               <h3 class="stats__number m-0">
                 <animated-number
@@ -103,7 +103,7 @@
               <div class="stats__text">проектов</div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6">
+          <div class="col-lg-3 align-self-center col-md-6">
             <div class="stats__data p-3">
               <h3 class="stats__number m-0">
                 <animated-number
@@ -139,7 +139,8 @@
               >
                 <i class="fa fa-arrow-left"></i>
               </button>
-              <button type="button" class="close ml-auto" data-dismiss="modal" aria-label="Close">
+              <h5 class="modal-title" v-show="currentView=='List'">Портфолио</h5>
+              <button type="button" class="close ml-auto my-auto" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -212,6 +213,12 @@ export default {
 $fs_section: 1rem;
 
 #about {
+  .stats {
+    &__data {
+      box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.06);
+    }
+  }
+  
   .content {
     .text {
       font-weight: 200;
@@ -243,10 +250,15 @@ $fs_section: 1rem;
     }
   }
   .modal-header {
+    .modal-title{
+      margin-left: 15px;
+    }
     .close,
     .back {
-      padding: 5px 15px;
+      padding: 5px 10px;
       margin: 0;
+      margin-top: auto;
+      margin-bottom: auto;
     }
   }
 }
