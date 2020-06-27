@@ -4,13 +4,28 @@
       <div class="section__body">
         <div class="row d-flex align-items-start">
           <div class="col-lg-7 col-md-12 col-12 mt-3 mt-xl-0 order-1">
-            <p
-              class="mb-6"
-            >Выездной ресторан MEX CATERING, входящий в группу компаний AVANTAGE, работает на рынке общественного питания в Ташкенте с 2016 года и имеет большой опыт в организации приемов, банкетов, гала-ужинов, кофе-брейков и других мероприятий различных, в том числе международных.</p>
-            <p>Мы предоставляем выездной ресторан на удобной вам территории, а также на площадках наших партнерах.</p>
-            <p>MEX CATERING - мы знаем секретный ингредиент секретного ингредиента супа ;-)</p>
+            <div
+              data-aos="fade-down"
+              data-aos-delay="50"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
+            >
+              <p
+                class="mb-6"
+              >Выездной ресторан MEX CATERING, входящий в группу компаний AVANTAGE, работает на рынке общественного питания в Ташкенте с 2016 года и имеет большой опыт в организации приемов, банкетов, гала-ужинов, кофе-брейков и других мероприятий различных, в том числе международных.</p>
+              <p>Мы предоставляем выездной ресторан на удобной вам территории, а также на площадках наших партнерах.</p>
+              <p>MEX CATERING - мы знаем секретный ингредиент секретного ингредиента супа ;-)</p>
+            </div>
             <div class="row">
-              <div class="col-12 mb-2 mb-lg-2">
+              <div
+                class="col-12 mb-2 mb-lg-2"
+                data-aos="fade-up"
+                data-aos-delay="150"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-once="false"
+              >
                 <img
                   src="https://source.unsplash.com/random"
                   alt
@@ -20,7 +35,14 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-5 col-md-12 col-12">
+          <div
+            class="col-lg-5 col-md-12 col-12"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          >
             <h3 class="section__title">{{title}}</h3>
             <form>
               <div class="form-group">
@@ -69,11 +91,7 @@
               </div>
               <div class="form-group">
                 <label for="serviceMessage">Сообщение</label>
-                <textarea
-                  class="form-control"
-                  id="serviceMessage"
-                  style="min-height:5.5rem;"
-                ></textarea>
+                <textarea class="form-control" id="serviceMessage" style="min-height:5.5rem;"></textarea>
               </div>
               <button class="btn btn-action">Отправить заявку</button>
             </form>

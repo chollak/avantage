@@ -3,7 +3,14 @@
     <div class="container">
       <div class="section__body">
         <div class="row">
-          <div class="col-lg-6">
+          <div
+            class="col-lg-6"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          >
             <div class="text">
               <h3 class="section__title">{{title}}</h3>
               <p>Стенды для выставок - оригинальная форма, красивые и яркие, хорошо продуманные дизайны, которые предназначены для демонстрации товаров или экспонатов с лучших сторон. Для этого самое главное, насколько качественный, удобный и безопасный продукт.</p>
@@ -51,7 +58,16 @@
           <div class="col-lg-6">
             <div class="media d-flex flex-column">
               <!-- <div class="photos"> -->
-              <swiper class="swiper" style="height:400px; width:100%;" :options="swiperOption">
+              <swiper
+                class="swiper"
+                style="height:400px; width:100%;"
+                :options="swiperOption"
+                data-aos="zoom-in"
+                data-aos-delay="100"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-once="false"
+              >
                 <swiper-slide>
                   <img
                     src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
@@ -96,7 +112,14 @@
                 <div class="swiper-button-next" slot="button-next"></div>-->
               </swiper>
               <!-- </div> -->
-              <div class="video">
+              <div
+                class="video"
+                data-aos="zoom-in-up"
+                data-aos-delay="150"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-once="false"
+              >
                 <video playsinline="playsinline" controls muted="muted" loop="loop">
                   <source
                     src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
@@ -166,10 +189,8 @@ export default {
   color: white;
 }
 .swiper {
-  // margin: 45px 0px;
   margin-bottom: 25px;
   .swiper-slide {
-    // padding: 45px 0px;
     img {
       height: inherit;
       border-radius: 0.7rem;
@@ -181,7 +202,8 @@ export default {
 }
 #stand {
   background: $gray-100;
-  .text, .section__form {
+  .text,
+  .section__form {
     background: white;
     padding: 15px 25px;
     border-radius: 0.8rem;

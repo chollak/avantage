@@ -4,56 +4,79 @@
       <div class="section__body">
         <div class="row">
           <div class="col-lg-7">
-            <h3 class="section__title">{{title}}</h3>
-            <div class="text mb-5">
+            <div
+              class="text mb-5"
+              data-aos="fade-right"
+              data-aos-delay="50"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
+            >
+              <h3 class="section__title">{{title}}</h3>
               <p>Основной ценностью для сотрудников AVANTAGE является предоставление наилучшего сервиса своим клиентам и посетителям, что выражается в решении насущных задач по регистрации и идентификации потока посетителей.</p>
               <p>Наша система регистрации направлена на автоматизацию процессов регистрации посетителей для массовых мероприятий. Полный спектр услуг для встречи и регистрации гостей на мероприятиях, организации систем контроля доступа и сбора информации о перемещениях участников.</p>
             </div>
             <div class="media d-flex flex-column">
-                <swiper class="swiper" style="height:350px; width:100%;" :options="swiperOption">
-                  <swiper-slide>
-                    <img
-                      src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-                      alt
-                    />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img
-                      src="https://images.unsplash.com/photo-1554941829-1a16e65a02b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                      alt
-                    />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img
-                      src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                      alt
-                    />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                </swiper>
+              <swiper
+                class="swiper"
+                style="height:350px; width:100%;"
+                :options="swiperOption"
+                data-aos="zoom-in"
+                data-aos-delay="100"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-once="false"
+              >
+                <swiper-slide>
+                  <img
+                    src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                    alt
+                  />
+                </swiper-slide>
+                <swiper-slide>
+                  <img
+                    src="https://images.unsplash.com/photo-1554941829-1a16e65a02b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                    alt
+                  />
+                </swiper-slide>
+                <swiper-slide>
+                  <img
+                    src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                    alt
+                  />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+                <swiper-slide>
+                  <img :src="this.$unsplash" alt />
+                </swiper-slide>
+              </swiper>
             </div>
           </div>
-          <div class="col-lg-5">
+          <div
+            class="col-lg-5"
+            data-aos="fade-left"
+            data-aos-delay="50"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
+          >
             <div class="content d-flex flex-column h-100 align-items-start mb-5 mb-lg-0">
               <div class="section__form w-100">
                 <form>
@@ -147,7 +170,14 @@
         </div>
         <div class="stats mt-5 text-center" v-view="viewHandler">
           <div class="row">
-            <div class="col-lg-4 col-md-4">
+            <div
+              class="col-lg-4 col-md-4"
+              data-aos="zoom-in"
+              data-aos-delay="50"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
+            >
               <div class="stats__data p-3">
                 <h3 class="stats__number m-0">
                   <animated-number
@@ -159,7 +189,14 @@
                 <div class="stats__text">года на рынке</div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4">
+            <div
+              class="col-lg-4 col-md-4"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
+            >
               <div class="stats__data p-3">
                 <h3 class="stats__number m-0">
                   <animated-number
@@ -171,7 +208,14 @@
                 <div class="stats__text">проектов</div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-4">
+            <div
+              class="col-lg-4 col-md-4"
+              data-aos="zoom-in"
+              data-aos-delay="150"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
+            >
               <div class="stats__data p-3">
                 <h3 class="stats__number m-0">
                   <animated-number
@@ -247,7 +291,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.photos{
+.photos {
   width: 100%;
 }
 .swiper {

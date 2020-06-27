@@ -72,8 +72,11 @@
         <template v-if="equipments!==null && searchInput!==''">
           <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
             <template v-if="equipments!==null">
-              <div class="col mb-4" v-for="e in filteredList" :key="e.id">
-                <div class="card">
+              <div class="col mb-4" v-for="(e) in filteredList" :key="e.id">
+                <div
+                  class="card"
+                  
+                >
                   <img
                     :src="e.img"
                     class="card-img-top"
@@ -107,16 +110,19 @@
         <template v-else>
           <div class="tab-content">
             <div
-              class="tab-pane"
+              class="tab-pane fade"
               v-for="(tag,index) in tags"
               :key="tag.id"
               :id="tag.ru_title"
-              :class="{'active':index==0}"
+              :class="{'active show':index==0}"
             >
               <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
                 <template v-if="equipments!==null">
                   <div class="col mb-4" v-for="e in getEquipment(tag.id)" :key="e.id">
-                    <div class="card">
+                    <div
+                      class="card"
+                      
+                    >
                       <img
                         :src="e.img"
                         class="card-img-top"
@@ -461,6 +467,14 @@ export default {
 
 <style lang="scss" scoped>
 #equipment {
+  .tab-pane.fade {
+    transition: all 0.2s;
+    transform: translateY(1rem);
+  }
+
+  .tab-pane.fade.show {
+    transform: translateY(0rem);
+  }
   .dropdown-menu {
     .dropdown-item {
       &:hover {

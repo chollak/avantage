@@ -9,37 +9,47 @@
           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolor quaerat quidem laudantium accusamus repellendus!</p>
         </div>
         <div class="col-lg-6">
-          <div id="sliderSingle" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
-              </div>
-              <div class="carousel-item">
-                <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
-              </div>
-              <div class="carousel-item">
-                <img src="https://source.unsplash.com/random" class="d-block w-100" alt="..." />
-              </div>
-            </div>
-            <a
-              class="carousel-control-prev"
-              href="#carouselExampleControls"
-              role="button"
-              data-slide="prev"
-            >
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a
-              class="carousel-control-next"
-              href="#carouselExampleControls"
-              role="button"
-              data-slide="next"
-            >
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
+          <swiper class="swiper" style="height:400px; width:100%;" :options="swiperOption">
+            <swiper-slide>
+              <img
+                src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                alt
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <img
+                src="https://images.unsplash.com/photo-1554941829-1a16e65a02b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                alt
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <img
+                src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                alt
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <img :src="this.$unsplash" alt />
+            </swiper-slide>
+            <swiper-slide>
+              <img :src="this.$unsplash" alt />
+            </swiper-slide>
+            <swiper-slide>
+              <img :src="this.$unsplash" alt />
+            </swiper-slide>
+            <swiper-slide>
+              <img :src="this.$unsplash" alt />
+            </swiper-slide>
+            <swiper-slide>
+              <img :src="this.$unsplash" alt />
+            </swiper-slide>
+            <swiper-slide>
+              <img :src="this.$unsplash" alt />
+            </swiper-slide>
+            <swiper-slide>
+              <img :src="this.$unsplash" alt />
+            </swiper-slide>
+          </swiper>
         </div>
       </div>
     </div>
@@ -47,10 +57,46 @@
 </template>
 
 <script>
-export default {};
+import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
+import "swiper/css/swiper.css";
+export default {
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  directives: {
+    swiper: directive
+  },
+  data() {
+    return {
+      swiperOption: {
+        speed: 900,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: true
+        },
+        loop: true,
+        slidesPerView: "auto",
+        spaceBetween: 30
+      }
+    };
+  }
+};
 </script>
 
 <style lang="scss" scoped>
+.swiper {
+  margin-bottom: 25px;
+  .swiper-slide {
+    img {
+      height: inherit;
+      border-radius: 0.7rem;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
 .single {
   .carousel-item {
     img {
