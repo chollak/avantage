@@ -5,11 +5,11 @@
         <div class="row">
           <div
             class="col-lg-6"
-            data-aos="fade-right"
-            data-aos-delay="50"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-once="false"
+            aos-sss="fade-right"
+            aos-sss-delay="50"
+            aos-sss-duration="500"
+            aos-sss-easing="ease-in-out"
+            aos-sss-once="false"
           >
             <div class="text">
               <h3 class="section__title">{{title}}</h3>
@@ -41,7 +41,7 @@
                 </form>
               </div>
             </transition>
-            <div class="action mt-3">
+            <div class="action mt-3 mb-3">
               <template v-if="isRequest">
                 <a
                   href="#"
@@ -62,11 +62,11 @@
                 class="swiper"
                 style="height:400px; width:100%;"
                 :options="swiperOption"
-                data-aos="zoom-in"
-                data-aos-delay="100"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-once="false"
+                aos-sss="zoom-in"
+                aos-sss-delay="100"
+                aos-sss-duration="500"
+                aos-sss-easing="ease-in-out"
+                aos-sss-once="false"
               >
                 <swiper-slide>
                   <img
@@ -114,11 +114,11 @@
               <!-- </div> -->
               <div
                 class="video"
-                data-aos="zoom-in-up"
-                data-aos-delay="150"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-once="false"
+                aos-sss="zoom-in-up"
+                aos-sss-delay="150"
+                aos-sss-duration="500"
+                aos-sss-easing="ease-in-out"
+                aos-sss-once="false"
               >
                 <video playsinline="playsinline" controls muted="muted" loop="loop">
                   <source
@@ -141,18 +141,11 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
-import "swiper/css/swiper.css";
 import MaskedInput from "vue-masked-input";
 export default {
   props: ["title"],
   components: {
-    MaskedInput,
-    Swiper,
-    SwiperSlide
-  },
-  directives: {
-    swiper: directive
+    MaskedInput
   },
   data() {
     return {

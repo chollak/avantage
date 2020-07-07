@@ -5,22 +5,22 @@
         <div class="row mb-3">
           <div
             class="col-lg-7 align-self-center"
-            data-aos="fade-right"
-            data-aos-delay="50"
-            data-aos-duration="1000"
-            data-aos-easing="ease-in-out-back"
-            data-aos-once="false"
+            aos-sss="fade-right"
+            aos-sss-delay="50"
+            aos-sss-duration="1000"
+            aos-sss-easing="ease-in-out-back"
+            aos-sss-once="false"
           >
             <h3>{{title}}</h3>
             <p>Теперь, чтобы организовать деловое мероприятие, нужно по-настоящему много работать. При отсутствии специальных знаний в этой области лучше всего обратиться в специальную компанию, которая может предоставить целую команду профессионалов, которые готовы взяться за организацию проекта и могут выполнить его на 100%.</p>
           </div>
           <div
             class="col-lg-5 align-self-center"
-            data-aos="fade-left"
-            data-aos-delay="100"
-            data-aos-duration="1300"
-            data-aos-easing="ease-in-out-back"
-            data-aos-once="false"
+            aos-sss="fade-left"
+            aos-sss-delay="100"
+            aos-sss-duration="1300"
+            aos-sss-easing="ease-in-out-back"
+            aos-sss-once="false"
           >
             <img
               :src="this.$unsplash"
@@ -32,31 +32,66 @@
         </div>
         <div
           class="row mb-3"
-          data-aos="fade-up"
-          data-aos-delay="50"
-          data-aos-duration="1000"
-          data-aos-easing="ease-in-out"
-          data-aos-once="false"
+          aos-sss="fade-up"
+          aos-sss-delay="50"
+          aos-sss-duration="1000"
+          aos-sss-easing="ease-in-out"
+          aos-sss-once="false"
         >
           <div class="col-lg-7 align-self-center">
-            <div class="row">
-              <div class="col-lg-6 align-self-center my-2">
+            <swiper
+              class="swiper"
+              style="height:300px; width:100%;"
+              :options="swiperOption"
+              aos-sss="zoom-in"
+              aos-sss-delay="100"
+              aos-sss-duration="500"
+              aos-sss-easing="ease-in-out"
+              aos-sss-once="false"
+            >
+              <swiper-slide>
                 <img
-                  :src="this.$unsplash"
+                  src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
                   alt
-                  class="img-fluid rounded img-cover-center"
-                  style="height:200px"
                 />
-              </div>
-              <div class="col-lg-6 align-self-center my-2">
+              </swiper-slide>
+              <swiper-slide>
                 <img
-                  :src="this.$unsplash"
+                  src="https://images.unsplash.com/photo-1554941829-1a16e65a02b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
                   alt
-                  class="img-fluid rounded img-cover-center"
-                  style="height:200px"
                 />
-              </div>
-            </div>
+              </swiper-slide>
+              <swiper-slide>
+                <img
+                  src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                  alt
+                />
+              </swiper-slide>
+              <swiper-slide>
+                <img :src="this.$unsplash" alt />
+              </swiper-slide>
+              <swiper-slide>
+                <img :src="this.$unsplash" alt />
+              </swiper-slide>
+              <swiper-slide>
+                <img :src="this.$unsplash" alt />
+              </swiper-slide>
+              <swiper-slide>
+                <img :src="this.$unsplash" alt />
+              </swiper-slide>
+              <swiper-slide>
+                <img :src="this.$unsplash" alt />
+              </swiper-slide>
+              <swiper-slide>
+                <img :src="this.$unsplash" alt />
+              </swiper-slide>
+              <swiper-slide>
+                <img :src="this.$unsplash" alt />
+              </swiper-slide>
+              <!-- <div class="swiper-button-prev" slot="button-prev"></div>
+                <div class="swiper-pagination" slot="pagination"></div>
+              <div class="swiper-button-next" slot="button-next"></div>-->
+            </swiper>
           </div>
           <div class="col-lg-5 align-self-center my-2">
             <p>AVANTAGE относится к таким компаниям, которые могут взять на себя задачу организации и проведения любого типа мероприятия, а также предоставить в аренду лучшее оборудование, позволяющее проводить качественные и интересные мероприятия.</p>
@@ -64,11 +99,11 @@
         </div>
         <div
           class="row mb-3"
-          data-aos="fade-up"
-          data-aos-delay="50"
-          data-aos-duration="1000"
-          data-aos-easing="ease-in-out"
-          data-aos-once="false"
+          aos-sss="fade-up"
+          aos-sss-delay="50"
+          aos-sss-duration="1000"
+          aos-sss-easing="ease-in-out"
+          aos-sss-once="false"
         >
           <div class="col-lg-7 align-self-center my-2">
             <p>Мы готовы предоставить нашим клиентам полный спектр услуг, от разработки концепции до реализации и реализации мероприятий.</p>
@@ -96,12 +131,12 @@
       <div class="stats mt-5 text-center" v-view="viewHandler">
         <div class="row">
           <div
-            class="col-lg-3 align-self-center col-md-6"
-            data-aos="zoom-in"
-            data-aos-delay="50"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-once="false"
+            class="col-lg-3 align-self-center col-md-6 mt-3 mb-3"
+            aos-sss="zoom-in"
+            aos-sss-delay="50"
+            aos-sss-duration="500"
+            aos-sss-easing="ease-in-out"
+            aos-sss-once="false"
           >
             <div class="stats__data p-3">
               <h3 class="stats__number m-0">
@@ -115,12 +150,12 @@
             </div>
           </div>
           <div
-            class="col-lg-3 align-self-center col-md-6"
-            data-aos="zoom-in"
-            data-aos-delay="100"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-once="false"
+            class="col-lg-3 align-self-center col-md-6 mt-3 mb-3"
+            aos-sss="zoom-in"
+            aos-sss-delay="100"
+            aos-sss-duration="500"
+            aos-sss-easing="ease-in-out"
+            aos-sss-once="false"
           >
             <div class="stats__data p-3">
               <h3 class="stats__number m-0">
@@ -134,12 +169,12 @@
             </div>
           </div>
           <div
-            class="col-lg-3 align-self-center col-md-6"
-            data-aos="zoom-in"
-            data-aos-delay="150"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-once="false"
+            class="col-lg-3 align-self-center col-md-6 mt-3 mb-3"
+            aos-sss="zoom-in"
+            aos-sss-delay="150"
+            aos-sss-duration="500"
+            aos-sss-easing="ease-in-out"
+            aos-sss-once="false"
           >
             <div class="stats__data p-3">
               <h3 class="stats__number m-0">
@@ -153,12 +188,12 @@
             </div>
           </div>
           <div
-            class="col-lg-3 align-self-center col-md-6"
-            data-aos="zoom-in"
-            data-aos-delay="200"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-once="false"
+            class="col-lg-3 align-self-center col-md-6 mt-3 mb-3"
+            aos-sss="zoom-in"
+            aos-sss-delay="200"
+            aos-sss-duration="500"
+            aos-sss-easing="ease-in-out"
+            aos-sss-once="false"
           >
             <div class="stats__data p-3">
               <h3 class="stats__number m-0">
@@ -229,6 +264,16 @@ export default {
         second: 0,
         third: 0,
         fourth: 0
+      },
+      swiperOption: {
+        speed: 900,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: true
+        },
+        loop: true,
+        slidesPerView: "auto",
+        spaceBetween: 30
       }
     };
   },
@@ -274,6 +319,25 @@ export default {
 $fs_section: 1rem;
 
 #about {
+  .swiper-pagination {
+    color: black;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white;
+  }
+  .swiper {
+    margin-bottom: 25px;
+    .swiper-slide {
+      img {
+        height: inherit;
+        border-radius: 0.7rem;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
   .stats {
     &__data {
       box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.06);

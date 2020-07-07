@@ -14,6 +14,10 @@ import VueToast from 'vue-toast-notification';
 // import 'vue-toast-notification/dist/theme-default.css';
 import 'vue-toast-notification/dist/theme-sugar.css';
 import checkView from 'vue-check-view'
+import VueAwesomeSwiper from 'vue-awesome-swiper';
+import 'swiper/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 
 Vue.prototype.$http = Axios;
 Vue.prototype.$unsplash = 'https://source.unsplash.com/random';

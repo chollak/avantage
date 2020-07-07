@@ -1,5 +1,5 @@
 <template>
-  <div class="list" data-aos="fade-down" data-aos-easing="ease-in-out-back" :duration="500">
+  <div class="list" aos-sss="fade-down" aos-sss-easing="ease-in-out-back" :duration="500">
     <div class="container">
       <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
         <div class="col mb-4">

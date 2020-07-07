@@ -6,11 +6,11 @@
           <div class="col-lg-7">
             <div
               class="text mb-5"
-              data-aos="fade-right"
-              data-aos-delay="50"
-              data-aos-duration="500"
-              data-aos-easing="ease-in-out"
-              data-aos-once="false"
+              aos-sss="fade-right"
+              aos-sss-delay="50"
+              aos-sss-duration="500"
+              aos-sss-easing="ease-in-out"
+              aos-sss-once="false"
             >
               <h3 class="section__title">{{title}}</h3>
               <p>Основной ценностью для сотрудников AVANTAGE является предоставление наилучшего сервиса своим клиентам и посетителям, что выражается в решении насущных задач по регистрации и идентификации потока посетителей.</p>
@@ -21,11 +21,11 @@
                 class="swiper"
                 style="height:350px; width:100%;"
                 :options="swiperOption"
-                data-aos="zoom-in"
-                data-aos-delay="100"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-once="false"
+                aos-sss="zoom-in"
+                aos-sss-delay="100"
+                aos-sss-duration="500"
+                aos-sss-easing="ease-in-out"
+                aos-sss-once="false"
               >
                 <swiper-slide>
                   <img
@@ -69,14 +69,7 @@
               </swiper>
             </div>
           </div>
-          <div
-            class="col-lg-5"
-            data-aos="fade-left"
-            data-aos-delay="50"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-once="false"
-          >
+          <div class="col-lg-5">
             <div class="content d-flex flex-column h-100 align-items-start mb-5 mb-lg-0">
               <div class="section__form w-100">
                 <form>
@@ -171,12 +164,12 @@
         <div class="stats mt-5 text-center" v-view="viewHandler">
           <div class="row">
             <div
-              class="col-lg-4 col-md-4"
-              data-aos="zoom-in"
-              data-aos-delay="50"
-              data-aos-duration="500"
-              data-aos-easing="ease-in-out"
-              data-aos-once="false"
+              class="col-lg-4 col-md-4 mt-3 mb-3"
+              aos-sss="zoom-in"
+              aos-sss-delay="50"
+              aos-sss-duration="500"
+              aos-sss-easing="ease-in-out"
+              aos-sss-once="false"
             >
               <div class="stats__data p-3">
                 <h3 class="stats__number m-0">
@@ -190,12 +183,12 @@
               </div>
             </div>
             <div
-              class="col-lg-4 col-md-4"
-              data-aos="zoom-in"
-              data-aos-delay="100"
-              data-aos-duration="500"
-              data-aos-easing="ease-in-out"
-              data-aos-once="false"
+              class="col-lg-4 col-md-4 mt-3 mb-3"
+              aos-sss="zoom-in"
+              aos-sss-delay="100"
+              aos-sss-duration="500"
+              aos-sss-easing="ease-in-out"
+              aos-sss-once="false"
             >
               <div class="stats__data p-3">
                 <h3 class="stats__number m-0">
@@ -209,12 +202,12 @@
               </div>
             </div>
             <div
-              class="col-lg-4 col-md-4"
-              data-aos="zoom-in"
-              data-aos-delay="150"
-              data-aos-duration="500"
-              data-aos-easing="ease-in-out"
-              data-aos-once="false"
+              class="col-lg-4 col-md-4 mt-3 mb-3"
+              aos-sss="zoom-in"
+              aos-sss-delay="150"
+              aos-sss-duration="500"
+              aos-sss-easing="ease-in-out"
+              aos-sss-once="false"
             >
               <div class="stats__data p-3">
                 <h3 class="stats__number m-0">
@@ -237,18 +230,11 @@
 <script>
 import MaskedInput from "vue-masked-input";
 import AnimatedNumber from "animated-number-vue";
-import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
-import "swiper/css/swiper.css";
 export default {
   props: ["title"],
   components: {
     MaskedInput,
-    AnimatedNumber,
-    Swiper,
-    SwiperSlide
-  },
-  directives: {
-    swiper: directive
+    AnimatedNumber
   },
   data() {
     return {

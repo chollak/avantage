@@ -1,21 +1,23 @@
 <template>
   <div class="header" id="home">
     <nav class="navbar navbar-expand-lg fixed-top" :class="[bgNav]" id="navbar">
-      <div class="container">
+      <div class="container" ref="navContainer" :class="{'flex-row-reverse':opt.navContainer}">
         <a
           class="navbar-brand"
+          ref="brand"
+          :class="{'d-none':opt.brand}"
           href="#home"
           v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
-        >
-        <!-- <img src="@/assets/logo.jpg" class="img-fluid mx-auto" style="width:100px; position:absolute; top:0; left:0;"/> -->
-        {{brand}}
-        </a>
+        >{{brand}}</a>
         <button class="navbar-toggler" @click="toggleNav()">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="mobileNav text-center" :class="{show:isNavShow}">
-          <ul class="navbar-nav ml-auto-lg align-self-stretch">
+        <div class="mobileNav text-center" :class="{show:isNavShow,'w-100':opt.nav}" ref="nav">
+          <ul
+            class="navbar-nav ml-auto-lg align-self-stretch"
+            :class="{'justify-content-center':opt.navChild}"
+          >
             <li class="nav-item">
               <a
                 class="nav-link hover-link"
@@ -96,7 +98,13 @@ export default {
   data() {
     return {
       isNavShow: false,
-      bgNav: "bg-transparent navbar-dark"
+      bgNav: "bg-transparent navbar-dark",
+      opt: {
+        brand: true,
+        navContainer: true,
+        nav: true,
+        navChild: true
+      }
     };
   },
   mounted() {
@@ -124,11 +132,25 @@ export default {
     updateScroll() {
       if (window.scrollY == 0 && this.isNavShow == true) {
         this.bgNav = "bg-white navbar-light";
-      } else
-        this.bgNav =
-          window.scrollY > 0
-            ? "bg-white navbar-light"
-            : "bg-transparent navbar-dark";
+      } else {
+        // this.bgNav =
+        //   window.scrollY > 0
+        //     ? "bg-white navbar-light"
+        //     : "bg-transparent navbar-dark";
+        if (window.scrollY > 0) {
+          this.bgNav = "bg-white navbar-light";
+          this.opt.brand = false;
+          this.opt.navContainer = false;
+          this.opt.nav = false;
+          this.opt.navChild = false;
+        } else {
+          this.bgNav = "bg-transparent navbar-dark";
+          this.opt.brand = true;
+          this.opt.navContainer = true;
+          this.opt.nav = true;
+          this.opt.navChild = true;
+        }
+      }
     }
   }
 };
@@ -170,14 +192,15 @@ export default {
     font-weight: 700;
   }
   .bg-white {
-    // box-shadow: 0px 3px 15px rgba($color: #000000, $alpha: 0.05);
     box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.117647);
   }
   .navbar {
     transition: 0.2s background-color ease;
-    // padding: 0.5rem 1rem !important;
-    .nav-link{
+    .nav-link {
       padding: 10px 15px;
+      &:hover {
+        color: var(--red);
+      }
     }
     .nav-link.active {
       background: var(--red);
@@ -186,9 +209,6 @@ export default {
     }
   }
   @include media-breakpoint-down(md) {
-    // .navbar {
-    //   transition: .5s all ease;
-    // }
     .mobileNav {
       &::-webkit-scrollbar {
         display: none;
@@ -258,13 +278,13 @@ export default {
   }
 }
 
-@media (pointer: coarse) and (hover: none) {
-  .header {
-    background: url("https://source.unsplash.com/XT5OInaElMw/1600x900") black
-      no-repeat center center scroll;
-    video {
-      display: none;
-    }
-  }
-}
+// @media (pointer: coarse) and (hover: none) {
+//   .header {
+//     background: url("https://source.unsplash.com/XT5OInaElMw/1600x900") black
+//       no-repeat center center scroll;
+//     video {
+//       display: none;
+//     }
+//   }
+// }
 </style>

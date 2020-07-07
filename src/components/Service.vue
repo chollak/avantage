@@ -5,11 +5,11 @@
         <div class="row d-flex align-items-start">
           <div class="col-lg-7 col-md-12 col-12 mt-3 mt-xl-0 order-1">
             <div
-              data-aos="fade-down"
-              data-aos-delay="50"
-              data-aos-duration="500"
-              data-aos-easing="ease-in-out"
-              data-aos-once="false"
+              aos-sss="fade-down"
+              aos-sss-delay="50"
+              aos-sss-duration="500"
+              aos-sss-easing="ease-in-out"
+              aos-sss-once="false"
             >
               <p
                 class="mb-6"
@@ -20,28 +20,78 @@
             <div class="row">
               <div
                 class="col-12 mb-2 mb-lg-2"
-                data-aos="fade-up"
-                data-aos-delay="150"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-once="false"
+                aos-sss="fade-up"
+                aos-sss-delay="150"
+                aos-sss-duration="500"
+                aos-sss-easing="ease-in-out"
+                aos-sss-once="false"
               >
-                <img
+                <swiper
+                  class="swiper"
+                  style="height:400px; width:100%;"
+                  :options="swiperOption"
+                  aos-sss="zoom-in"
+                  aos-sss-delay="100"
+                  aos-sss-duration="500"
+                  aos-sss-easing="ease-in-out"
+                  aos-sss-once="false"
+                >
+                  <swiper-slide>
+                    <img
+                      src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                      alt
+                    />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img
+                      src="https://images.unsplash.com/photo-1554941829-1a16e65a02b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                      alt
+                    />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img
+                      src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                      alt
+                    />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                  <swiper-slide>
+                    <img :src="this.$unsplash" alt />
+                  </swiper-slide>
+                </swiper>
+                <!-- <img
                   src="https://source.unsplash.com/random"
                   alt
                   class="img-fluid rounded w-100 img-cover-center"
                   style="height:350px;"
-                />
+                />-->
               </div>
             </div>
           </div>
           <div
             class="col-lg-5 col-md-12 col-12"
-            data-aos="fade-right"
-            data-aos-delay="50"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-once="false"
+            aos-sss="fade-right"
+            aos-sss-delay="50"
+            aos-sss-duration="500"
+            aos-sss-easing="ease-in-out"
+            aos-sss-once="false"
           >
             <h3 class="section__title">{{title}}</h3>
             <form>
@@ -109,14 +159,43 @@ import { mask } from "vue-the-mask";
 export default {
   props: ["title"],
   components: { TheMask, MaskedInput },
-  directives: { mask },
+  directives: { mask},
   data() {
     return {
-      guestsNumber: 20
+      guestsNumber: 20,
+      swiperOption: {
+        speed: 900,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: true
+        },
+        loop: true,
+        slidesPerView: "auto",
+        spaceBetween: 30
+      }
     };
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.swiper-pagination {
+  color: black;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: white;
+}
+.swiper {
+  margin-bottom: 25px;
+  .swiper-slide {
+    img {
+      height: inherit;
+      border-radius: 0.7rem;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
 </style>
