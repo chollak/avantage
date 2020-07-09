@@ -51,16 +51,15 @@
                 <a href="#" class="btn btn-alternative" @click="toggleForm($event)">Отменить</a>
               </template>
               <template v-else>
-                <a href="#" class="btn btn-action" @click="toggleForm($event)">Заполнить заявку</a>
+                <a href="#" class="btn btn-action btn-block" @click="toggleForm($event)">Заполнить заявку</a>
               </template>
             </div>
           </div>
           <div class="col-lg-6">
             <div class="media d-flex flex-column">
-              <!-- <div class="photos"> -->
               <swiper
                 class="swiper"
-                style="height:400px; width:100%;"
+                style="height:350px; width:100%;"
                 :options="swiperOption"
                 aos-sss="zoom-in"
                 aos-sss-delay="100"
@@ -111,7 +110,7 @@
                 <div class="swiper-pagination" slot="pagination"></div>
                 <div class="swiper-button-next" slot="button-next"></div>-->
               </swiper>
-              <!-- </div> -->
+              
               <div
                 class="video"
                 aos-sss="zoom-in-up"
@@ -125,15 +124,10 @@
                     src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
                     type="video/mp4"
                   />
-                  <!-- <source
-                    src="https://v.mover.uz/15C0JPum_h.mp4"
-                    type="video/mp4"
-                  />-->
                 </video>
               </div>
             </div>
           </div>
-          <div class="col-lg-6"></div>
         </div>
       </div>
     </div>

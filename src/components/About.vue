@@ -4,7 +4,7 @@
       <div class="section__body">
         <div class="row mb-3">
           <div
-            class="col-lg-7 align-self-center"
+            class="col-lg-5 align-self-center"
             aos-sss="fade-right"
             aos-sss-delay="50"
             aos-sss-duration="1000"
@@ -15,7 +15,7 @@
             <p>Теперь, чтобы организовать деловое мероприятие, нужно по-настоящему много работать. При отсутствии специальных знаний в этой области лучше всего обратиться в специальную компанию, которая может предоставить целую команду профессионалов, которые готовы взяться за организацию проекта и могут выполнить его на 100%.</p>
           </div>
           <div
-            class="col-lg-5 align-self-center"
+            class="col-lg-7 align-self-center"
             aos-sss="fade-left"
             aos-sss-delay="100"
             aos-sss-duration="1300"
@@ -26,7 +26,7 @@
               :src="this.$unsplash"
               alt
               class="img-fluid rounded img-cover-center"
-              style="height:250px"
+              style="height:350px"
             />
           </div>
         </div>
@@ -38,7 +38,7 @@
           aos-sss-easing="ease-in-out"
           aos-sss-once="false"
         >
-          <div class="col-lg-7 align-self-center">
+          <div class="col-lg-6 align-self-center">
             <swiper
               class="swiper"
               style="height:300px; width:100%;"
@@ -88,12 +88,9 @@
               <swiper-slide>
                 <img :src="this.$unsplash" alt />
               </swiper-slide>
-              <!-- <div class="swiper-button-prev" slot="button-prev"></div>
-                <div class="swiper-pagination" slot="pagination"></div>
-              <div class="swiper-button-next" slot="button-next"></div>-->
             </swiper>
           </div>
-          <div class="col-lg-5 align-self-center my-2">
+          <div class="col-lg-6 align-self-center my-2">
             <p>AVANTAGE относится к таким компаниям, которые могут взять на себя задачу организации и проведения любого типа мероприятия, а также предоставить в аренду лучшее оборудование, позволяющее проводить качественные и интересные мероприятия.</p>
           </div>
         </div>
@@ -105,18 +102,18 @@
           aos-sss-easing="ease-in-out"
           aos-sss-once="false"
         >
-          <div class="col-lg-7 align-self-center my-2">
+          <div class="col-lg-5 align-self-center my-2">
             <p>Мы готовы предоставить нашим клиентам полный спектр услуг, от разработки концепции до реализации и реализации мероприятий.</p>
             <p>Выставки, форумы, конференции, презентации, кейтеринг, организованные AVANTAGE, позволяют нашим Клиентам достигать своих целей и отмечены положительными отзывами участников и посетителей.</p>
             <p>Мы готовы эффективно применить наш опыт в организации любого формата деловых мероприятий в интересах вашей компании.</p>
             <button
-              class="btn btn-action"
+              class="btn btn-action btn-block"
               data-toggle="modal"
               data-target="#portfolioModal"
               @click="currentView = 'List'"
             >Портфолио</button>
           </div>
-          <div class="col-lg-5 align-self-center my-2">
+          <div class="col-lg-7 align-self-center my-2">
             <div class="video">
               <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
                 <source

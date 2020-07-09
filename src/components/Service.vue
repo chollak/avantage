@@ -76,12 +76,6 @@
                     <img :src="this.$unsplash" alt />
                   </swiper-slide>
                 </swiper>
-                <!-- <img
-                  src="https://source.unsplash.com/random"
-                  alt
-                  class="img-fluid rounded w-100 img-cover-center"
-                  style="height:350px;"
-                />-->
               </div>
             </div>
           </div>
@@ -97,29 +91,47 @@
             <form>
               <div class="form-group">
                 <label for="serviceEvent">Выберите event</label>
-                <select class="form-control" id="serviceEvent">
-                  <option>Фуршет</option>
-                  <option>Шведский стол</option>
-                  <option>Кофе-брейк</option>
-                  <option>Коктейль</option>
-                  <option>Пикник</option>
-                  <option>Гала ужин</option>
-                  <option>Барбекю</option>
-                </select>
+                <div class="row">
+                  <div class="col-7">
+                    <select class="form-control" id="serviceEvent">
+                      <option>Фуршет</option>
+                      <option>Шведский стол</option>
+                      <option>Кофе-брейк</option>
+                      <option>Коктейль</option>
+                      <option>Пикник</option>
+                      <option>Гала ужин</option>
+                      <option>Барбекю</option>
+                    </select>
+                  </div>
+                  <div class="col-5 text-center">
+                    <button class="btn btn-light">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="serviceGuests">Количество гостей</label>
-                <input
-                  type="range"
-                  class="form-control-range"
-                  id="serviceGuests"
-                  min="20"
-                  max="500"
-                  value="20"
-                  step="10"
-                  v-model="guestsNumber"
-                />
-                <output for="serviceGuests" name="level">{{guestsNumber}}</output>
+                <div class="row">
+                  <div class="col-7">
+                    <input
+                      type="range"
+                      class="form-control-range"
+                      id="serviceGuests"
+                      min="20"
+                      max="500"
+                      value="20"
+                      step="10"
+                      v-model="guestsNumber"
+                    />
+                    <output for="serviceGuests" name="level">{{guestsNumber}}</output>
+                  </div>
+                  <div class="col-5 text-center">
+                    <button class="btn btn-light">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="serviceName">Имя</label>
@@ -143,7 +155,7 @@
                 <label for="serviceMessage">Сообщение</label>
                 <textarea class="form-control" id="serviceMessage" style="min-height:5.5rem;"></textarea>
               </div>
-              <button class="btn btn-action">Отправить заявку</button>
+              <button class="btn btn-action btn-block">Отправить заявку</button>
             </form>
           </div>
         </div>
@@ -159,7 +171,7 @@ import { mask } from "vue-the-mask";
 export default {
   props: ["title"],
   components: { TheMask, MaskedInput },
-  directives: { mask},
+  directives: { mask },
   data() {
     return {
       guestsNumber: 20,

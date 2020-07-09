@@ -18,7 +18,7 @@
             </div>
             <div class="media d-flex flex-column">
               <swiper
-                class="swiper"
+                class="swiper mt-2"
                 style="height:350px; width:100%;"
                 :options="swiperOption"
                 aos-sss="zoom-in"
@@ -75,13 +75,22 @@
                 <form>
                   <div class="form-group">
                     <label for="registrationEvent">Выберите event</label>
-                    <select class="form-control" id="registrationEvent">
-                      <option>Выставка</option>
-                      <option>Форум</option>
-                      <option>Семинар</option>
-                      <option>Саммит</option>
-                      <option>Презентация</option>
-                    </select>
+                    <div class="row">
+                      <div class="col-7">
+                        <select class="form-control" id="registrationEvent">
+                          <option>Выставка</option>
+                          <option>Форум</option>
+                          <option>Семинар</option>
+                          <option>Саммит</option>
+                          <option>Презентация</option>
+                        </select>
+                      </div>
+                      <div class="col-5 text-center">
+                        <button class="btn btn-light">
+                          <i class="fa fa-plus"></i>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label>Дополнительные возможности</label>
@@ -119,17 +128,26 @@
                   </div>
                   <div class="form-group">
                     <label for="registrationGuests">Количество гостей</label>
-                    <input
-                      type="range"
-                      class="form-control-range"
-                      id="registrationGuests"
-                      min="20"
-                      max="500"
-                      value="20"
-                      step="10"
-                      v-model="guestsNumber"
-                    />
-                    <output for="registrationGuests" name="level">{{guestsNumber}}</output>
+                    <div class="row">
+                      <div class="col-7">
+                        <input
+                          type="range"
+                          class="form-control-range"
+                          id="serviceGuests"
+                          min="20"
+                          max="500"
+                          value="20"
+                          step="10"
+                          v-model="guestsNumber"
+                        />
+                        <output for="serviceGuests" name="level">{{guestsNumber}}</output>
+                      </div>
+                      <div class="col-5 text-center">
+                        <button class="btn btn-light">
+                          <i class="fa fa-plus"></i>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label for="registrationName">Имя</label>
@@ -155,9 +173,8 @@
                   </div>
                 </form>
               </div>
-              <div class="action mt-3">
-                <a href="#" class="btn btn-action">Отправить заявку</a>
-              </div>
+
+              <a href="#" class="btn btn-action btn-block">Отправить заявку</a>
             </div>
           </div>
         </div>
