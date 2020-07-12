@@ -27,44 +27,8 @@
                 aos-sss-easing="ease-in-out"
                 aos-sss-once="false"
               >
-                <swiper-slide>
-                  <img
-                    src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-                    alt
-                  />
-                </swiper-slide>
-                <swiper-slide>
-                  <img
-                    src="https://images.unsplash.com/photo-1554941829-1a16e65a02b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                    alt
-                  />
-                </swiper-slide>
-                <swiper-slide>
-                  <img
-                    src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                    alt
-                  />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
+                <swiper-slide v-for="item in content.carousel" :key="item.image">
+                  <img :src="item.image" :alt="item.alt" />
                 </swiper-slide>
               </swiper>
             </div>
@@ -72,22 +36,34 @@
           <div class="col-lg-5">
             <div class="content d-flex flex-column h-100 align-items-start mb-5 mb-lg-0">
               <div class="section__form w-100">
-                <form>
+                <form v-on:submit.prevent>
                   <div class="form-group">
                     <label for="registrationEvent">Выберите event</label>
                     <div class="row">
                       <div class="col-7">
-                        <select class="form-control" id="registrationEvent">
-                          <option>Выставка</option>
-                          <option>Форум</option>
-                          <option>Семинар</option>
-                          <option>Саммит</option>
-                          <option>Презентация</option>
+                        <select
+                          class="form-control"
+                          id="registrationEvent"
+                          v-model="form.registration.event"
+                          v-if="!isNewEvent"
+                        >
+                          <option v-for="item in content.events" :key="item.id">{{ item.title }}</option>
                         </select>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="r-newEvent"
+                          v-if="isNewEvent"
+                          v-model="form.registration.event"
+                          placeholder="Название мероприятии"
+                        />
                       </div>
                       <div class="col-5 text-center">
-                        <button class="btn btn-light">
+                        <button class="btn btn-light" @click="newEvent()" v-if="!isNewEvent">
                           <i class="fa fa-plus"></i>
+                        </button>
+                        <button class="btn btn-light" @click="closeNewEvent()" v-if="isNewEvent">
+                          <i class="fa fa-close"></i>
                         </button>
                       </div>
                     </div>
@@ -95,34 +71,76 @@
                   <div class="form-group">
                     <label>Дополнительные возможности</label>
                     <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" type="checkbox" value="1" id="extraOprt1" />
+                      <input
+                        class="custom-control-input"
+                        type="checkbox"
+                        value="Рассылка приглашений"
+                        id="extraOprt1"
+                        v-model="form.registration.extraOptions"
+                      />
                       <label class="custom-control-label" for="extraOprt1">Рассылка приглашений</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" type="checkbox" value="2" id="extraOprt2" />
+                      <input
+                        class="custom-control-input"
+                        type="checkbox"
+                        value="Регистрационные стойки"
+                        id="extraOprt2"
+                        v-model="form.registration.guestsNumber"
+                      />
                       <label class="custom-control-label" for="extraOprt2">Регистрационные стойки</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" type="checkbox" value="3" id="extraOprt3" />
+                      <input
+                        class="custom-control-input"
+                        type="checkbox"
+                        value="Оградительные ленты"
+                        id="extraOprt3"
+                        v-model="form.registration.extraOptions"
+                      />
                       <label class="custom-control-label" for="extraOprt3">Оградительные ленты</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" type="checkbox" value="4" id="extraOprt4" />
+                      <input
+                        class="custom-control-input"
+                        type="checkbox"
+                        value="Брендированная одежда персонала"
+                        id="extraOprt4"
+                        v-model="form.registration.extraOptions"
+                      />
                       <label
                         class="custom-control-label"
                         for="extraOprt4"
                       >Брендированная одежда персонала</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" type="checkbox" value="5" id="extraOprt5" />
+                      <input
+                        class="custom-control-input"
+                        type="checkbox"
+                        value="Бейджик"
+                        id="extraOprt5"
+                        v-model="form.registration.extraOptions"
+                      />
                       <label class="custom-control-label" for="extraOprt5">Бейджик</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" type="checkbox" value="6" id="extraOprt6" />
+                      <input
+                        class="custom-control-input"
+                        type="checkbox"
+                        value="Ланярд"
+                        id="extraOprt6"
+                        v-model="form.registration.extraOptions"
+                      />
                       <label class="custom-control-label" for="extraOprt6">Ланярд</label>
                     </div>
                     <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" type="checkbox" value="7" id="extraOprt7" />
+                      <input
+                        class="custom-control-input"
+                        type="checkbox"
+                        value="Тент"
+                        id="extraOprt7"
+                        v-model="form.registration.extraOptions"
+                      />
                       <label class="custom-control-label" for="extraOprt7">Тент</label>
                     </div>
                   </div>
@@ -133,29 +151,51 @@
                         <input
                           type="range"
                           class="form-control-range"
-                          id="serviceGuests"
+                          id="registrationGuests"
                           min="20"
                           max="500"
                           value="20"
                           step="10"
-                          v-model="guestsNumber"
+                          v-model="form.registration.guestNumber"
+                          v-if="!isNewGuest"
                         />
-                        <output for="serviceGuests" name="level">{{guestsNumber}}</output>
+                        <output
+                          v-if="!isNewGuest"
+                          for="serviceGuests"
+                          name="level"
+                        >{{form.registration.guestNumber}}</output>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="r-newGuest"
+                          v-if="isNewGuest"
+                          v-model="form.registration.guestNumber"
+                          placeholder="Количество гостей"
+                        />
                       </div>
                       <div class="col-5 text-center">
-                        <button class="btn btn-light">
+                        <button class="btn btn-light" @click="newGuest()" v-if="!isNewGuest">
                           <i class="fa fa-plus"></i>
+                        </button>
+                        <button class="btn btn-light" @click="closeNewGuest()" v-if="isNewGuest">
+                          <i class="fa fa-close"></i>
                         </button>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="registrationName">Имя</label>
-                    <input type="text" class="form-control" id="registrationName" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="registrationName"
+                      v-model="form.name"
+                    />
                   </div>
                   <div class="form-group">
                     <label for="registrationTel">Телефон</label>
                     <masked-input
+                      v-model="form.phone"
                       mask="\+\998 (91) 111-11-11"
                       type="tel"
                       placeholder="Phone"
@@ -169,12 +209,17 @@
                       class="form-control"
                       id="registrationMessage"
                       style="min-height:5rem;"
+                      v-model="form.registration.message"
                     ></textarea>
                   </div>
                 </form>
               </div>
 
-              <a href="#" class="btn btn-action btn-block">Отправить заявку</a>
+              <a
+                href="#"
+                class="btn btn-action btn-block"
+                @click="$emit('sendForm')"
+              >Отправить заявку</a>
             </div>
           </div>
         </div>
@@ -247,15 +292,17 @@
 <script>
 import MaskedInput from "vue-masked-input";
 import AnimatedNumber from "animated-number-vue";
+import { mapGetters } from "vuex";
 export default {
-  props: ["title"],
+  props: ["title", "content"],
   components: {
     MaskedInput,
     AnimatedNumber
   },
   data() {
     return {
-      guestsNumber: 0,
+      isNewEvent: false,
+      isNewGuest: false,
       stats: {
         first: 0,
         second: 0,
@@ -274,7 +321,24 @@ export default {
       }
     };
   },
+  computed: {
+    ...mapGetters({
+      form: "getForm"
+    })
+  },
   methods: {
+    newEvent() {
+      this.isNewEvent = true;
+    },
+    closeNewEvent() {
+      (this.form.registration.event = ""), (this.isNewEvent = false);
+    },
+    newGuest() {
+      this.isNewGuest = true;
+    },
+    closeNewGuest() {
+      (this.form.registration.guestNumber = 20), (this.isNewGuest = false);
+    },
     viewHandler(e) {
       if (e.type == "enter") {
         this.stats.first = 2;

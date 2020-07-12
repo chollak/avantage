@@ -19,14 +19,15 @@
             </div>
             <transition name="request">
               <div class="section__form w-100 mt-3" v-if="isRequest">
-                <form>
+                <form v-on:submit.prevent>
                   <div class="form-group">
                     <label for="standName">Имя</label>
-                    <input type="text" class="form-control" id="standName" />
+                    <input type="text" class="form-control" id="standName" v-model="form.name" />
                   </div>
                   <div class="form-group">
                     <label for="standTel">Телефон</label>
                     <masked-input
+                      v-model="form.phone"
                       mask="\+\998 (91) 111-11-11"
                       type="tel"
                       placeholder="Phone"
@@ -36,22 +37,25 @@
                   </div>
                   <div class="form-group">
                     <label for="standMessage">Сообщение</label>
-                    <textarea class="form-control" id="standMessage" style="min-height:5rem;"></textarea>
+                    <textarea class="form-control" id="standMessage" style="min-height:5rem;" v-model="form.stand.message"></textarea>
                   </div>
                 </form>
               </div>
             </transition>
             <div class="action mt-3 mb-3">
               <template v-if="isRequest">
-                <a
-                  href="#"
+                <button
                   class="btn btn-action mr-2"
-                  @click="sendRequest($event)"
-                >Отправить заявку</a>
+                  @click="$emit('sendForm')"
+                >Отправить заявку</button>
                 <a href="#" class="btn btn-alternative" @click="toggleForm($event)">Отменить</a>
               </template>
               <template v-else>
-                <a href="#" class="btn btn-action btn-block" @click="toggleForm($event)">Заполнить заявку</a>
+                <a
+                  href="#"
+                  class="btn btn-action btn-block"
+                  @click="toggleForm($event)"
+                >Заполнить заявку</a>
               </template>
             </div>
           </div>
@@ -67,50 +71,11 @@
                 aos-sss-easing="ease-in-out"
                 aos-sss-once="false"
               >
-                <swiper-slide>
-                  <img
-                    src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-                    alt
-                  />
+                <swiper-slide v-for="item in content.carousel" :key="item.image">
+                  <img :src="item.image" :alt="item.alt"/>
                 </swiper-slide>
-                <swiper-slide>
-                  <img
-                    src="https://images.unsplash.com/photo-1554941829-1a16e65a02b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                    alt
-                  />
-                </swiper-slide>
-                <swiper-slide>
-                  <img
-                    src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                    alt
-                  />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <swiper-slide>
-                  <img :src="this.$unsplash" alt />
-                </swiper-slide>
-                <!-- <div class="swiper-button-prev" slot="button-prev"></div>
-                <div class="swiper-pagination" slot="pagination"></div>
-                <div class="swiper-button-next" slot="button-next"></div>-->
               </swiper>
-              
+
               <div
                 class="video"
                 aos-sss="zoom-in-up"
@@ -121,7 +86,7 @@
               >
                 <video playsinline="playsinline" controls muted="muted" loop="loop">
                   <source
-                    src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+                    :src="content.video"
                     type="video/mp4"
                   />
                 </video>
@@ -136,10 +101,16 @@
 
 <script>
 import MaskedInput from "vue-masked-input";
+import { mapGetters } from "vuex";
 export default {
-  props: ["title"],
+  props: ["title","content"],
   components: {
     MaskedInput
+  },
+  computed: {
+    ...mapGetters({
+      form: "getForm"
+    })
   },
   data() {
     return {

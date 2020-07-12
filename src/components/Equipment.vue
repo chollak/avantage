@@ -73,10 +73,7 @@
           <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
             <template v-if="equipments!==null">
               <div class="col mb-4" v-for="(e) in filteredList" :key="e.id">
-                <div
-                  class="card"
-                  
-                >
+                <div class="card">
                   <img
                     :src="e.img"
                     class="card-img-top"
@@ -119,10 +116,7 @@
               <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
                 <template v-if="equipments!==null">
                   <div class="col mb-4" v-for="e in getEquipment(tag.id)" :key="e.id">
-                    <div
-                      class="card"
-                      
-                    >
+                    <div class="card">
                       <img
                         :src="e.img"
                         class="card-img-top"
@@ -222,15 +216,50 @@
                       </div>
                     </template>
                     <template v-else>
-                      <h1>No items</h1>
+                      <h1>Товаров пока нет</h1>
                     </template>
                   </div>
                 </div>
                 <div class="col-lg-4">
-                  <div class="sticky-top t-5">
+                  <div class="sticky-top t-5" v-if="cart">
                     <div class="total mb-3">
                       <h6>Итого</h6>
                       <h5>{{total | toCurrency}}</h5>
+                    </div>
+                    <div class="card mt-3 mb-3" v-if="showForm">
+                      <div class="card-body">
+                        <form v-on:submit.prevent>
+                          <div class="form-group">
+                            <label for="cartName">Имя</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="cartName"
+                              v-model="form.name"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="cartTel">Телефон</label>
+                            <masked-input
+                              v-model="form.phone"
+                              mask="\+\998 (91) 111-11-11"
+                              type="tel"
+                              placeholder="Phone"
+                              class="form-control"
+                              id="cartTel"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="cartAddress">Адрес</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="cartAddress"
+                              v-model="form.cart.address"
+                            />
+                          </div>
+                        </form>
+                      </div>
                     </div>
                     <div class="actions">
                       <button
@@ -238,8 +267,10 @@
                         @click="storageClear()"
                         data-dismiss="modal"
                       >Очистить</button>
-                      <button class="btn btn-action">Заказать</button>
+                      <button class="btn btn-action" @click="showForm = true" v-if="!showForm">Заказать</button>
+                      <button class="btn btn-action" @click="closeModal()" v-if="showForm">Заказать</button>
                     </div>
+                    
                   </div>
                 </div>
               </div>
@@ -253,10 +284,13 @@
 
 <script>
 import IModal from "@/components/ImageModal";
+import { mapGetters } from "vuex";
+import MaskedInput from "vue-masked-input";
 export default {
   props: ["title"],
   components: {
-    IModal
+    IModal,
+    MaskedInput
   },
   async created() {
     await this.getTags();
@@ -287,13 +321,17 @@ export default {
       isRender: true,
       isPulse: false,
       total: 0,
-      activeTag: ""
+      activeTag: "",
+      showForm: false
     };
   },
   computed: {
     getSrc() {
       return "https://source.unsplash.com/random";
     },
+    ...mapGetters({
+      form: "getForm"
+    }),
     filteredList() {
       let arr = [];
       const data = this.equipments.forEach(el => {
@@ -338,6 +376,11 @@ export default {
     }
   },
   methods: {
+    closeModal(){
+      $('#checkoutModal').modal('hide');
+      this.showForm = false;
+      this.$emit('sendForm');
+    },
     setImage(img) {
       this.isrc = img;
     },

@@ -105,14 +105,15 @@
           >
             <div class="section__form">
               <h5 class="form-title mb-2">Хотите организовать мероприятие ?</h5>
-              <form>
+              <form v-on:submit.prevent>
                 <div class="form-group">
                   <label for="contactName">Имя</label>
-                  <input type="text" class="form-control" id="contactName" />
+                  <input type="text" class="form-control" id="contactName" v-model="form.name" />
                 </div>
                 <div class="form-group">
                   <label for="contactTel">Телефон</label>
                   <masked-input
+                    v-model="form.phone"
                     mask="\+\998 (91) 111-11-11"
                     type="tel"
                     placeholder="Phone"
@@ -122,11 +123,11 @@
                 </div>
                 <div class="form-group">
                   <label for="contactMessage">Сообщение</label>
-                  <textarea class="form-control" id="contactMessage" style="min-height:5rem;"></textarea>
+                  <textarea class="form-control" id="contactMessage" style="min-height:5rem;" v-model="form.contact.message"></textarea>
                 </div>
               </form>
             </div>
-            <button class="btn btn-action btn-block mt-3">Отправить</button>
+            <button class="btn btn-action btn-block mt-3" @click="$emit('sendForm')">Отправить</button>
           </div>
         </div>
         <div class="row mt-5">
@@ -156,10 +157,16 @@
 
 <script>
 import MaskedInput from "vue-masked-input";
+import { mapGetters } from "vuex";
 export default {
   props: ["title"],
   components: {
     MaskedInput
+  },
+  computed: {
+    ...mapGetters({
+      form: "getForm"
+    })
   },
   mounted() {
     document.addEventListener("aos:in:customEventName", ({ detail }) => {

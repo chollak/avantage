@@ -36,44 +36,8 @@
                   aos-sss-easing="ease-in-out"
                   aos-sss-once="false"
                 >
-                  <swiper-slide>
-                    <img
-                      src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-                      alt
-                    />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img
-                      src="https://images.unsplash.com/photo-1554941829-1a16e65a02b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                      alt
-                    />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img
-                      src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                      alt
-                    />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
-                  </swiper-slide>
-                  <swiper-slide>
-                    <img :src="this.$unsplash" alt />
+                  <swiper-slide v-for="item in content.carousel" :key="item.image">
+                    <img :src="item.image" :alt="item.alt" />
                   </swiper-slide>
                 </swiper>
               </div>
@@ -88,24 +52,35 @@
             aos-sss-once="false"
           >
             <h3 class="section__title">{{title}}</h3>
-            <form>
+            <form v-on:submit.prevent>
               <div class="form-group">
-                <label for="serviceEvent">Выберите event</label>
+                <label for="serviceEvent">Выберите мероприятие</label>
                 <div class="row">
                   <div class="col-7">
-                    <select class="form-control" id="serviceEvent">
-                      <option>Фуршет</option>
-                      <option>Шведский стол</option>
-                      <option>Кофе-брейк</option>
-                      <option>Коктейль</option>
-                      <option>Пикник</option>
-                      <option>Гала ужин</option>
-                      <option>Барбекю</option>
+                    <select
+                      class="form-control"
+                      id="serviceEvent"
+                      v-model="form.catering.event"
+                      v-if="!isNewEvent"
+                    >
+                      <option v-for="item in content.events" :key="item.id">{{ item.title }}</option>
                     </select>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="newEvent"
+                      v-if="isNewEvent"
+                      v-model="form.catering.event"
+                      placeholder="Название мероприятии"
+                    />
                   </div>
+
                   <div class="col-5 text-center">
-                    <button class="btn btn-light">
+                    <button class="btn btn-light" @click="newEvent()" v-if="!isNewEvent">
                       <i class="fa fa-plus"></i>
+                    </button>
+                    <button class="btn btn-light" @click="closeNewEvent()" v-if="isNewEvent">
+                      <i class="fa fa-close"></i>
                     </button>
                   </div>
                 </div>
@@ -115,33 +90,49 @@
                 <div class="row">
                   <div class="col-7">
                     <input
+                      v-if="!isNewGuest"
                       type="range"
                       class="form-control-range"
                       id="serviceGuests"
                       min="20"
                       max="500"
-                      value="20"
                       step="10"
-                      v-model="guestsNumber"
+                      v-model="form.catering.guestNumber"
                     />
-                    <output for="serviceGuests" name="level">{{guestsNumber}}</output>
+                    <output
+                      v-if="!isNewGuest"
+                      for="serviceGuests"
+                      name="level"
+                    >{{form.catering.guestNumber}}</output>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="newGuest"
+                      v-if="isNewGuest"
+                      v-model="form.catering.guestNumber"
+                      placeholder="Количество гостей"
+                    />
                   </div>
                   <div class="col-5 text-center">
-                    <button class="btn btn-light">
+                    <button class="btn btn-light" @click="newGuest()" v-if="!isNewGuest">
                       <i class="fa fa-plus"></i>
+                    </button>
+                    <button class="btn btn-light" @click="closeNewGuest()" v-if="isNewGuest">
+                      <i class="fa fa-close"></i>
                     </button>
                   </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="serviceName">Имя</label>
-                <input type="text" class="form-control" id="serviceName" />
+                <input type="text" class="form-control" id="serviceName" v-model="form.name" />
               </div>
               <div class="form-group">
                 <label for="serviceTel">Телефон</label>
                 <masked-input
                   mask="\+\998 (91) 111-11-11"
                   type="tel"
+                  v-model="form.phone"
                   placeholder="Phone"
                   class="form-control"
                   id="serviceTel"
@@ -149,13 +140,23 @@
               </div>
               <div class="form-group">
                 <label for="serviceAddress">Адрес</label>
-                <input type="text" class="form-control" id="serviceAddress" />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="serviceAddress"
+                  v-model="form.catering.address"
+                />
               </div>
               <div class="form-group">
                 <label for="serviceMessage">Сообщение</label>
-                <textarea class="form-control" id="serviceMessage" style="min-height:5.5rem;"></textarea>
+                <textarea
+                  class="form-control"
+                  id="serviceMessage"
+                  style="min-height:5.5rem;"
+                  v-model="form.catering.message"
+                ></textarea>
               </div>
-              <button class="btn btn-action btn-block">Отправить заявку</button>
+              <button class="btn btn-action btn-block" @click="$emit('sendForm')">Отправить заявку</button>
             </form>
           </div>
         </div>
@@ -168,13 +169,15 @@
 import { TheMask } from "vue-the-mask";
 import MaskedInput from "vue-masked-input";
 import { mask } from "vue-the-mask";
+import { mapGetters } from "vuex";
 export default {
-  props: ["title"],
+  props: ["title", "content"],
   components: { TheMask, MaskedInput },
   directives: { mask },
   data() {
     return {
-      guestsNumber: 20,
+      isNewEvent: false,
+      isNewGuest: false,
       swiperOption: {
         speed: 900,
         autoplay: {
@@ -186,6 +189,25 @@ export default {
         spaceBetween: 30
       }
     };
+  },
+  computed: {
+    ...mapGetters({
+      form: "getForm"
+    })
+  },
+  methods: {
+    newEvent() {
+      this.isNewEvent = true;
+    },
+    closeNewEvent() {
+      (this.form.catering.event = ""), (this.isNewEvent = false);
+    },
+    newGuest() {
+      this.isNewGuest = true;
+    },
+    closeNewGuest() {
+      (this.form.catering.guestNumber = 20), (this.isNewGuest = false);
+    }
   }
 };
 </script>

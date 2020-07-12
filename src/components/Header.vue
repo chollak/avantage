@@ -1,5 +1,5 @@
 <template>
-  <div class="header" id="home">
+  <div class="header" id="home" ref="home">
     <nav class="navbar navbar-expand-lg fixed-top" :class="[bgNav]" id="navbar">
       <div class="container" ref="navContainer" :class="{'flex-row-reverse':opt.navContainer}">
         <a
@@ -98,6 +98,7 @@ export default {
   data() {
     return {
       isNavShow: false,
+      height: 0,
       bgNav: "bg-transparent navbar-dark",
       opt: {
         brand: true,
@@ -109,6 +110,7 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
+    this.height = document.getElementById('home').clientHeight;
   },
   methods: {
     toggleNav() {
@@ -130,6 +132,7 @@ export default {
       this.isNavShow = false;
     },
     updateScroll() {
+      this.height = document.getElementById('home').clientHeight;
       if (window.scrollY == 0 && this.isNavShow == true) {
         this.bgNav = "bg-white navbar-light";
       } else {
@@ -137,7 +140,7 @@ export default {
         //   window.scrollY > 0
         //     ? "bg-white navbar-light"
         //     : "bg-transparent navbar-dark";
-        if (window.scrollY > 0) {
+        if (window.scrollY > (this.height - 100)) {
           this.bgNav = "bg-white navbar-light";
           this.opt.brand = false;
           this.opt.navContainer = false;

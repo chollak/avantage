@@ -23,8 +23,8 @@
             aos-sss-once="false"
           >
             <img
-              :src="this.$unsplash"
-              alt
+              :src="content.image_1.image"
+              :alt="content.image_1.alt"
               class="img-fluid rounded img-cover-center"
               style="height:350px"
             />
@@ -49,44 +49,8 @@
               aos-sss-easing="ease-in-out"
               aos-sss-once="false"
             >
-              <swiper-slide>
-                <img
-                  src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-                  alt
-                />
-              </swiper-slide>
-              <swiper-slide>
-                <img
-                  src="https://images.unsplash.com/photo-1554941829-1a16e65a02b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                  alt
-                />
-              </swiper-slide>
-              <swiper-slide>
-                <img
-                  src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                  alt
-                />
-              </swiper-slide>
-              <swiper-slide>
-                <img :src="this.$unsplash" alt />
-              </swiper-slide>
-              <swiper-slide>
-                <img :src="this.$unsplash" alt />
-              </swiper-slide>
-              <swiper-slide>
-                <img :src="this.$unsplash" alt />
-              </swiper-slide>
-              <swiper-slide>
-                <img :src="this.$unsplash" alt />
-              </swiper-slide>
-              <swiper-slide>
-                <img :src="this.$unsplash" alt />
-              </swiper-slide>
-              <swiper-slide>
-                <img :src="this.$unsplash" alt />
-              </swiper-slide>
-              <swiper-slide>
-                <img :src="this.$unsplash" alt />
+              <swiper-slide v-for="item in content.carousel" :key="item.image">
+                <img :src="item.image" :alt="item.alt" />
               </swiper-slide>
             </swiper>
           </div>
@@ -117,7 +81,7 @@
             <div class="video">
               <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
                 <source
-                  src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4"
+                  :src="content.video"
                   type="video/mp4"
                 />
               </video>
@@ -252,7 +216,7 @@ import List from "@/components/Portfolio/List";
 import Single from "@/components/Portfolio/Single";
 import AnimatedNumber from "animated-number-vue";
 export default {
-  props: ["title"],
+  props: ["title", "content"],
   data() {
     return {
       currentView: "list",
