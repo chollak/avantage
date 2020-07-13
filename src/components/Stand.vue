@@ -5,11 +5,11 @@
         <div class="row">
           <div
             class="col-lg-6"
-            aos-sss="fade-right"
-            aos-sss-delay="50"
-            aos-sss-duration="500"
-            aos-sss-easing="ease-in-out"
-            aos-sss-once="false"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
           >
             <div class="text">
               <h3 class="section__title">{{title}}</h3>
@@ -74,11 +74,11 @@
                 class="swiper"
                 style="height:350px; width:100%;"
                 :options="swiperOption"
-                aos-sss="zoom-in"
-                aos-sss-delay="100"
-                aos-sss-duration="500"
-                aos-sss-easing="ease-in-out"
-                aos-sss-once="false"
+                data-aos="zoom-in"
+                data-aos-delay="100"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-once="false"
               >
                 <swiper-slide v-for="item in content.carousel" :key="item.image">
                   <img :src="item.image" :alt="item.alt" />
@@ -87,11 +87,11 @@
 
               <div
                 class="video"
-                aos-sss="zoom-in-up"
-                aos-sss-delay="150"
-                aos-sss-duration="500"
-                aos-sss-easing="ease-in-out"
-                aos-sss-once="false"
+                data-aos="zoom-in-up"
+                data-aos-delay="150"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-once="false"
               >
                 <video playsinline="playsinline" controls muted="muted" loop="loop">
                   <source :src="content.video" type="video/mp4" />

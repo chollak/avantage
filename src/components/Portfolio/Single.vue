@@ -1,56 +1,29 @@
 <template>
-  <div class="single" aos-sss="fade-up" aos-sss-easing="ease-in-out-back" :duration="500">
+  <div class="single" data-aos="fade-up" data-aos-easing="ease-in-out-back" :duration="900">
     <div class="container">
+      <template v-if="isLoading">
+        <div>
+          <h1 class="text-center my-5">
+            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+          </h1>
+        </div>
+      </template>
       <div class="row">
-        <div class="col-lg-6">
-          <h3>ICTWEEK 2020</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Libero cupiditate suscipit hic accusantium, iste ea dolorem quisquam rem dignissimos qui officia eos doloribus itaque, dicta dolores. Consectetur quas doloremque illo!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi fugit tempora consequuntur reprehenderit nihil aliquam accusantium ipsa asperiores delectus nobis esse aliquid quam laborum, in facere sapiente nemo, repudiandae officia natus. Architecto pariatur nemo culpa nulla animi natus, voluptatum aspernatur? Praesentium in doloribus ut quas quaerat. Odio vitae sapiente architecto.</p>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolor quaerat quidem laudantium accusamus repellendus!</p>
-        </div>
-        <div class="col-lg-6">
-          <swiper class="swiper" style="height:400px; width:100%;" :options="swiperOption">
-            <swiper-slide>
-              <img
-                src="https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-                alt
-              />
-            </swiper-slide>
-            <swiper-slide>
-              <img
-                src="https://images.unsplash.com/photo-1554941829-1a16e65a02b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                alt
-              />
-            </swiper-slide>
-            <swiper-slide>
-              <img
-                src="https://images.unsplash.com/photo-1554941068-a252680d25d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-                alt
-              />
-            </swiper-slide>
-            <swiper-slide>
-              <img :src="this.$unsplash" alt />
-            </swiper-slide>
-            <swiper-slide>
-              <img :src="this.$unsplash" alt />
-            </swiper-slide>
-            <swiper-slide>
-              <img :src="this.$unsplash" alt />
-            </swiper-slide>
-            <swiper-slide>
-              <img :src="this.$unsplash" alt />
-            </swiper-slide>
-            <swiper-slide>
-              <img :src="this.$unsplash" alt />
-            </swiper-slide>
-            <swiper-slide>
-              <img :src="this.$unsplash" alt />
-            </swiper-slide>
-            <swiper-slide>
-              <img :src="this.$unsplash" alt />
-            </swiper-slide>
-          </swiper>
-        </div>
+        <template v-if="portfolio">
+          <div class="col-lg-6">
+            <h3>{{ portfolio.title }}</h3>
+            <p>
+              {{ portfolio.text }}
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <swiper class="swiper" style="height:400px; width:100%;" :options="swiperOption">
+              <swiper-slide v-for="item in portfolio.carousel" :key="item.id">
+                <img :src="item.image" :alt="item.alt" />
+              </swiper-slide>
+            </swiper>
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -60,6 +33,7 @@
 import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
 import "swiper/css/swiper.css";
 export default {
+  props:['pid'],
   components: {
     Swiper,
     SwiperSlide
@@ -69,6 +43,7 @@ export default {
   },
   data() {
     return {
+      isLoading: true,
       swiperOption: {
         speed: 900,
         autoplay: {
@@ -78,8 +53,15 @@ export default {
         loop: true,
         slidesPerView: "auto",
         spaceBetween: 30
-      }
+      },
+      portfolio:null
     };
+  },
+  async created(){
+    this.isLoading = true;
+    const res = await this.$http.get("https://roadtosenior.uz/api/portfolio/"+this.pid);
+    this.portfolio = res.data;
+    this.isLoading = false;
   }
 };
 </script>

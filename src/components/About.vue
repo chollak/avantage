@@ -5,22 +5,22 @@
         <div class="row mb-3">
           <div
             class="col-lg-5 align-self-center"
-            aos-sss="fade-right"
-            aos-sss-delay="50"
-            aos-sss-duration="1000"
-            aos-sss-easing="ease-in-out-back"
-            aos-sss-once="false"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out-back"
+            data-aos-once="false"
           >
             <h3>{{title}}</h3>
             <p>Теперь, чтобы организовать деловое мероприятие, нужно по-настоящему много работать. При отсутствии специальных знаний в этой области лучше всего обратиться в специальную компанию, которая может предоставить целую команду профессионалов, которые готовы взяться за организацию проекта и могут выполнить его на 100%.</p>
           </div>
           <div
             class="col-lg-7 align-self-center"
-            aos-sss="fade-left"
-            aos-sss-delay="100"
-            aos-sss-duration="1300"
-            aos-sss-easing="ease-in-out-back"
-            aos-sss-once="false"
+            data-aos="fade-right"
+            data-aos-delay="100"
+            data-aos-duration="1300"
+            data-aos-easing="ease-in-out-back"
+            data-aos-once="false"
           >
             <img
               :src="content.image_1.image"
@@ -32,22 +32,22 @@
         </div>
         <div
           class="row mb-3"
-          aos-sss="fade-up"
-          aos-sss-delay="50"
-          aos-sss-duration="1000"
-          aos-sss-easing="ease-in-out"
-          aos-sss-once="false"
+          data-aos="fade-up"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out"
+          data-aos-once="false"
         >
           <div class="col-lg-6 align-self-center">
             <swiper
               class="swiper"
               style="height:300px; width:100%;"
               :options="swiperOption"
-              aos-sss="zoom-in"
-              aos-sss-delay="100"
-              aos-sss-duration="500"
-              aos-sss-easing="ease-in-out"
-              aos-sss-once="false"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
             >
               <swiper-slide v-for="item in content.carousel" :key="item.image">
                 <img :src="item.image" :alt="item.alt" />
@@ -60,11 +60,11 @@
         </div>
         <div
           class="row mb-3"
-          aos-sss="fade-up"
-          aos-sss-delay="50"
-          aos-sss-duration="1000"
-          aos-sss-easing="ease-in-out"
-          aos-sss-once="false"
+          data-aos="fade-up"
+          data-aos-delay="50"
+          data-aos-duration="1000"
+          data-aos-easing="ease-in-out"
+          data-aos-once="false"
         >
           <div class="col-lg-5 align-self-center my-2">
             <p>Мы готовы предоставить нашим клиентам полный спектр услуг, от разработки концепции до реализации и реализации мероприятий.</p>
@@ -80,10 +80,7 @@
           <div class="col-lg-7 align-self-center my-2">
             <div class="video">
               <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-                <source
-                  :src="content.video"
-                  type="video/mp4"
-                />
+                <source :src="content.video" type="video/mp4" />
               </video>
             </div>
           </div>
@@ -93,11 +90,11 @@
         <div class="row">
           <div
             class="col-lg-3 align-self-center col-md-6 mt-3 mb-3"
-            aos-sss="zoom-in"
-            aos-sss-delay="50"
-            aos-sss-duration="500"
-            aos-sss-easing="ease-in-out"
-            aos-sss-once="false"
+            data-aos="zoom-in"
+            data-aos-delay="50"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
           >
             <div class="stats__data p-3">
               <h3 class="stats__number m-0">
@@ -112,11 +109,11 @@
           </div>
           <div
             class="col-lg-3 align-self-center col-md-6 mt-3 mb-3"
-            aos-sss="zoom-in"
-            aos-sss-delay="100"
-            aos-sss-duration="500"
-            aos-sss-easing="ease-in-out"
-            aos-sss-once="false"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
           >
             <div class="stats__data p-3">
               <h3 class="stats__number m-0">
@@ -131,11 +128,11 @@
           </div>
           <div
             class="col-lg-3 align-self-center col-md-6 mt-3 mb-3"
-            aos-sss="zoom-in"
-            aos-sss-delay="150"
-            aos-sss-duration="500"
-            aos-sss-easing="ease-in-out"
-            aos-sss-once="false"
+            data-aos="zoom-in"
+            data-aos-delay="150"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
           >
             <div class="stats__data p-3">
               <h3 class="stats__number m-0">
@@ -150,11 +147,11 @@
           </div>
           <div
             class="col-lg-3 align-self-center col-md-6 mt-3 mb-3"
-            aos-sss="zoom-in"
-            aos-sss-delay="200"
-            aos-sss-duration="500"
-            aos-sss-easing="ease-in-out"
-            aos-sss-once="false"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
           >
             <div class="stats__data p-3">
               <h3 class="stats__number m-0">
@@ -187,7 +184,7 @@
               <button
                 class="btn btn-link text-dark back"
                 v-show="currentView=='Single'"
-                @click="setView('List')"
+                @click="setView(['List',1])"
               >
                 <i class="fa fa-arrow-left"></i>
               </button>
@@ -202,7 +199,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <component :is="currentView" @setView="setView($event)"></component>
+              <component :is="currentView" @setView="setView($event)" :pid="currentId"></component>
             </div>
           </div>
         </div>
@@ -220,6 +217,7 @@ export default {
   data() {
     return {
       currentView: "list",
+      currentId: null,
       stats: {
         first: 0,
         second: 0,
@@ -261,8 +259,9 @@ export default {
     formatToPrice(value) {
       return `${value.toFixed(0)}`;
     },
-    setView(view) {
-      this.currentView = view;
+    setView(view) {      
+      this.currentView = view[0];
+      this.currentId = view[1];
     },
     toast() {
       const opt = {

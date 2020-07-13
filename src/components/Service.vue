@@ -5,11 +5,11 @@
         <div class="row d-flex align-items-start">
           <div class="col-lg-7 col-md-12 col-12 mt-3 mt-xl-0 order-1">
             <div
-              aos-sss="fade-down"
-              aos-sss-delay="50"
-              aos-sss-duration="500"
-              aos-sss-easing="ease-in-out"
-              aos-sss-once="false"
+              data-aos="fade-down"
+              data-aos-delay="50"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
             >
               <p
                 class="mb-6"
@@ -20,21 +20,21 @@
             <div class="row">
               <div
                 class="col-12 mb-2 mb-lg-2"
-                aos-sss="fade-up"
-                aos-sss-delay="150"
-                aos-sss-duration="500"
-                aos-sss-easing="ease-in-out"
-                aos-sss-once="false"
+                data-aos="fade-up"
+                data-aos-delay="150"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-once="false"
               >
                 <swiper
                   class="swiper"
                   style="height:400px; width:100%;"
                   :options="swiperOption"
-                  aos-sss="zoom-in"
-                  aos-sss-delay="100"
-                  aos-sss-duration="500"
-                  aos-sss-easing="ease-in-out"
-                  aos-sss-once="false"
+                  data-aos="zoom-in"
+                  data-aos-delay="100"
+                  data-aos-duration="500"
+                  data-aos-easing="ease-in-out"
+                  data-aos-once="false"
                 >
                   <swiper-slide v-for="item in content.carousel" :key="item.image">
                     <img :src="item.image" :alt="item.alt" />
@@ -45,11 +45,11 @@
           </div>
           <div
             class="col-lg-5 col-md-12 col-12"
-            aos-sss="fade-right"
-            aos-sss-delay="50"
-            aos-sss-duration="500"
-            aos-sss-easing="ease-in-out"
-            aos-sss-once="false"
+            data-aos="fade-right"
+            data-aos-delay="50"
+            data-aos-duration="500"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
           >
             <h3 class="section__title">{{title}}</h3>
             <form @submit="sendForm">

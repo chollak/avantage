@@ -6,7 +6,14 @@
         <div class="row">
           <div class="col-lg-8">
             <div class="row no-gutters h-100">
-              <div class="col-lg-4 pr-lg-2 pb-3 pb-lg-0 m-auto">
+              <div
+                class="col-lg-4 pr-lg-2 pb-3 pb-lg-0 m-auto"
+                data-aos="fade-right"
+                data-delay="50"
+                data-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-once="false"
+              >
                 <img
                   src="@/assets/images/profile_foto.jpg"
                   class="img-responsive rounded img-cover-center h-100"
@@ -14,7 +21,14 @@
                 />
               </div>
               <div class="col-lg-8 m-auto">
-                <div class="card">
+                <div
+                  class="card"
+                  data-aos="fade-right"
+                  data-delay="100"
+                  data-duration="500"
+                  data-aos-easing="ease-in-out"
+                  data-aos-once="false"
+                >
                   <div class="row no-gutters">
                     <div class="col">
                       <div class="card-body d-flex flex-column justify-content-between h-100">
@@ -30,7 +44,6 @@
                                 <div class="row">
                                   <div class="col-4 text-center">
                                     <a href="#" class="social-link">
-                                      <!-- <img src="@/assets/icons/facebook.svg" alt="" class="img-fluid" style="width:50px"> -->
                                       <svg
                                         id="Capa_1"
                                         enable-background="new 0 0 512 512"
@@ -97,11 +110,11 @@
           </div>
           <div
             class="col-lg-4"
-            aos-sss="fade-right"
+            data-aos="fade-right"
             data-delay="50"
             data-duration="500"
-            aos-sss-easing="ease-in-out"
-            aos-sss-once="false"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
           >
             <div class="section__form">
               <h5 class="form-title mb-2">Хотите организовать мероприятие ?</h5>
@@ -145,11 +158,11 @@
         <div class="row mt-5">
           <div
             class="col"
-            aos-sss="fade-left"
+            data-aos="fade-right"
             data-delay="100"
             data-duration="500"
-            aos-sss-easing="ease-in-out"
-            aos-sss-once="false"
+            data-aos-easing="ease-in-out"
+            data-aos-once="false"
           >
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2995.566303906397!2d69.29037028465578!3d41.34004322342673!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef4ad010dd425%3A0x5a98eb519ac9451!2z0KbQtdC90YLRgCDQvdCw0YPRh9C90L4t0YLQtdGF0L3QuNGH0LXRgdC60LjRhSDQuCDQvNCw0YDQutC10YLQuNC90LPQvtCy0YvRhSDQuNGB0YHQu9C10LTQvtCy0LDQvdC40Lk!5e0!3m2!1sru!2s!4v1594652942537!5m2!1sru!2s"

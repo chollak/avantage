@@ -6,11 +6,11 @@
           <div class="col-lg-7">
             <div
               class="text mb-5"
-              aos-sss="fade-right"
-              aos-sss-delay="50"
-              aos-sss-duration="500"
-              aos-sss-easing="ease-in-out"
-              aos-sss-once="false"
+              data-aos="fade-right"
+              data-aos-delay="50"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
             >
               <h3 class="section__title">{{title}}</h3>
               <p>Основной ценностью для сотрудников AVANTAGE является предоставление наилучшего сервиса своим клиентам и посетителям, что выражается в решении насущных задач по регистрации и идентификации потока посетителей.</p>
@@ -21,11 +21,11 @@
                 class="swiper mt-2"
                 style="height:350px; width:100%;"
                 :options="swiperOption"
-                aos-sss="zoom-in"
-                aos-sss-delay="100"
-                aos-sss-duration="500"
-                aos-sss-easing="ease-in-out"
-                aos-sss-once="false"
+                data-aos="zoom-in"
+                data-aos-delay="100"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-once="false"
               >
                 <swiper-slide v-for="item in content.carousel" :key="item.image">
                   <img :src="item.image" :alt="item.alt" />
@@ -72,17 +72,17 @@
                   </div>
                   <div class="form-group">
                     <label>Дополнительные возможности</label>
-                    <div class="custom-control custom-checkbox">
+                    <div class="custom-control custom-checkbox" v-for="item in content.other" :key="item.id">
                       <input
                         class="custom-control-input"
                         type="checkbox"
-                        value="Рассылка приглашений"
-                        id="extraOprt1"
+                        :id="'e'+item.id"
+                        :value="item.title"
                         v-model="form.registration.extraOptions"
                       />
-                      <label class="custom-control-label" for="extraOprt1">Рассылка приглашений</label>
+                      <label class="custom-control-label" :for="'e'+item.id">{{ item.title }}</label>
                     </div>
-                    <div class="custom-control custom-checkbox">
+                    <!-- <div class="custom-control custom-checkbox">
                       <input
                         class="custom-control-input"
                         type="checkbox"
@@ -144,7 +144,7 @@
                         v-model="form.registration.extraOptions"
                       />
                       <label class="custom-control-label" for="extraOprt7">Тент</label>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="form-group">
                     <label for="registrationGuests">Количество гостей</label>
@@ -228,11 +228,11 @@
           <div class="row">
             <div
               class="col-lg-4 col-md-4 mt-3 mb-3"
-              aos-sss="zoom-in"
-              aos-sss-delay="50"
-              aos-sss-duration="500"
-              aos-sss-easing="ease-in-out"
-              aos-sss-once="false"
+              data-aos="zoom-in"
+              data-aos-delay="50"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
             >
               <div class="stats__data p-3">
                 <h3 class="stats__number m-0">
@@ -247,11 +247,11 @@
             </div>
             <div
               class="col-lg-4 col-md-4 mt-3 mb-3"
-              aos-sss="zoom-in"
-              aos-sss-delay="100"
-              aos-sss-duration="500"
-              aos-sss-easing="ease-in-out"
-              aos-sss-once="false"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
             >
               <div class="stats__data p-3">
                 <h3 class="stats__number m-0">
@@ -266,11 +266,11 @@
             </div>
             <div
               class="col-lg-4 col-md-4 mt-3 mb-3"
-              aos-sss="zoom-in"
-              aos-sss-delay="150"
-              aos-sss-duration="500"
-              aos-sss-easing="ease-in-out"
-              aos-sss-once="false"
+              data-aos="zoom-in"
+              data-aos-delay="150"
+              data-aos-duration="500"
+              data-aos-easing="ease-in-out"
+              data-aos-once="false"
             >
               <div class="stats__data p-3">
                 <h3 class="stats__number m-0">

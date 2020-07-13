@@ -1,54 +1,45 @@
 <template>
-  <div class="list" aos-sss="fade-down" aos-sss-easing="ease-in-out-back" :duration="500">
+  <div class="list" data-aos="fade-down" data-aos-easing="ease-in-out-back" :duration="900">
     <div class="container">
+      <template v-if="isLoading">
+        <div>
+          <h1 class="text-center my-5">
+            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+          </h1>
+        </div>
+      </template>
       <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
-        <div class="col mb-4">
-          <div class="card" @click="$emit('setView','Single')">
-            <img src="https://source.unsplash.com/random" class="card-img-top" />
-            <div class="card-body">
-              <h6>ICTWEEK 2020</h6>
+        <template v-if="portfolio">
+          <div class="col mb-4" v-for="item in portfolio" :key="item.id">
+            <div class="card" @click="$emit('setView',['Single',item.id])">
+              <img :src="item.image" class="card-img-top" />
+              <div class="card-body">
+                <h6>{{ item.title }}</h6>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card">
-            <img src="https://source.unsplash.com/random" class="card-img-top" />
-            <div class="card-body">
-              <h6>Something new in the IT</h6>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card">
-            <img src="https://source.unsplash.com/random" class="card-img-top" />
-            <div class="card-body">
-              <h6>ICTWEEK 2020</h6>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card">
-            <img src="https://source.unsplash.com/random" class="card-img-top" />
-            <div class="card-body">
-              <h6>ICTWEEK 2020</h6>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card">
-            <img src="https://source.unsplash.com/random" class="card-img-top" />
-            <div class="card-body">
-              <h6>ICTWEEK 2020</h6>
-            </div>
-          </div>
-        </div>
+        </template>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props:['pid'],
+  data() {
+    return {
+      portfolio: null,
+      isLoading: true
+    };
+  },
+  async created() {
+    this.isLoading = true;
+    const res = await this.$http.get("https://roadtosenior.uz/api/portfolio");
+    this.portfolio = res.data;
+    this.isLoading = false;
+  }
+};
 </script>
 
 <style lang="scss" scoped>
