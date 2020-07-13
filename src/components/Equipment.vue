@@ -420,14 +420,14 @@ export default {
     async getTags() {
       this.isLoading = true;
       const res = await this.$http.get(
-        "https://avantage.herokuapp.com/api/tag"
+        "https://roadtosenior.uz/api/tag"
       );
       this.tags = res.data;
       this.isLoading = false;
     },
     async getEquipmentsByTag(id) {
       const res = await this.$http.get(
-        "https://avantage.herokuapp.com/api/tag/" + id
+        "https://roadtosenior.uz/api/tag/" + id
       );
       return res.data;
     },
