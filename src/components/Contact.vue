@@ -152,8 +152,8 @@
             aos-sss-once="false"
           >
             <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2995.566303906397!2d69.29037028465578!3d41.34004322342673!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef4ad010dd425%3A0x5a98eb519ac9451!2z0KbQtdC90YLRgCDQvdCw0YPRh9C90L4t0YLQtdGF0L3QuNGH0LXRgdC60LjRhSDQuCDQvNCw0YDQutC10YLQuNC90LPQvtCy0YvRhSDQuNGB0YHQu9C10LTQvtCy0LDQvdC40Lk!5e0!3m2!1sru!2s!4v1594652942537!5m2!1sru!2s"
               class="map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5991.252232335131!2d69.27679643634403!3d41.33874282913863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b57296584bb%3A0xaf3198b9b9fbb534!2z0KPQt9Ct0LrRgdC_0L7QptC10L3RgtGA!5e0!3m2!1sru!2s!4v1592686723199!5m2!1sru!2s"
               frameborder="0"
               style="border:0;"
               allowfullscreen
@@ -209,7 +209,7 @@ export default {
       const preparedData = { ...this.commonForm, ...this.form };
 
       const res = this.$http.post(
-        "http://avantage.herokuapp.com/api/form/",
+        "https://roadtosenior.uz/api/form/",
         preparedData
       );
       this.$toast.success("Ваше сообщение отправлено");

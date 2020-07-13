@@ -163,7 +163,7 @@ export default {
         const preparedData = {...this.commonForm, ...this.form};
         
           const res = this.$http.post(
-          "http://avantage.herokuapp.com/api/form/",
+          "https://roadtosenior.uz/api/form/",
           preparedData
         );
         this.$toast.success('Ваша заявка отправлена');

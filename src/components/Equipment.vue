@@ -396,7 +396,7 @@ export default {
       });
       const preparedData = { ...this.form, ...this.ss };
       const res = await this.$http.post(
-        "http://avantage.herokuapp.com/api/form/",
+        "https://roadtosenior.uz/api/form/",
         preparedData
       );
       this.$toast.success("Ваш заказ отправлен");

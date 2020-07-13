@@ -37,11 +37,12 @@ export default {
   },
   created() {
     this.getData();
+    // https://roadtosenior.uz
   },
   methods: {
     async getData() {
       const res = await this.$http.get(
-        "http://avantage.herokuapp.com/api/FullPage/"
+        "https://roadtosenior.uz/api/FullPage/"
       );
       this.data = res.data;
     }
