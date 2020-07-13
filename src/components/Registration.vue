@@ -36,7 +36,7 @@
           <div class="col-lg-5">
             <div class="content d-flex flex-column h-100 align-items-start mb-5 mb-lg-0">
               <div class="section__form w-100">
-                <form v-on:submit.prevent>
+                <form @submit="sendForm" id="regForm">
                   <div class="form-group">
                     <label for="registrationEvent">Выберите event</label>
                     <div class="row">
@@ -46,6 +46,7 @@
                           id="registrationEvent"
                           v-model="form.registration.event"
                           v-if="!isNewEvent"
+                          required
                         >
                           <option v-for="item in content.events" :key="item.id">{{ item.title }}</option>
                         </select>
@@ -56,6 +57,7 @@
                           v-if="isNewEvent"
                           v-model="form.registration.event"
                           placeholder="Название мероприятии"
+                          required
                         />
                       </div>
                       <div class="col-5 text-center">
@@ -171,6 +173,7 @@
                           v-if="isNewGuest"
                           v-model="form.registration.guestNumber"
                           placeholder="Количество гостей"
+                          required
                         />
                       </div>
                       <div class="col-5 text-center">
@@ -189,14 +192,16 @@
                       type="text"
                       class="form-control"
                       id="registrationName"
-                      v-model="form.name"
+                      v-model="commonForm.name"
+                      required
                     />
                   </div>
                   <div class="form-group">
                     <label for="registrationTel">Телефон</label>
                     <masked-input
-                      v-model="form.phone"
+                      v-model="commonForm.phone"
                       mask="\+\998 (91) 111-11-11"
+                      required
                       type="tel"
                       placeholder="Phone"
                       class="form-control"
@@ -215,11 +220,7 @@
                 </form>
               </div>
 
-              <a
-                href="#"
-                class="btn btn-action btn-block"
-                @click="$emit('sendForm')"
-              >Отправить заявку</a>
+              <button class="btn btn-action btn-block" form="regForm">Отправить заявку</button>
             </div>
           </div>
         </div>
@@ -301,6 +302,14 @@ export default {
   },
   data() {
     return {
+      form: {
+        registration: {
+          event: "",
+          extraOptions: [],
+          guestNumber: 20,
+          message: ""
+        }
+      },
       isNewEvent: false,
       isNewGuest: false,
       stats: {
@@ -323,10 +332,34 @@ export default {
   },
   computed: {
     ...mapGetters({
-      form: "getForm"
+      commonForm: "getForm"
     })
   },
   methods: {
+    sendForm(e) {
+      e.preventDefault();
+      if (this.getCart()) {
+        $("#checkoutModal").modal("show");
+        this.$toast.info("Сначало заверишите покупку");
+      } else {
+        const preparedData = { ...this.commonForm, ...this.form };
+
+        const res = this.$http.post(
+          "http://avantage.herokuapp.com/api/form/",
+          preparedData
+        );
+        this.$toast.success("Ваша заявка отправлена");
+      }
+    },
+    getCart() {
+      const cartString = window.localStorage.getItem("cart");
+      if (cartString) {
+        let cart = JSON.parse(window.localStorage.getItem("cart"));
+        if (cart.length) {
+          return cart;
+        }
+      }
+    },
     newEvent() {
       this.isNewEvent = true;
     },

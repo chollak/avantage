@@ -158,6 +158,7 @@
     <div class="m-warpper">
       <div
         class="modal fade"
+        ref="checkoutModal"
         id="checkoutModal"
         tabindex="-1"
         role="dialog"
@@ -228,7 +229,7 @@
                     </div>
                     <div class="card mt-3 mb-3" v-if="showForm">
                       <div class="card-body">
-                        <form v-on:submit.prevent>
+                        <form @submit="sendForm" id="cartForm">
                           <div class="form-group">
                             <label for="cartName">Имя</label>
                             <input
@@ -236,6 +237,7 @@
                               class="form-control"
                               id="cartName"
                               v-model="form.name"
+                              required
                             />
                           </div>
                           <div class="form-group">
@@ -247,6 +249,7 @@
                               placeholder="Phone"
                               class="form-control"
                               id="cartTel"
+                              required
                             />
                           </div>
                           <div class="form-group">
@@ -255,7 +258,7 @@
                               type="text"
                               class="form-control"
                               id="cartAddress"
-                              v-model="form.cart.address"
+                              v-model="form.address"
                             />
                           </div>
                         </form>
@@ -267,10 +270,13 @@
                         @click="storageClear()"
                         data-dismiss="modal"
                       >Очистить</button>
-                      <button class="btn btn-action" @click="showForm = true" v-if="!showForm">Заказать</button>
-                      <button class="btn btn-action" @click="closeModal()" v-if="showForm">Заказать</button>
+                      <button
+                        class="btn btn-action"
+                        @click="showForm = true"
+                        v-if="!showForm"
+                      >Заказать</button>
+                      <button class="btn btn-action" form="cartForm" v-if="showForm">Заказать</button>
                     </div>
-                    
                   </div>
                 </div>
               </div>
@@ -322,7 +328,12 @@ export default {
       isPulse: false,
       total: 0,
       activeTag: "",
-      showForm: false
+      showForm: false,
+      ss: {
+        cart: {
+          items: []
+        }
+      }
     };
   },
   computed: {
@@ -376,10 +387,20 @@ export default {
     }
   },
   methods: {
-    closeModal(){
-      $('#checkoutModal').modal('hide');
+    async sendForm(e) {
+      e.preventDefault();
+      $("#checkoutModal").modal("hide");
       this.showForm = false;
-      this.$emit('sendForm');
+      this.ss.cart.items = this.cart.map(element => {
+        return { id: element.id, quantity: element.quantity };
+      });
+      const preparedData = { ...this.form, ...this.ss };
+      const res = await this.$http.post(
+        "http://avantage.herokuapp.com/api/form/",
+        preparedData
+      );
+      this.$toast.success("Ваш заказ отправлен");
+      this.storageClear();
     },
     setImage(img) {
       this.isrc = img;
@@ -389,6 +410,12 @@ export default {
         return equipment.id === id;
       });
       return data[0].equipments;
+    },
+    shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
     },
     async getTags() {
       this.isLoading = true;

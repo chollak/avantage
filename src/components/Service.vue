@@ -52,7 +52,7 @@
             aos-sss-once="false"
           >
             <h3 class="section__title">{{title}}</h3>
-            <form v-on:submit.prevent>
+            <form @submit="sendForm">
               <div class="form-group">
                 <label for="serviceEvent">Выберите мероприятие</label>
                 <div class="row">
@@ -62,6 +62,7 @@
                       id="serviceEvent"
                       v-model="form.catering.event"
                       v-if="!isNewEvent"
+                      required
                     >
                       <option v-for="item in content.events" :key="item.id">{{ item.title }}</option>
                     </select>
@@ -72,6 +73,7 @@
                       v-if="isNewEvent"
                       v-model="form.catering.event"
                       placeholder="Название мероприятии"
+                      required
                     />
                   </div>
 
@@ -111,6 +113,7 @@
                       v-if="isNewGuest"
                       v-model="form.catering.guestNumber"
                       placeholder="Количество гостей"
+                      required
                     />
                   </div>
                   <div class="col-5 text-center">
@@ -125,17 +128,24 @@
               </div>
               <div class="form-group">
                 <label for="serviceName">Имя</label>
-                <input type="text" class="form-control" id="serviceName" v-model="form.name" />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="serviceName"
+                  v-model="commonForm.name"
+                  required
+                />
               </div>
               <div class="form-group">
                 <label for="serviceTel">Телефон</label>
                 <masked-input
                   mask="\+\998 (91) 111-11-11"
                   type="tel"
-                  v-model="form.phone"
+                  v-model="commonForm.phone"
                   placeholder="Phone"
                   class="form-control"
                   id="serviceTel"
+                  required
                 />
               </div>
               <div class="form-group">
@@ -144,7 +154,7 @@
                   type="text"
                   class="form-control"
                   id="serviceAddress"
-                  v-model="form.catering.address"
+                  v-model="commonForm.address"
                 />
               </div>
               <div class="form-group">
@@ -156,7 +166,7 @@
                   v-model="form.catering.message"
                 ></textarea>
               </div>
-              <button class="btn btn-action btn-block" @click="$emit('sendForm')">Отправить заявку</button>
+              <button class="btn btn-action btn-block">Отправить заявку</button>
             </form>
           </div>
         </div>
@@ -176,6 +186,13 @@ export default {
   directives: { mask },
   data() {
     return {
+      form: {
+        catering: {
+          event: "",
+          guestNumber: 20,
+          message: ""
+        }
+      },
       isNewEvent: false,
       isNewGuest: false,
       swiperOption: {
@@ -192,7 +209,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      form: "getForm"
+      commonForm: "getForm"
     })
   },
   methods: {
@@ -207,6 +224,30 @@ export default {
     },
     closeNewGuest() {
       (this.form.catering.guestNumber = 20), (this.isNewGuest = false);
+    },
+    getCart() {
+      const cartString = window.localStorage.getItem("cart");
+      if (cartString) {
+        let cart = JSON.parse(window.localStorage.getItem("cart"));
+        if (cart.length) {
+          return cart;
+        }
+      }
+    },
+    sendForm(e) {
+      e.preventDefault();
+      if (this.getCart()) {
+        $("#checkoutModal").modal("show");
+        this.$toast.info("Сначало заверишите покупку");
+      } else {
+        const preparedData = {...this.commonForm, ...this.form};
+        
+          const res = this.$http.post(
+          "http://avantage.herokuapp.com/api/form/",
+          preparedData
+        );
+        this.$toast.success('Ваша заявка отправлена');
+      }
     }
   }
 };

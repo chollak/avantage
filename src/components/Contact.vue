@@ -105,29 +105,41 @@
           >
             <div class="section__form">
               <h5 class="form-title mb-2">Хотите организовать мероприятие ?</h5>
-              <form v-on:submit.prevent>
+              <form @submit="sendForm" id="contactForm">
                 <div class="form-group">
                   <label for="contactName">Имя</label>
-                  <input type="text" class="form-control" id="contactName" v-model="form.name" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="contactName"
+                    v-model="commonForm.name"
+                    required
+                  />
                 </div>
                 <div class="form-group">
                   <label for="contactTel">Телефон</label>
                   <masked-input
-                    v-model="form.phone"
+                    v-model="commonForm.phone"
                     mask="\+\998 (91) 111-11-11"
                     type="tel"
                     placeholder="Phone"
                     class="form-control"
                     id="contactTel"
+                    required
                   />
                 </div>
                 <div class="form-group">
                   <label for="contactMessage">Сообщение</label>
-                  <textarea class="form-control" id="contactMessage" style="min-height:5rem;" v-model="form.contact.message"></textarea>
+                  <textarea
+                    class="form-control"
+                    id="contactMessage"
+                    style="min-height:5rem;"
+                    v-model="form.contact.message"
+                  ></textarea>
                 </div>
               </form>
             </div>
-            <button class="btn btn-action btn-block mt-3" @click="$emit('sendForm')">Отправить</button>
+            <button class="btn btn-action btn-block mt-3" form="contactForm">Отправить</button>
           </div>
         </div>
         <div class="row mt-5">
@@ -163,9 +175,18 @@ export default {
   components: {
     MaskedInput
   },
+  data() {
+    return {
+      form: {
+        contact: {
+          message: ""
+        }
+      }
+    };
+  },
   computed: {
     ...mapGetters({
-      form: "getForm"
+      commonForm: "getForm"
     })
   },
   mounted() {
@@ -181,6 +202,18 @@ export default {
         "animation to hide element with custom event started"
       );
     });
+  },
+  methods: {
+    sendForm(e) {
+      e.preventDefault();
+      const preparedData = { ...this.commonForm, ...this.form };
+
+      const res = this.$http.post(
+        "http://avantage.herokuapp.com/api/form/",
+        preparedData
+      );
+      this.$toast.success("Ваше сообщение отправлено");
+    }
   }
 };
 </script>

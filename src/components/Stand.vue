@@ -19,35 +19,44 @@
             </div>
             <transition name="request">
               <div class="section__form w-100 mt-3" v-if="isRequest">
-                <form v-on:submit.prevent>
+                <form @submit="sendForm" id="standForm">
                   <div class="form-group">
                     <label for="standName">Имя</label>
-                    <input type="text" class="form-control" id="standName" v-model="form.name" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="standName"
+                      v-model="commonForm.name"
+                      required
+                    />
                   </div>
                   <div class="form-group">
                     <label for="standTel">Телефон</label>
                     <masked-input
-                      v-model="form.phone"
+                      v-model="commonForm.phone"
                       mask="\+\998 (91) 111-11-11"
                       type="tel"
                       placeholder="Phone"
                       class="form-control"
                       id="standTel"
+                      required
                     />
                   </div>
                   <div class="form-group">
                     <label for="standMessage">Сообщение</label>
-                    <textarea class="form-control" id="standMessage" style="min-height:5rem;" v-model="form.stand.message"></textarea>
+                    <textarea
+                      class="form-control"
+                      id="standMessage"
+                      style="min-height:5rem;"
+                      v-model="form.stand.message"
+                    ></textarea>
                   </div>
                 </form>
               </div>
             </transition>
             <div class="action mt-3 mb-3">
               <template v-if="isRequest">
-                <button
-                  class="btn btn-action mr-2"
-                  @click="$emit('sendForm')"
-                >Отправить заявку</button>
+                <button class="btn btn-action mr-2" form="standForm">Отправить заявку</button>
                 <a href="#" class="btn btn-alternative" @click="toggleForm($event)">Отменить</a>
               </template>
               <template v-else>
@@ -72,7 +81,7 @@
                 aos-sss-once="false"
               >
                 <swiper-slide v-for="item in content.carousel" :key="item.image">
-                  <img :src="item.image" :alt="item.alt"/>
+                  <img :src="item.image" :alt="item.alt" />
                 </swiper-slide>
               </swiper>
 
@@ -85,10 +94,7 @@
                 aos-sss-once="false"
               >
                 <video playsinline="playsinline" controls muted="muted" loop="loop">
-                  <source
-                    :src="content.video"
-                    type="video/mp4"
-                  />
+                  <source :src="content.video" type="video/mp4" />
                 </video>
               </div>
             </div>
@@ -103,17 +109,22 @@
 import MaskedInput from "vue-masked-input";
 import { mapGetters } from "vuex";
 export default {
-  props: ["title","content"],
+  props: ["title", "content"],
   components: {
     MaskedInput
   },
   computed: {
     ...mapGetters({
-      form: "getForm"
+      commonForm: "getForm"
     })
   },
   data() {
     return {
+      form: {
+        stand: {
+          message: ""
+        }
+      },
       isRequest: false,
       btnMsg: "Заполнить форму",
       swiperOption: {
@@ -129,10 +140,34 @@ export default {
     };
   },
   methods: {
+    getCart() {
+      const cartString = window.localStorage.getItem("cart");
+      if (cartString) {
+        let cart = JSON.parse(window.localStorage.getItem("cart"));
+        if (cart.length) {
+          return cart;
+        }
+      }
+    },
     toggleForm(event) {
       if (event) event.preventDefault();
       this.isRequest = !this.isRequest;
       this.btnMsg = this.isRequest ? "Отменить" : "Заполнить форму";
+    },
+    sendForm(e) {
+      e.preventDefault();
+      if (this.getCart()) {
+        $("#checkoutModal").modal("show");
+        this.$toast.info("Сначало заверишите покупку");
+      }else{
+        const preparedData = {...this.commonForm, ...this.form};
+        
+          const res = this.$http.post(
+          "http://avantage.herokuapp.com/api/form/",
+          preparedData
+        );
+        this.$toast.success('Ваша заявка отправлена');
+      }
     }
   }
 };
