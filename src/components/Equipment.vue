@@ -4,8 +4,8 @@
       <h3 class="section__title">{{title}}</h3>
       <div class="section__body">
         <div class="tags d-flex justify-content-between flex-wrap py-2">
-          <div class="tags__left d-flex">
-            <div class="input-wrapper d-flex align-items-center">
+          <div class="tags__left d-flex" style="max-width:80%">
+            <div class="input-wrapper d-flex align-items-center" style="min-width:200px">
               <div class="input-group input-group-sm">
                 <div class="input-group-prepend">
                   <button class="btn btn-outline-secondary" type="button" id="searchBtn">
@@ -22,8 +22,7 @@
                 />
               </div>
             </div>
-            <template v-if="equipments!==null && searchInput!==''"></template>
-            <ul class="nav justify-content-start">
+            <ul class="nav justify-content-start flex-nowrap" style="overflow-x:auto;">
               <li class="nav-item dropdown d-lg-none">
                 <a
                   class="nav-link dropdown-toggle"
@@ -36,7 +35,7 @@
                 <div class="dropdown-menu dropdown-menu-right">
                   <a
                     class="dropdown-item"
-                    :href="'#'+tag.ru_title"
+                    :href="'#'+tag.ru_title | removeSpace"
                     @click="searchInput=''; activeTag = tag.ru_title"
                     data-toggle="pill"
                     v-for="(tag) in tags"
@@ -49,10 +48,11 @@
                   class="nav-link hover-link"
                   :class="{'active':index==0}"
                   data-toggle="pill"
-                  :href="'#'+tag.ru_title"
+                  :href="'#'+tag.ru_title | removeSpace"
                   @click="searchInput=''"
                 >{{tag.ru_title}}</a>
               </li>
+              
             </ul>
           </div>
           <div class="tags__right">
@@ -110,7 +110,7 @@
               class="tab-pane fade"
               v-for="(tag,index) in tags"
               :key="tag.id"
-              :id="tag.ru_title"
+              :id="tag.ru_title | removeSpace"
               :class="{'active show':index==0}"
             >
               <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
@@ -384,6 +384,10 @@ export default {
     },
     comma(value) {
       return value.replace(" ", ",");
+    },
+    removeSpace(value) {
+      // return text.split(" ").join("");
+      return value.replace(" ", "");
     }
   },
   methods: {
@@ -419,16 +423,12 @@ export default {
     },
     async getTags() {
       this.isLoading = true;
-      const res = await this.$http.get(
-        "https://roadtosenior.uz/api/tag"
-      );
+      const res = await this.$http.get("https://roadtosenior.uz/api/tag");
       this.tags = res.data;
       this.isLoading = false;
     },
     async getEquipmentsByTag(id) {
-      const res = await this.$http.get(
-        "https://roadtosenior.uz/api/tag/" + id
-      );
+      const res = await this.$http.get("https://roadtosenior.uz/api/tag/" + id);
       return res.data;
     },
     quantityChange(cart) {
