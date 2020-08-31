@@ -12,9 +12,7 @@
         <template v-if="portfolio">
           <div class="col-lg-6">
             <h3>{{ portfolio.title }}</h3>
-            <p>
-              {{ portfolio.text }}
-            </p>
+            <p>{{ portfolio.text }}</p>
           </div>
           <div class="col-lg-6">
             <swiper class="swiper" style="height:400px; width:100%;" :options="swiperOption">
@@ -33,7 +31,7 @@
 import { Swiper, SwiperSlide, directive } from "vue-awesome-swiper";
 import "swiper/css/swiper.css";
 export default {
-  props:['pid'],
+  props: ["pid"],
   components: {
     Swiper,
     SwiperSlide
@@ -54,12 +52,12 @@ export default {
         slidesPerView: "auto",
         spaceBetween: 30
       },
-      portfolio:null
+      portfolio: null
     };
   },
-  async created(){
+  async created() {
     this.isLoading = true;
-    const res = await this.$http.get("https://roadtosenior.uz/api/portfolio/"+this.pid);
+    const res = await this.$axi.get("portfolio/" + this.pid);
     this.portfolio = res.data;
     this.isLoading = false;
   }

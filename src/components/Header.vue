@@ -24,7 +24,7 @@
                 href="#about"
                 v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
                 @click="hideNav()"
-              >О нас</a>
+              >{{ $t('link.about') }}</a>
             </li>
             <li class="nav-item">
               <a
@@ -32,7 +32,7 @@
                 href="#equipment"
                 v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
                 @click="hideNav()"
-              >Оборудования</a>
+              >{{ $t('link.equipment') }}</a>
             </li>
             <li class="nav-item">
               <a
@@ -40,7 +40,7 @@
                 href="#service"
                 v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
                 @click="hideNav()"
-              >Кейтеринг</a>
+              >{{ $t('link.catering') }}</a>
             </li>
             <li class="nav-item">
               <a
@@ -48,7 +48,7 @@
                 href="#stand"
                 v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
                 @click="hideNav()"
-              >Cтенды</a>
+              >{{ $t('link.stand') }}</a>
             </li>
             <li class="nav-item">
               <a
@@ -56,7 +56,7 @@
                 href="#registration"
                 v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
                 @click="hideNav()"
-              >Регистрация</a>
+              >{{ $t('link.registration') }}</a>
             </li>
             <li class="nav-item">
               <a
@@ -64,7 +64,12 @@
                 href="#contact"
                 v-smooth-scroll="{ duration: 500, offset: -50, updateHistory: true }"
                 @click="hideNav()"
-              >Контакты</a>
+              >{{ $t('link.contact') }}</a>
+            </li>
+            <li class="nav-item">
+              <select class="form-control lang-select" v-model="$i18n.locale">
+                <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">{{ lang }}</option>
+              </select>
             </li>
           </ul>
         </div>
@@ -97,6 +102,7 @@ export default {
   },
   data() {
     return {
+      langs: ["en", "ru"],
       isNavShow: false,
       height: 0,
       bgNav: "bg-transparent navbar-dark",
@@ -110,7 +116,15 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.updateScroll);
-    this.height = document.getElementById('home').clientHeight;
+    this.height = document.getElementById("home").clientHeight;
+  },
+  watch: {
+    "$i18n.locale": {
+      handler: function(val) {
+        window.localStorage.setItem("lang", JSON.stringify(val));
+        window.location.reload();
+      }
+    }
   },
   methods: {
     toggleNav() {
@@ -132,7 +146,7 @@ export default {
       this.isNavShow = false;
     },
     updateScroll() {
-      this.height = document.getElementById('home').clientHeight;
+      this.height = document.getElementById("home").clientHeight;
       if (window.scrollY == 0 && this.isNavShow == true) {
         this.bgNav = "bg-white navbar-light";
       } else {
@@ -140,7 +154,7 @@ export default {
         //   window.scrollY > 0
         //     ? "bg-white navbar-light"
         //     : "bg-transparent navbar-dark";
-        if (window.scrollY > (this.height - 100)) {
+        if (window.scrollY > this.height - 100) {
           this.bgNav = "bg-white navbar-light";
           this.opt.brand = false;
           this.opt.navContainer = false;
@@ -160,6 +174,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.navbar-light {
+  .lang-select {
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: #333;
+  }
+}
+.navbar-dark {
+  .lang-select {
+    height: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+  }
+}
 .arrow {
   position: absolute;
   bottom: 0;

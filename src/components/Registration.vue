@@ -13,8 +13,8 @@
               data-aos-once="false"
             >
               <h3 class="section__title">{{title}}</h3>
-              <p>Основной ценностью для сотрудников AVANTAGE является предоставление наилучшего сервиса своим клиентам и посетителям, что выражается в решении насущных задач по регистрации и идентификации потока посетителей.</p>
-              <p>Наша система регистрации направлена на автоматизацию процессов регистрации посетителей для массовых мероприятий. Полный спектр услуг для встречи и регистрации гостей на мероприятиях, организации систем контроля доступа и сбора информации о перемещениях участников.</p>
+              <p>{{ $t('section.registration.p-1') }}</p>
+              <p>{{ $t('section.registration.p-2') }}</p>
             </div>
             <div class="media d-flex flex-column">
               <swiper
@@ -28,7 +28,7 @@
                 data-aos-once="false"
               >
                 <swiper-slide v-for="item in content.carousel" :key="item.image">
-                  <img :src="item.image" :alt="item.alt" />
+                  <img v-lazy="item.image" :alt="item.alt" />
                 </swiper-slide>
               </swiper>
             </div>
@@ -38,7 +38,7 @@
               <div class="section__form w-100">
                 <form @submit="sendForm" id="regForm">
                   <div class="form-group">
-                    <label for="registrationEvent">Выберите event</label>
+                    <label for="registrationEvent">{{ $t('label.event') }}</label>
                     <div class="row">
                       <div class="col-7">
                         <select
@@ -56,7 +56,7 @@
                           id="r-newEvent"
                           v-if="isNewEvent"
                           v-model="form.registration.event"
-                          placeholder="Название мероприятии"
+                          :placeholder="$t('label.enter-event')"
                           required
                         />
                       </div>
@@ -71,8 +71,12 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label>Дополнительные возможности</label>
-                    <div class="custom-control custom-checkbox" v-for="item in content.other" :key="item.id">
+                    <label>{{ $t('label.opt') }}</label>
+                    <div
+                      class="custom-control custom-checkbox"
+                      v-for="item in content.other"
+                      :key="item.id"
+                    >
                       <input
                         class="custom-control-input"
                         type="checkbox"
@@ -82,72 +86,9 @@
                       />
                       <label class="custom-control-label" :for="'e'+item.id">{{ item.title }}</label>
                     </div>
-                    <!-- <div class="custom-control custom-checkbox">
-                      <input
-                        class="custom-control-input"
-                        type="checkbox"
-                        value="Регистрационные стойки"
-                        id="extraOprt2"
-                        v-model="form.registration.guestsNumber"
-                      />
-                      <label class="custom-control-label" for="extraOprt2">Регистрационные стойки</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        class="custom-control-input"
-                        type="checkbox"
-                        value="Оградительные ленты"
-                        id="extraOprt3"
-                        v-model="form.registration.extraOptions"
-                      />
-                      <label class="custom-control-label" for="extraOprt3">Оградительные ленты</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        class="custom-control-input"
-                        type="checkbox"
-                        value="Брендированная одежда персонала"
-                        id="extraOprt4"
-                        v-model="form.registration.extraOptions"
-                      />
-                      <label
-                        class="custom-control-label"
-                        for="extraOprt4"
-                      >Брендированная одежда персонала</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        class="custom-control-input"
-                        type="checkbox"
-                        value="Бейджик"
-                        id="extraOprt5"
-                        v-model="form.registration.extraOptions"
-                      />
-                      <label class="custom-control-label" for="extraOprt5">Бейджик</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        class="custom-control-input"
-                        type="checkbox"
-                        value="Ланярд"
-                        id="extraOprt6"
-                        v-model="form.registration.extraOptions"
-                      />
-                      <label class="custom-control-label" for="extraOprt6">Ланярд</label>
-                    </div>
-                    <div class="custom-control custom-checkbox">
-                      <input
-                        class="custom-control-input"
-                        type="checkbox"
-                        value="Тент"
-                        id="extraOprt7"
-                        v-model="form.registration.extraOptions"
-                      />
-                      <label class="custom-control-label" for="extraOprt7">Тент</label>
-                    </div> -->
                   </div>
                   <div class="form-group">
-                    <label for="registrationGuests">Количество гостей</label>
+                    <label for="registrationGuests">{{ $t('label.guest') }}</label>
                     <div class="row">
                       <div class="col-7">
                         <input
@@ -172,7 +113,7 @@
                           id="r-newGuest"
                           v-if="isNewGuest"
                           v-model="form.registration.guestNumber"
-                          placeholder="Количество гостей"
+                          :placeholder="$t('label.enter-guest')"
                           required
                         />
                       </div>
@@ -187,7 +128,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="registrationName">Имя</label>
+                    <label for="registrationName">{{ $t('label.name') }}</label>
                     <input
                       type="text"
                       class="form-control"
@@ -197,19 +138,19 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label for="registrationTel">Телефон</label>
+                    <label for="registrationTel">{{ $t('label.phone') }}</label>
                     <masked-input
                       v-model="commonForm.phone"
                       mask="\+\998 (91) 111-11-11"
                       required
                       type="tel"
-                      placeholder="Phone"
+                      
                       class="form-control"
                       id="registrationTel"
                     />
                   </div>
                   <div class="form-group">
-                    <label for="registrationMessage">Сообщение</label>
+                    <label for="registrationMessage">{{ $t('label.msg') }}</label>
                     <textarea
                       class="form-control"
                       id="registrationMessage"
@@ -220,7 +161,7 @@
                 </form>
               </div>
 
-              <button class="btn btn-action btn-block" form="regForm">Отправить заявку</button>
+              <button class="btn btn-action btn-block" form="regForm">{{ $t('btn.send') }}</button>
             </div>
           </div>
         </div>
@@ -242,7 +183,7 @@
                     :duration="1000"
                   />
                 </h3>
-                <div class="stats__text">года на рынке</div>
+                <div class="stats__text">{{ $t('section.registration.card.1') }}</div>
               </div>
             </div>
             <div
@@ -261,7 +202,7 @@
                     :duration="1000"
                   />+
                 </h3>
-                <div class="stats__text">проектов</div>
+                <div class="stats__text">{{ $t('section.registration.card.2') }}</div>
               </div>
             </div>
             <div
@@ -280,7 +221,7 @@
                     :duration="1000"
                   />+
                 </h3>
-                <div class="stats__text">прошли регистрацию</div>
+                <div class="stats__text">{{ $t('section.registration.card.3') }}</div>
               </div>
             </div>
           </div>
@@ -344,10 +285,7 @@ export default {
       } else {
         const preparedData = { ...this.commonForm, ...this.form };
 
-        const res = this.$http.post(
-          "https://roadtosenior.uz/api/form/",
-          preparedData
-        );
+        const res = this.$axi.post("form/", preparedData);
         this.$toast.success("Ваша заявка отправлена");
       }
     },

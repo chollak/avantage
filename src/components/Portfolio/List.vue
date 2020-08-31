@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  props:['pid'],
+  props: ["pid"],
   data() {
     return {
       portfolio: null,
@@ -35,7 +35,7 @@ export default {
   },
   async created() {
     this.isLoading = true;
-    const res = await this.$http.get("https://roadtosenior.uz/api/portfolio");
+    const res = await this.$axi.get("portfolio");
     this.portfolio = res.data;
     this.isLoading = false;
   }

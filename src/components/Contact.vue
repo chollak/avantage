@@ -33,13 +33,19 @@
                     <div class="col">
                       <div class="card-body d-flex flex-column justify-content-between h-100">
                         <div class="card-top">
-                          <h5 class="card-title">Уйгун Турсунходжаев</h5>
+                          <h5 class="card-title">{{ $t('section.contact.name') }}</h5>
                           <div class="cart-text">
                             <ul class="list-group list-group-flush">
-                              <li class="list-group-item">Главный менеджер</li>
-                              <li class="list-group-item">Моб: +998951440444</li>
-                              <li class="list-group-item">Моб+ТГ: +998909870101</li>
-                              <li class="list-group-item">Э.почта: info@avantage.events</li>
+                              <li class="list-group-item">{{ $t('section.contact.position') }}</li>
+                              <li
+                                class="list-group-item"
+                              >{{ $t('section.contact.mobile') }}: +998951440444</li>
+                              <li
+                                class="list-group-item"
+                              >{{ $t('section.contact.mobile-tg') }}: +998909870101</li>
+                              <li
+                                class="list-group-item"
+                              >{{ $t('section.contact.email') }}: info@avantage.events</li>
                               <li class="list-group-item">
                                 <div class="row">
                                   <div class="col-4 text-center">
@@ -60,7 +66,6 @@
                                   </div>
                                   <div class="col-4 text-center">
                                     <a href="#" class="social-link">
-                                      <!-- <img src="@/assets/icons/insta.svg" alt="" class="img-fluid" style="width:50px"> -->
                                       <svg
                                         height="25"
                                         viewBox="0 0 512 512"
@@ -81,7 +86,6 @@
                                   </div>
                                   <div class="col-4 text-center">
                                     <a href="#" class="social-link">
-                                      <!-- <img src="@/assets/icons/telegram.svg" alt="" class="img-fluid" style="width:50px"> -->
                                       <svg
                                         id="Bold"
                                         enable-background="new 0 0 24 24"
@@ -117,10 +121,10 @@
             data-aos-once="false"
           >
             <div class="section__form">
-              <h5 class="form-title mb-2">Хотите организовать мероприятие ?</h5>
+              <h5 class="form-title mb-2">{{ $t('section.contact.form-title') }}</h5>
               <form @submit="sendForm" id="contactForm">
                 <div class="form-group">
-                  <label for="contactName">Имя</label>
+                  <label for="contactName">{{ $t('label.name') }}</label>
                   <input
                     type="text"
                     class="form-control"
@@ -130,19 +134,18 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="contactTel">Телефон</label>
+                  <label for="contactTel">{{ $t('label.phone') }}</label>
                   <masked-input
                     v-model="commonForm.phone"
                     mask="\+\998 (91) 111-11-11"
                     type="tel"
-                    placeholder="Phone"
                     class="form-control"
                     id="contactTel"
                     required
                   />
                 </div>
                 <div class="form-group">
-                  <label for="contactMessage">Сообщение</label>
+                  <label for="contactMessage">{{ $t('label.msg') }}</label>
                   <textarea
                     class="form-control"
                     id="contactMessage"
@@ -152,7 +155,10 @@
                 </div>
               </form>
             </div>
-            <button class="btn btn-action btn-block mt-3" form="contactForm">Отправить</button>
+            <button
+              class="btn btn-action btn-block mt-3"
+              form="contactForm"
+            >{{ $t('btn.send-default') }}</button>
           </div>
         </div>
         <div class="row mt-5">
@@ -220,11 +226,7 @@ export default {
     sendForm(e) {
       e.preventDefault();
       const preparedData = { ...this.commonForm, ...this.form };
-
-      const res = this.$http.post(
-        "https://roadtosenior.uz/api/form/",
-        preparedData
-      );
+      const res = this.$axi.post("form/", preparedData);
       this.$toast.success("Ваше сообщение отправлено");
     }
   }

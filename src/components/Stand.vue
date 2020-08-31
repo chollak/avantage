@@ -13,15 +13,15 @@
           >
             <div class="text">
               <h3 class="section__title">{{title}}</h3>
-              <p>Стенды для выставок - оригинальная форма, красивые и яркие, хорошо продуманные дизайны, которые предназначены для демонстрации товаров или экспонатов с лучших сторон. Для этого самое главное, насколько качественный, удобный и безопасный продукт.</p>
-              <p>Компания AVANTAGE с 2016 года и по сегодняшний день ведет профессиональную выставочную деятельность. Строительство выставочных стендов - одна из услуг, которую с удовольствием предоставят надежные подрядчики нашей компании.</p>
-              <p>Благодаря успешной организации своих крупнейших отраслевых проектов, таких как ICT WEEK Uzbekistan, AVANTAGE стала широко известной в своей стране и в нескольких странах Европы и Азии. В целом за эти годы компания постоянно совершенствуется, приобретая бесценный опыт, и это позволяет нам организовать работу с экспонентами и гостями выставки на высшем уровне.</p>
+              <p>{{ $t('section.stand.p-1') }}</p>
+              <p>{{ $t('section.stand.p-2') }}</p>
+              <p>{{ $t('section.stand.p-3') }}</p>
             </div>
             <transition name="request">
               <div class="section__form w-100 mt-3" v-if="isRequest">
                 <form @submit="sendForm" id="standForm">
                   <div class="form-group">
-                    <label for="standName">Имя</label>
+                    <label for="standName">{{ $t('label.name') }}</label>
                     <input
                       type="text"
                       class="form-control"
@@ -31,19 +31,18 @@
                     />
                   </div>
                   <div class="form-group">
-                    <label for="standTel">Телефон</label>
+                    <label for="standTel">{{ $t('label.phone') }}</label>
                     <masked-input
                       v-model="commonForm.phone"
                       mask="\+\998 (91) 111-11-11"
                       type="tel"
-                      placeholder="Phone"
                       class="form-control"
                       id="standTel"
                       required
                     />
                   </div>
                   <div class="form-group">
-                    <label for="standMessage">Сообщение</label>
+                    <label for="standMessage">{{ $t('label.msg') }}</label>
                     <textarea
                       class="form-control"
                       id="standMessage"
@@ -56,15 +55,19 @@
             </transition>
             <div class="action mt-3 mb-3">
               <template v-if="isRequest">
-                <button class="btn btn-action mr-2" form="standForm">Отправить заявку</button>
-                <a href="#" class="btn btn-alternative" @click="toggleForm($event)">Отменить</a>
+                <button class="btn btn-action mr-2" form="standForm">{{ $t('btn.send') }}</button>
+                <a
+                  href="#"
+                  class="btn btn-alternative"
+                  @click="toggleForm($event)"
+                >{{ $t('btn.cancel') }}</a>
               </template>
               <template v-else>
                 <a
                   href="#"
                   class="btn btn-action btn-block"
                   @click="toggleForm($event)"
-                >Заполнить заявку</a>
+                >{{ $t('btn.write') }}</a>
               </template>
             </div>
           </div>
@@ -159,14 +162,11 @@ export default {
       if (this.getCart()) {
         $("#checkoutModal").modal("show");
         this.$toast.info("Сначало заверишите покупку");
-      }else{
-        const preparedData = {...this.commonForm, ...this.form};
-        
-          const res = this.$http.post(
-          "https://roadtosenior.uz/api/form/",
-          preparedData
-        );
-        this.$toast.success('Ваша заявка отправлена');
+      } else {
+        const preparedData = { ...this.commonForm, ...this.form };
+
+        const res = this.$axi.post("form/", preparedData);
+        this.$toast.success("Ваша заявка отправлена");
       }
     }
   }

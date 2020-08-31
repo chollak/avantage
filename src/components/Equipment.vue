@@ -15,7 +15,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Search"
+                  :placeholder="$t('input-search')"
                   aria-label="Search tag"
                   aria-describedby="searchBtn"
                   v-model="searchInput"
@@ -36,12 +36,12 @@
                 <div class="dropdown-menu dropdown-menu-right">
                   <a
                     class="dropdown-item"
-                    :href="'#'+tag.ru_title"
-                    @click="searchInput=''; activeTag = tag.ru_title"
+                    :href="'#'+tag.title | removeSpace"
+                    @click="searchInput=''; activeTag = tag.title"
                     data-toggle="pill"
                     v-for="(tag) in tags"
                     :key="tag.id"
-                  >{{tag.ru_title}}</a>
+                  >{{tag.title}}</a>
                 </div>
               </li>
               <li class="nav-item d-none d-lg-block" v-for="(tag,index) in tags" :key="tag.id">
@@ -49,9 +49,9 @@
                   class="nav-link hover-link"
                   :class="{'active':index==0}"
                   data-toggle="pill"
-                  :href="'#'+tag.ru_title"
+                  :href="'#'+tag.title | removeSpace"
                   @click="searchInput=''"
-                >{{tag.ru_title}}</a>
+                >{{tag.title}}</a>
               </li>
             </ul>
           </div>
@@ -62,7 +62,7 @@
               data-toggle="modal"
               data-target="#checkoutModal"
             >
-              Корзинка
+              {{ $t('btn.cart') }}
               <template v-if="isRender">
                 <span class="badge badge-light ml-2">{{getCartLength}}</span>
               </template>
@@ -75,7 +75,7 @@
               <div class="col mb-4" v-for="(e) in filteredList" :key="e.id">
                 <div class="card">
                   <img
-                    :src="e.img"
+                    v-lazy="e.img"
                     class="card-img-top"
                     alt="..."
                     data-toggle="modal"
@@ -83,7 +83,7 @@
                     @click="setImage(e.img)"
                   />
                   <div class="card-body">
-                    <h6>{{e.ru_title}}</h6>
+                    <h6>{{e.title}}</h6>
                     <h6>{{e.price | toCurrency}}</h6>
                   </div>
                   <div class="card-footer">
@@ -91,12 +91,12 @@
                       <button
                         class="btn btn-action btn-sm btn-block disabled"
                         v-if="checkIfInCart(e.id)"
-                      >Добавлено</button>
+                      >{{ $t('btn.added') }}</button>
                       <button
                         class="btn btn-alternative btn-sm btn-block"
                         v-else
                         @click="addItemCart(e)"
-                      >Добавить</button>
+                      >{{ $t('btn.add') }}</button>
                     </template>
                   </div>
                 </div>
@@ -110,7 +110,7 @@
               class="tab-pane fade"
               v-for="(tag,index) in tags"
               :key="tag.id"
-              :id="tag.ru_title"
+              :id="tag.title | removeSpace"
               :class="{'active show':index==0}"
             >
               <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
@@ -118,7 +118,7 @@
                   <div class="col mb-4" v-for="e in getEquipment(tag.id)" :key="e.id">
                     <div class="card">
                       <img
-                        :src="e.img"
+                        v-lazy="e.img"
                         class="card-img-top"
                         alt="..."
                         data-toggle="modal"
@@ -126,7 +126,7 @@
                         @click="setImage(e.img)"
                       />
                       <div class="card-body">
-                        <h6>{{e.ru_title}}</h6>
+                        <h6>{{e.title}}</h6>
                         <h6>{{e.price | toCurrency}}</h6>
                       </div>
                       <div class="card-footer">
@@ -134,12 +134,12 @@
                           <button
                             class="btn btn-action btn-sm btn-block disabled"
                             v-if="checkIfInCart(e.id)"
-                          >Добавлено</button>
+                          >{{ $t('btn.added') }}</button>
                           <button
                             class="btn btn-alternative btn-sm btn-block"
                             v-else
                             @click="addItemCart(e)"
-                          >Добавить</button>
+                          >{{ $t('btn.add') }}</button>
                         </template>
                       </div>
                     </div>
@@ -183,9 +183,9 @@
                             <tr v-for="(c,index) in cart" :key="c.id">
                               <th scope="row">{{index+1}}</th>
                               <td>
-                                <img :src="c.img" alt class="cart-img" />
+                                <img v-lazy="c.img" alt class="cart-img" />
                               </td>
-                              <td>{{c.ru_title}}</td>
+                              <td>{{c.title}}</td>
                               <td>{{c.price | toCurrency}}</td>
                               <td>
                                 <div class="d-flex p-2">
@@ -217,21 +217,21 @@
                       </div>
                     </template>
                     <template v-else>
-                      <h1>Товаров пока нет</h1>
+                      <h1>{{ $t('cart.no-items') }}</h1>
                     </template>
                   </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="sticky-top t-5" v-if="cart">
                     <div class="total mb-3">
-                      <h6>Итого</h6>
+                      <h6>{{ $t('cart.total') }}</h6>
                       <h5>{{total | toCurrency}}</h5>
                     </div>
                     <div class="card mt-3 mb-3" v-if="showForm">
                       <div class="card-body">
                         <form @submit="sendForm" id="cartForm">
                           <div class="form-group">
-                            <label for="cartName">Имя</label>
+                            <label for="cartName">{{ $t('label.name') }}</label>
                             <input
                               type="text"
                               class="form-control"
@@ -241,19 +241,18 @@
                             />
                           </div>
                           <div class="form-group">
-                            <label for="cartTel">Телефон</label>
+                            <label for="cartTel">{{ $t('label.phone') }}</label>
                             <masked-input
                               v-model="form.phone"
                               mask="\+\998 (91) 111-11-11"
                               type="tel"
-                              placeholder="Phone"
                               class="form-control"
                               id="cartTel"
                               required
                             />
                           </div>
                           <div class="form-group">
-                            <label for="cartAddress">Адрес</label>
+                            <label for="cartAddress">{{ $t('label.address') }}</label>
                             <input
                               type="text"
                               class="form-control"
@@ -269,13 +268,13 @@
                         class="btn btn-alternative mr-2"
                         @click="storageClear()"
                         data-dismiss="modal"
-                      >Очистить</button>
+                      >{{ $t('btn.clear') }}</button>
                       <button
                         class="btn btn-action"
                         @click="showForm = true"
                         v-if="!showForm"
-                      >Заказать</button>
-                      <button class="btn btn-action" form="cartForm" v-if="showForm">Заказать</button>
+                      >{{ $t('btn.order') }}</button>
+                      <button class="btn btn-action" form="cartForm" v-if="showForm">{{ $t('btn.order') }}</button>
                     </div>
                   </div>
                 </div>
@@ -300,7 +299,7 @@ export default {
   },
   async created() {
     await this.getTags();
-    this.activeTag = this.tags[0].ru_title;
+    this.activeTag = this.tags[0].title;
     const ids = this.tags.map(tag => tag.id);
     const preparedData = [];
     for (const id of ids) {
@@ -349,13 +348,13 @@ export default {
         arr = [...arr, ...el.equipments];
       });
       return arr.filter(el => {
-        return el.ru_title
+        return el.title
           .toLowerCase()
           .includes(this.searchInput.toLowerCase());
       });
 
       // return element.equipments.filter(equipment => {
-      //     equipment.ru_title
+      //     equipment.title
       //       .toLowerCase()
       //       .includes(this.searchInput.toLowerCase());
       //   });
@@ -384,6 +383,9 @@ export default {
     },
     comma(value) {
       return value.replace(" ", ",");
+    },
+    removeSpace(value) {
+      return value.replace(" ", "");
     }
   },
   methods: {
@@ -395,10 +397,7 @@ export default {
         return { id: element.id, quantity: element.quantity };
       });
       const preparedData = { ...this.form, ...this.ss };
-      const res = await this.$http.post(
-        "https://roadtosenior.uz/api/form/",
-        preparedData
-      );
+      const res = await this.$axi.post("form/", preparedData);
       this.$toast.success("Ваш заказ отправлен");
       this.storageClear();
     },
@@ -419,16 +418,12 @@ export default {
     },
     async getTags() {
       this.isLoading = true;
-      const res = await this.$http.get(
-        "https://roadtosenior.uz/api/tag"
-      );
+      const res = await this.$axi.get("tag");
       this.tags = res.data;
       this.isLoading = false;
     },
     async getEquipmentsByTag(id) {
-      const res = await this.$http.get(
-        "https://roadtosenior.uz/api/tag/" + id
-      );
+      const res = await this.$axi.get("tag/" + id);
       return res.data;
     },
     quantityChange(cart) {

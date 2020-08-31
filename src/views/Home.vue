@@ -1,12 +1,12 @@
 <template>
   <div class="home" data-spy="scroll" data-target="#navbar" data-offset="100">
     <template v-if="data">
-      <About title="О нас" :content="data.aboutSection" />
-      <Equipment title="Аренда оборудований" />
-      <Service title="Кейтеринг" :content="data.cateringSection" />
-      <Stand title="Застройка стенда" :content="data.standSection" />
-      <Registration title="Регистрация посетителей" :content="data.registerSection" />
-      <Contact title="Контакты" />
+      <About :title="$t('title.about')" :content="data.aboutSection" />
+      <Equipment :title="$t('title.equipment')" />
+      <Service :title="$t('title.catering')" :content="data.cateringSection" />
+      <Stand :title="$t('title.stand')" :content="data.standSection" />
+      <Registration :title="$t('title.registration')" :content="data.registerSection" />
+      <Contact :title="$t('title.contact')" />
     </template>
   </div>
 </template>
@@ -23,12 +23,12 @@ import Stand from "@/components/Stand";
 export default {
   name: "Home",
   components: {
-    About,
-    Contact,
-    Equipment,
-    Registration,
-    Service,
-    Stand
+    About: () => import('@/components/About'),
+    Contact: () => import('@/components/Contact'),
+    Equipment: () => import('@/components/Equipment'),
+    Registration: () => import('@/components/Registration'),
+    Service: () => import('@/components/Service'),
+    Stand: () => import('@/components/Stand')
   },
   data() {
     return {
@@ -37,13 +37,10 @@ export default {
   },
   created() {
     this.getData();
-    // https://roadtosenior.uz
   },
   methods: {
     async getData() {
-      const res = await this.$http.get(
-        "https://roadtosenior.uz/api/FullPage/"
-      );
+      const res = await this.$axi.get("FullPage/");
       this.data = res.data;
     }
   }

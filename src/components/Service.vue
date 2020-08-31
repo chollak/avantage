@@ -13,9 +13,9 @@
             >
               <p
                 class="mb-6"
-              >Выездной ресторан MEX CATERING, входящий в группу компаний AVANTAGE, работает на рынке общественного питания в Ташкенте с 2016 года и имеет большой опыт в организации приемов, банкетов, гала-ужинов, кофе-брейков и других мероприятий различных, в том числе международных.</p>
-              <p>Мы предоставляем выездной ресторан на удобной вам территории, а также на площадках наших партнерах.</p>
-              <p>MEX CATERING - мы знаем секретный ингредиент секретного ингредиента супа ;-)</p>
+              >{{ $t('section.catering.p-1') }}</p>
+              <p>{{ $t('section.catering.p-2') }}</p>
+              <p>{{ $t('section.catering.p-3') }}</p>
             </div>
             <div class="row">
               <div
@@ -37,7 +37,7 @@
                   data-aos-once="false"
                 >
                   <swiper-slide v-for="item in content.carousel" :key="item.image">
-                    <img :src="item.image" :alt="item.alt" />
+                    <img v-lazy="item.image" :alt="item.alt" />
                   </swiper-slide>
                 </swiper>
               </div>
@@ -54,7 +54,7 @@
             <h3 class="section__title">{{title}}</h3>
             <form @submit="sendForm">
               <div class="form-group">
-                <label for="serviceEvent">Выберите мероприятие</label>
+                <label for="serviceEvent">{{ $t('label.event') }}</label>
                 <div class="row">
                   <div class="col-7">
                     <select
@@ -72,7 +72,7 @@
                       id="newEvent"
                       v-if="isNewEvent"
                       v-model="form.catering.event"
-                      placeholder="Название мероприятии"
+                      :placeholder="$t('label.enter-event')"
                       required
                     />
                   </div>
@@ -88,7 +88,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="serviceGuests">Количество гостей</label>
+                <label for="serviceGuests">{{ $t('label.guest') }}</label>
                 <div class="row">
                   <div class="col-7">
                     <input
@@ -112,7 +112,7 @@
                       id="newGuest"
                       v-if="isNewGuest"
                       v-model="form.catering.guestNumber"
-                      placeholder="Количество гостей"
+                      :placeholder="$t('label.enter-guest')"
                       required
                     />
                   </div>
@@ -127,7 +127,7 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="serviceName">Имя</label>
+                <label for="serviceName">{{ $t('label.name') }}</label>
                 <input
                   type="text"
                   class="form-control"
@@ -137,19 +137,18 @@
                 />
               </div>
               <div class="form-group">
-                <label for="serviceTel">Телефон</label>
+                <label for="serviceTel">{{ $t('label.phone') }}</label>
                 <masked-input
                   mask="\+\998 (91) 111-11-11"
                   type="tel"
                   v-model="commonForm.phone"
-                  placeholder="Phone"
                   class="form-control"
                   id="serviceTel"
                   required
                 />
               </div>
               <div class="form-group">
-                <label for="serviceAddress">Адрес</label>
+                <label for="serviceAddress">{{ $t('label.address') }}</label>
                 <input
                   type="text"
                   class="form-control"
@@ -158,7 +157,7 @@
                 />
               </div>
               <div class="form-group">
-                <label for="serviceMessage">Сообщение</label>
+                <label for="serviceMessage">{{ $t('label.msg') }}</label>
                 <textarea
                   class="form-control"
                   id="serviceMessage"
@@ -166,7 +165,7 @@
                   v-model="form.catering.message"
                 ></textarea>
               </div>
-              <button class="btn btn-action btn-block">Отправить заявку</button>
+              <button class="btn btn-action btn-block">{{ $t('btn.send') }}</button>
             </form>
           </div>
         </div>
@@ -240,13 +239,10 @@ export default {
         $("#checkoutModal").modal("show");
         this.$toast.info("Сначало заверишите покупку");
       } else {
-        const preparedData = {...this.commonForm, ...this.form};
-        
-          const res = this.$http.post(
-          "https://roadtosenior.uz/api/form/",
-          preparedData
-        );
-        this.$toast.success('Ваша заявка отправлена');
+        const preparedData = { ...this.commonForm, ...this.form };
+
+        const res = this.$axi.post("form/", preparedData);
+        this.$toast.success("Ваша заявка отправлена");
       }
     }
   }
