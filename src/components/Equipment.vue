@@ -274,7 +274,11 @@
                         @click="showForm = true"
                         v-if="!showForm"
                       >{{ $t('btn.order') }}</button>
-                      <button class="btn btn-action" form="cartForm" v-if="showForm">{{ $t('btn.order') }}</button>
+                      <button
+                        class="btn btn-action"
+                        form="cartForm"
+                        v-if="showForm"
+                      >{{ $t('btn.order') }}</button>
                     </div>
                   </div>
                 </div>
@@ -348,9 +352,7 @@ export default {
         arr = [...arr, ...el.equipments];
       });
       return arr.filter(el => {
-        return el.title
-          .toLowerCase()
-          .includes(this.searchInput.toLowerCase());
+        return el.title.toLowerCase().includes(this.searchInput.toLowerCase());
       });
 
       // return element.equipments.filter(equipment => {
@@ -418,12 +420,20 @@ export default {
     },
     async getTags() {
       this.isLoading = true;
-      const res = await this.$axi.get("tag");
+      const res = await this.$axi.get("tag", {
+        headers: {
+          "content-language": this.$i18n.locale
+        }
+      });
       this.tags = res.data;
       this.isLoading = false;
     },
     async getEquipmentsByTag(id) {
-      const res = await this.$axi.get("tag/" + id);
+      const res = await this.$axi.get("tag/" + id, {
+        headers: {
+          "content-language": this.$i18n.locale
+        }
+      });
       return res.data;
     },
     quantityChange(cart) {

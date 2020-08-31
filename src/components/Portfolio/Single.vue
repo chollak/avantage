@@ -57,7 +57,11 @@ export default {
   },
   async created() {
     this.isLoading = true;
-    const res = await this.$axi.get("portfolio/" + this.pid);
+    const res = await this.$axi.get("portfolio/" + this.pid, {
+      headers: {
+        "content-language": this.$i18n.locale
+      }
+    });
     this.portfolio = res.data;
     this.isLoading = false;
   }
