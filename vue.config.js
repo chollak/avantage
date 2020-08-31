@@ -11,11 +11,20 @@
 // };
 
 module.exports = {
-    css: {
-      loaderOptions: {
-        sass: {
-          prependData: `@import "@/assets/scss/custom.scss";`
-        }
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `@import "@/assets/scss/custom.scss";`
       }
     }
-  };
+  },
+
+  pluginOptions: {
+    i18n: {
+      locale: 'ru',
+      fallbackLocale: 'ru',
+      localeDir: 'lang',
+      enableInSFC: true
+    }
+  }
+};

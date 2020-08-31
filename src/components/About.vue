@@ -12,7 +12,7 @@
             data-aos-once="false"
           >
             <h3>{{title}}</h3>
-            <p>Теперь, чтобы организовать деловое мероприятие, нужно по-настоящему много работать. При отсутствии специальных знаний в этой области лучше всего обратиться в специальную компанию, которая может предоставить целую команду профессионалов, которые готовы взяться за организацию проекта и могут выполнить его на 100%.</p>
+            <p>{{ $t('section.about.p-1') }}</p>
           </div>
           <div
             class="col-lg-7 align-self-center"
@@ -23,7 +23,7 @@
             data-aos-once="false"
           >
             <img
-              :src="content.image_1.image"
+              v-lazy="content.image_1.image"
               :alt="content.image_1.alt"
               class="img-fluid rounded img-cover-center"
               style="height:350px"
@@ -50,12 +50,12 @@
               data-aos-once="false"
             >
               <swiper-slide v-for="item in content.carousel" :key="item.image">
-                <img :src="item.image" :alt="item.alt" />
+                <img v-lazy="item.image" :alt="item.alt" />
               </swiper-slide>
             </swiper>
           </div>
           <div class="col-lg-6 align-self-center my-2">
-            <p>AVANTAGE относится к таким компаниям, которые могут взять на себя задачу организации и проведения любого типа мероприятия, а также предоставить в аренду лучшее оборудование, позволяющее проводить качественные и интересные мероприятия.</p>
+            <p>{{ $t('section.about.p-2') }}</p>
           </div>
         </div>
         <div
@@ -67,20 +67,21 @@
           data-aos-once="false"
         >
           <div class="col-lg-5 align-self-center my-2">
-            <p>Мы готовы предоставить нашим клиентам полный спектр услуг, от разработки концепции до реализации и реализации мероприятий.</p>
-            <p>Выставки, форумы, конференции, презентации, кейтеринг, организованные AVANTAGE, позволяют нашим Клиентам достигать своих целей и отмечены положительными отзывами участников и посетителей.</p>
-            <p>Мы готовы эффективно применить наш опыт в организации любого формата деловых мероприятий в интересах вашей компании.</p>
+            <p>{{ $t('section.about.p-3') }}</p>
+            <p>{{ $t('section.about.p-4') }}</p>
+            <p>{{ $t('section.about.p-5') }}</p>
+
             <button
               class="btn btn-action btn-block"
               data-toggle="modal"
               data-target="#portfolioModal"
               @click="currentView = 'List'"
-            >Портфолио</button>
+            >{{ $t('btn.portfolio') }}</button>
           </div>
           <div class="col-lg-7 align-self-center my-2">
             <div class="video">
               <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-                <source :src="content.video" type="video/mp4" />
+                <source v-lazy="content.video" type="video/mp4" />
               </video>
             </div>
           </div>
@@ -104,7 +105,7 @@
                   :duration="1000"
                 />
               </h3>
-              <div class="stats__text">лет</div>
+              <div class="stats__text">{{$t('section.about.card.1')}}</div>
             </div>
           </div>
           <div
@@ -123,7 +124,7 @@
                   :duration="1000"
                 />
               </h3>
-              <div class="stats__text">почетных грамот</div>
+              <div class="stats__text">{{$t('section.about.card.2')}}</div>
             </div>
           </div>
           <div
@@ -142,7 +143,7 @@
                   :duration="1000"
                 />+
               </h3>
-              <div class="stats__text">проектов</div>
+              <div class="stats__text">{{$t('section.about.card.3')}}</div>
             </div>
           </div>
           <div
@@ -161,7 +162,7 @@
                   :duration="1000"
                 />%
               </h3>
-              <div class="stats__text">недовольных клиентов</div>
+              <div class="stats__text">{{$t('section.about.card.4')}}</div>
             </div>
           </div>
         </div>
@@ -188,7 +189,7 @@
               >
                 <i class="fa fa-arrow-left"></i>
               </button>
-              <h5 class="modal-title" v-show="currentView=='List'">Портфолио</h5>
+              <h5 class="modal-title" v-show="currentView=='List'">{{ $t('title.portfolio') }}</h5>
               <button
                 type="button"
                 class="close ml-auto my-auto"
@@ -259,7 +260,7 @@ export default {
     formatToPrice(value) {
       return `${value.toFixed(0)}`;
     },
-    setView(view) {      
+    setView(view) {
       this.currentView = view[0];
       this.currentId = view[1];
     },
