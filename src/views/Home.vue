@@ -1,12 +1,20 @@
 <template>
   <div class="home" data-spy="scroll" data-target="#navbar" data-offset="100">
     <template v-if="data">
-      <About :title="$t('title.about')" :content="data.aboutSection" />
-      <Equipment :title="$t('title.equipment')" />
-      <Service :title="$t('title.catering')" :content="data.cateringSection" />
-      <Stand :title="$t('title.stand')" :content="data.standSection" />
-      <Registration :title="$t('title.registration')" :content="data.registerSection" />
-      <Contact :title="$t('title.contact')" />
+      <About :key="$t('title.about')+fU" :title="$t('title.about')" :content="data.aboutSection" />
+      <Equipment :key="$t('title.equipment')+fU" :title="$t('title.equipment')" />
+      <Service
+        :key="$t('title.catering')+fU"
+        :title="$t('title.catering')"
+        :content="data.cateringSection"
+      />
+      <Stand :key="$t('title.stand')+fU" :title="$t('title.stand')" :content="data.standSection" />
+      <Registration
+        :key="$t('title.registration')+fU"
+        :title="$t('title.registration')"
+        :content="data.registerSection"
+      />
+      <Contact :key="$t('title.contact')+fU" :title="$t('title.contact')" />
     </template>
   </div>
 </template>
@@ -23,16 +31,24 @@ import Stand from "@/components/Stand";
 export default {
   name: "Home",
   components: {
-    About: () => import('@/components/About'),
-    Contact: () => import('@/components/Contact'),
-    Equipment: () => import('@/components/Equipment'),
-    Registration: () => import('@/components/Registration'),
-    Service: () => import('@/components/Service'),
-    Stand: () => import('@/components/Stand')
+    About: () => import("@/components/About"),
+    Contact: () => import("@/components/Contact"),
+    Equipment: () => import("@/components/Equipment"),
+    Registration: () => import("@/components/Registration"),
+    Service: () => import("@/components/Service"),
+    Stand: () => import("@/components/Stand")
+  },
+  watch: {
+    "$i18n.locale": {
+      handler: async function(val) {
+        await this.getData();
+      }
+    }
   },
   data() {
     return {
-      data: null
+      data: null,
+      fU: 0
     };
   },
   created() {
@@ -40,8 +56,15 @@ export default {
   },
   methods: {
     async getData() {
-      const res = await this.$axi.get("FullPage/");
+      const res = await this.$axi.get("FullPage/",{
+        headers:{
+          "content-language": this.$i18n.locale
+        }
+      });
       this.data = res.data;
+    },
+    forceRerender() {
+      this.fU += 1;
     }
   }
 };

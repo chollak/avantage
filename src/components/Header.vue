@@ -122,7 +122,7 @@ export default {
     "$i18n.locale": {
       handler: function(val) {
         window.localStorage.setItem("lang", JSON.stringify(val));
-        window.location.reload();
+        // window.location.reload();
       }
     }
   },

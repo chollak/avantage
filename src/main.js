@@ -18,8 +18,6 @@ import VueAwesomeSwiper from 'vue-awesome-swiper';
 import 'swiper/css/swiper.css'
 import i18n from './i18n'
 import VueLazyload from 'vue-lazyload'
-
-
 Vue.use(VueLazyload)
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */ )
 
@@ -67,9 +65,9 @@ Vue.config.productionTip = false
 router.beforeEach((to, from, next) => {
   Vue.prototype.$axi = Axios.create({
     baseURL: 'https://admin.avantage.events/api/',
-    headers: {
-      'content-language': i18n.locale
-    }
+    // headers: {
+    //   'content-language': i18n.locale
+    // }
   });
   next();
 })

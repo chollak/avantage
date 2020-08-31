@@ -35,7 +35,11 @@ export default {
   },
   async created() {
     this.isLoading = true;
-    const res = await this.$axi.get("portfolio");
+    const res = await this.$axi.get("portfolio",{
+        headers:{
+          "content-language": this.$i18n.locale
+        }
+      });
     this.portfolio = res.data;
     this.isLoading = false;
   }
