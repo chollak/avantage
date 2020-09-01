@@ -81,7 +81,7 @@
           <div class="col-lg-7 align-self-center my-2">
             <div class="video">
               <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-                <source v-lazy="content.video" type="video/mp4" />
+                <source :src="content.video" type="video/mp4" />
               </video>
             </div>
           </div>
@@ -231,7 +231,7 @@ export default {
           delay: 2500,
           disableOnInteraction: true
         },
-        loop: true,
+        loop: false,
         slidesPerView: "auto",
         spaceBetween: 30
       }

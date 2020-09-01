@@ -22,8 +22,8 @@
                 />
               </div>
             </div>
-            <ul class="nav justify-content-start flex-nowrap" style="overflow-x:auto;">
-              <li class="nav-item dropdown d-lg-none">
+            <ul class="nav justify-content-start flex-nowrap nav-on-sm">
+              <li class="nav-item dropdown d-lg-none" style="width:inherit">
                 <a
                   class="nav-link dropdown-toggle"
                   data-toggle="dropdown"
@@ -31,10 +31,12 @@
                   role="button"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  style="width:inherit;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"
                 >{{activeTag}}</a>
-                <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-menu dropdown-menu-right" style="width:inherit;">
                   <a
                     class="dropdown-item"
+                    style="width:inherit;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"
                     :href="'#'+tag.title | removeSpace"
                     @click="searchInput=''; activeTag = tag.title"
                     data-toggle="pill"
@@ -304,6 +306,8 @@ export default {
   async created() {
     await this.getTags();
     this.activeTag = this.tags[0].title;
+    console.log(this.activeTag);
+
     const ids = this.tags.map(tag => tag.id);
     const preparedData = [];
     for (const id of ids) {
@@ -542,6 +546,11 @@ export default {
 
 <style lang="scss" scoped>
 #equipment {
+  @include media-breakpoint-down(sm) {
+    .nav-on-sm{
+      width: 180px;
+    }
+  }
   .tab-pane.fade {
     transition: all 0.2s;
     transform: translateY(1rem);

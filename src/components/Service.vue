@@ -200,7 +200,7 @@ export default {
           delay: 2500,
           disableOnInteraction: true
         },
-        loop: true,
+        loop: false,
         slidesPerView: "auto",
         spaceBetween: 30
       }
