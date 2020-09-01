@@ -22,14 +22,8 @@
                 />
               </div>
             </div>
-<<<<<<< Updated upstream
-            <template v-if="equipments!==null && searchInput!==''"></template>
-            <ul class="nav justify-content-start">
-              <li class="nav-item dropdown d-lg-none">
-=======
             <ul class="nav justify-content-start flex-nowrap nav-on-sm">
               <li class="nav-item dropdown d-lg-none" style="width:inherit">
->>>>>>> Stashed changes
                 <a
                   class="nav-link dropdown-toggle"
                   data-toggle="dropdown"
