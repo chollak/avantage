@@ -180,6 +180,9 @@ export default {
     background: transparent;
     border: none;
     color: #333;
+    :active {
+      color: #333;
+    }
   }
 }
 .navbar-dark {

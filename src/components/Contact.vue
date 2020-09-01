@@ -37,15 +37,24 @@
                           <div class="cart-text">
                             <ul class="list-group list-group-flush">
                               <li class="list-group-item">{{ $t('section.contact.position') }}</li>
-                              <li
+                              <!-- <li
                                 class="list-group-item"
-                              >{{ $t('section.contact.mobile') }}: +998951440444</li>
-                              <li
-                                class="list-group-item"
-                              >{{ $t('section.contact.mobile-tg') }}: +998909870101</li>
-                              <li
-                                class="list-group-item"
-                              >{{ $t('section.contact.email') }}: info@avantage.events</li>
+                              >{{ $t('section.contact.mobile') }}: +998951440444</li>-->
+                              <li class="list-group-item">
+                                <img src="@/assets/icons/p.svg" style="width:20px; height:25px;" /> +998951440444
+                              </li>
+                              <li class="list-group-item">
+                                <img
+                                  src="@/assets/icons/ps.svg"
+                                  style="width:20px; margin-left:3px; margin-right:-2px"
+                                /> +998909870101
+                              </li>
+                              <li class="list-group-item">
+                                <img
+                                  src="@/assets/icons/email.svg"
+                                  style="width:20px; height:25px; margin-right: 2px;margin-left: 1px;"
+                                /> info@avantage.events
+                              </li>
                               <li class="list-group-item">
                                 <div class="row">
                                   <div class="col-4 text-center">
