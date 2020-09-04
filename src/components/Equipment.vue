@@ -390,7 +390,7 @@ export default {
       return value.replace(" ", ",");
     },
     removeSpace(value) {
-      return value.replace(" ", "");
+      return value.replace(/\s+/g, "");
     }
   },
   methods: {
@@ -546,7 +546,7 @@ export default {
 <style lang="scss" scoped>
 #equipment {
   @include media-breakpoint-down(sm) {
-    .nav-on-sm{
+    .nav-on-sm {
       width: 180px;
     }
   }
