@@ -41,7 +41,7 @@
                                 class="list-group-item"
                               >{{ $t('section.contact.mobile') }}: +998951440444</li>-->
                               <li class="list-group-item">
-                                <img src="@/assets/icons/p.svg" style="width:20px; height:25px;" /> +998951440444
+                                <img src="" style="width:20px; height:25px;" /> +998951440444
                               </li>
                               <li class="list-group-item">
                                 <img

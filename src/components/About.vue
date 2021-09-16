@@ -79,11 +79,7 @@
             >{{ $t('btn.portfolio') }}</button>
           </div>
           <div class="col-lg-7 align-self-center my-2">
-            <div class="video">
-              <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-                <source :src="content.video" type="video/mp4" />
-              </video>
-            </div>
+            <iframe data-v-3be9a214="" width="560" height="315" src="https://www.youtube.com/embed/o96vSmlobRA" title="О нас" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
           </div>
         </div>
       </div>

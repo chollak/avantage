@@ -84,21 +84,19 @@
                 data-aos-once="false"
               >
                 <swiper-slide v-for="item in content.carousel" :key="item.image">
-                  <img :src="item.image" :alt="item.alt" />
+                  <img v-lazy="item.image" :alt="item.alt" />
                 </swiper-slide>
               </swiper>
 
               <div
-                class="video"
+                  style="width: 100%"
                 data-aos="zoom-in-up"
                 data-aos-delay="150"
                 data-aos-duration="500"
                 data-aos-easing="ease-in-out"
                 data-aos-once="false"
               >
-                <video playsinline="playsinline" controls muted="muted" loop="loop">
-                  <source :src="content.video" type="video/mp4" />
-                </video>
+                <iframe data-v-1ffd7d4c="" width="100%" height="315" src="https://www.youtube.com/embed/1NuoKO-IO9A" title="Застройка стенда" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
               </div>
             </div>
           </div>

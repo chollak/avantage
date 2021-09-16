@@ -12,7 +12,7 @@
         <template v-if="portfolio">
           <div class="col mb-4" v-for="item in portfolio" :key="item.id">
             <div class="card" @click="$emit('setView',['Single',item.id])">
-              <img :src="item.image" class="card-img-top" />
+              <img v-lazy="item.image" :alt="item.alt" class="card-img-top" />
               <div class="card-body">
                 <h6>{{ item.title }}</h6>
               </div>

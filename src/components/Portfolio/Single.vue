@@ -16,8 +16,8 @@
           </div>
           <div class="col-lg-6">
             <swiper class="swiper" style="height:400px; width:100%;" :options="swiperOption">
-              <swiper-slide v-for="item in portfolio.carousel" :key="item.id">
-                <img :src="item.image" :alt="item.alt" />
+              <swiper-slide v-for="item in portfolio.carousel" :key="item.image">
+                <img v-lazy="item.image" :alt="item.alt" />
               </swiper-slide>
             </swiper>
           </div>

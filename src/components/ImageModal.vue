@@ -7,7 +7,7 @@
       </button>
       <div class="modal-dialog">
         <div class="modal-content">
-          <img :src="imgSrc" class="img-fluid" alt="..." />
+          <img v-lazy="imgSrc" class="img-fluid" alt="..." />
         </div>
       </div>
     </div>
